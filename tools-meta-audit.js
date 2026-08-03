@@ -1,0 +1,55 @@
+/* ביקורת מטא: אורך, מיקום ביטוי המפתח, ייחודיות, התאמה ל-H1 ול-OG */
+const fs = require('fs');
+const path = require('path');
+const ROOT = 'c:\\d-e-v\\brandli';
+
+const PAGES = [
+  { f: 'index.html',                       url: '/',                       kw: 'בניית אתרים' },
+  { f: 'website-building/index.html',      url: '/website-building/',      kw: 'בניית אתרים' },
+  { f: 'website-maintenance/index.html',   url: '/website-maintenance/',   kw: 'תחזוקת אתרים' },
+  { f: 'website-management/index.html',    url: '/website-management/',    kw: 'ניהול אתרים' },
+  { f: 'websites-for-doctors/index.html',  url: '/websites-for-doctors/',  kw: 'בניית אתרים לרופאים' },
+  { f: 'about/index.html',                 url: '/about/',                 kw: 'ברנדלי' },
+  { f: 'contact/index.html',               url: '/contact/',               kw: 'צרו קשר' },
+  { f: 'privacy-policy/index.html',        url: '/privacy-policy/',        kw: 'מדיניות פרטיות' },
+  { f: 'accessibility/index.html',         url: '/accessibility/',         kw: 'הצהרת נגישות' },
+];
+
+const strip = s => s.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
+const grab = (html, re) => { const m = html.match(re); return m ? m[1].trim() : null; };
+
+const titles = new Map(), descs = new Map();
+let issues = 0;
+
+for (const p of PAGES) {
+  const html = fs.readFileSync(path.join(ROOT, p.f), 'utf8');
+  const title = grab(html, /<title>([\s\S]*?)<\/title>/);
+  const desc  = grab(html, /<meta name="description" content="([^"]*)"/);
+  const ogT   = grab(html, /<meta property="og:title" content="([^"]*)"/);
+  const ogD   = grab(html, /<meta property="og:description" content="([^"]*)"/);
+  const h1    = strip(grab(html, /<h1[^>]*>([\s\S]*?)<\/h1>/) || '');
+
+  const flags = [];
+  if (title.length > 60) flags.push(`כותרת ארוכה (${title.length})`);
+  if (title.length < 30) flags.push(`כותרת קצרה (${title.length})`);
+  if (desc.length > 160) flags.push(`תיאור ארוך (${desc.length})`);
+  if (desc.length < 120) flags.push(`תיאור קצר (${desc.length})`);
+  if (!title.includes(p.kw)) flags.push('ביטוי המפתח חסר בכותרת');
+  else if (title.indexOf(p.kw) > 12) flags.push(`ביטוי המפתח לא בהתחלה (תו ${title.indexOf(p.kw)})`);
+  if (!desc.includes(p.kw)) flags.push('ביטוי המפתח חסר בתיאור');
+  if (!h1.includes(p.kw) && p.kw !== 'ברנדלי' && p.kw !== 'צרו קשר') flags.push('ביטוי המפתח חסר ב-H1');
+  if (titles.has(title)) flags.push('כותרת כפולה עם ' + titles.get(title));
+  if (descs.has(desc)) flags.push('תיאור כפול עם ' + descs.get(desc));
+  if (!ogT) flags.push('חסר og:title');
+  if (!ogD) flags.push('חסר og:description');
+  titles.set(title, p.url); descs.set(desc, p.url);
+
+  issues += flags.length;
+  console.log(`\n${p.url}   [${p.kw}]`);
+  console.log(`  title (${title.length}): ${title}`);
+  console.log(`  desc  (${desc.length}): ${desc}`);
+  console.log(`  h1        : ${h1}`);
+  console.log(`  ${flags.length ? '⚠  ' + flags.join(' | ') : '✓  תקין'}`);
+}
+
+console.log(`\n===== סה"כ ממצאים: ${issues} =====`);

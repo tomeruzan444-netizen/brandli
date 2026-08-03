@@ -1,0 +1,20 @@
+{
+  "name": "Brandli - בניית אתרים, אחסון ותחזוקת אתרים",
+  "short_name": "Brandli",
+  "description": "בונים אתרי AI, מאחסנים בשרתים מאובטחים ומתחזקים באופן שוטף. ספק אחד לכל מחזור החיים של האתר.",
+  "lang": "he",
+  "dir": "rtl",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#4F39F6",
+  "icons": [
+    {
+      "src": "/assets/img/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

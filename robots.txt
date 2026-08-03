@@ -1,0 +1,89 @@
+# robots.txt - brandli.co.il
+# ---------------------------------------------------------------
+# מדיניות: האתר פתוח לסריקה מלאה, גם למנועי חיפוש קלאסיים
+# וגם לסוכני בינה מלאכותית לגיטימיים (חשוב ל-GEO / נראות ב-AI).
+# ---------------------------------------------------------------
+
+# ברירת מחדל - כל הסורקים
+User-agent: *
+Allow: /
+Disallow: /assets/js/
+Disallow: /*?utm_
+Disallow: /*?fbclid
+Disallow: /*?gclid
+
+# ------------------ מנועי חיפוש ------------------
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+# ------------------ מנועי תשובות מבוססי AI ------------------
+# מאפשרים במפורש - כדי שהעסק יוכל להיות מצוטט בתשובות.
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+User-agent: meta-externalagent
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+# ------------------ סורקים לא רצויים ------------------
+# סורקי SEO מסחריים שצורכים משאבים ללא תועלת לעסק.
+
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+# ------------------ מפות ------------------
+Sitemap: https://brandli.co.il/sitemap.xml

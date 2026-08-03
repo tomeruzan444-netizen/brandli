@@ -1,0 +1,21 @@
+# מערכת הפעלה
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+.DS_Store
+
+# עורכי קוד
+.vscode/
+.idea/
+*.swp
+*~
+
+# Node (למקרה שיתווספו כלי פיתוח בעתיד)
+node_modules/
+npm-debug.log*
+package-lock.json
+
+# קבצים זמניים
+*.log
+*.tmp
+_*.html
