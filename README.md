@@ -167,7 +167,11 @@ rewrite בצד השרת - כלומר תלות ב-Apache/nginx. בחרתי במב
 ### אחרי העלייה - צ׳קליסט SEO
 1. עדכנו את הדומיין בכל מקום אם הוא אינו `brandli.co.il`
    (`<link rel="canonical">`, `og:url`, `sitemap.xml`, `robots.txt`, `llms.txt`, JSON-LD).
-2. אמתו את האתר ב-[Google Search Console](https://search.google.com/search-console) והגישו את `sitemap.xml`.
+2. **Google Search Console כבר מוכן לאימות.** תג האימות מוטמע ב-`<head>` של כל
+   העמודים. אחרי שהאתר עולה לדומיין, נכנסים ל-[Search Console](https://search.google.com/search-console),
+   בוחרים באפשרות **HTML tag** ולוחצים "אמת". **אין להסיר את התג** גם אחרי
+   האימות: גוגל בודק אותו מחדש מדי פעם, והסרתו מבטלת את הבעלות.
+   לאחר האימות הגישו את `sitemap.xml`.
 3. אותו דבר ב-[Bing Webmaster Tools](https://www.bing.com/webmasters) (מזין גם את Copilot).
 4. הריצו את [בודק התוצאות העשירות](https://search.google.com/test/rich-results) על כל עמוד שירות.
 5. פתחו ואמתו **Google Business Profile** - קריטי ל-SEO מקומי בישראל.
