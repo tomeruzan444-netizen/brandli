@@ -4,6 +4,30 @@
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
+   0. גופן מאוחסן מקומית
+   Heebo Variable (400-900) ברישיון SIL OFL. ראו assets/fonts/OFL.txt
+   אחסון מקומי חוסך שני חיבורים לדומיינים חיצוניים במסלול הקריטי.
+   -------------------------------------------------------------------------- */
+@font-face {
+  font-family: "Heebo";
+  font-style: normal;
+  font-weight: 400 900;
+  font-display: swap;
+  src: url("/assets/fonts/heebo-hebrew.woff2") format("woff2");
+  unicode-range: U+0307-0308, U+0590-05FF, U+200C-2010, U+20AA, U+25CC, U+FB1D-FB4F;
+}
+@font-face {
+  font-family: "Heebo";
+  font-style: normal;
+  font-weight: 400 900;
+  font-display: swap;
+  src: url("/assets/fonts/heebo-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+                 U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122,
+                 U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* --------------------------------------------------------------------------
    1. Design Tokens
    -------------------------------------------------------------------------- */
 :root {
@@ -1544,13 +1568,15 @@ html.a11y-bigcursor, html.a11y-bigcursor * {
 /* --------------------------------------------------------------------------
    24. Reveal animation
    -------------------------------------------------------------------------- */
-.reveal { opacity: 0; transform: translateY(22px); transition: opacity .65s var(--ease), transform .65s var(--ease); }
-.reveal.is-in { opacity: 1; transform: none; }
+/* אנימציית חשיפה פועלת רק כשיש JavaScript. בלעדיו התוכן פשוט מוצג,
+   כדי שמקטע שלם לא ייעלם אם הסקריפט נחסם, נכשל או טרם רץ. */
+.js .reveal { opacity: 0; transform: translateY(22px); transition: opacity .65s var(--ease), transform .65s var(--ease); }
+.js .reveal.is-in { opacity: 1; transform: none; }
 
 @media (prefers-reduced-motion: reduce) {
   :root { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; }
-  .reveal { opacity: 1; transform: none; }
+  .js .reveal { opacity: 1; transform: none; }
 }
 
 /* --------------------------------------------------------------------------

@@ -49,6 +49,9 @@ ErrorDocument 404 /404.html
   AddType application/manifest+json  .webmanifest
   AddType image/svg+xml              .svg
   AddType application/xml            .xml
+  # קריטי: בלי זה הדפדפן עלול לדחות את הגופן המקומי
+  AddType font/woff2                 .woff2
+  AddType font/woff                  .woff
   AddCharset UTF-8                   .html .css .js .json .xml .txt .webmanifest
 </IfModule>
 
@@ -88,12 +91,14 @@ ErrorDocument 404 /404.html
   Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), interest-cohort=()"
   Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains" env=HTTPS
 
-  # Content Security Policy - מותאם לשימוש הנוכחי (Google Fonts + JSON-LD).
+  # Content Security Policy - האתר אינו טוען דבר מדומיין חיצוני.
+  # ה-hash מתייחס לסקריפט ה-inline היחיד בעמוד (הוספת המחלקה js ל-html).
+  # אם משנים את הסקריפט הזה, יש לחשב hash חדש, אחרת הדפדפן יחסום אותו.
   # אם מוסיפים Google Analytics / פיקסלים - יש להרחיב את script-src ו-connect-src.
   Header always set Content-Security-Policy "default-src 'self'; \
-    script-src 'self'; \
-    style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; \
-    font-src 'self' https://fonts.gstatic.com; \
+    script-src 'self' 'sha256-Du+OJKJSbdUgz5nrHeWWINvez6XKDDU/tyj/5c2uvwo='; \
+    style-src 'self' 'unsafe-inline'; \
+    font-src 'self'; \
     img-src 'self' data:; \
     connect-src 'self'; \
     form-action 'self'; \

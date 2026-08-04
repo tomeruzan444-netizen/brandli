@@ -1,0 +1,14 @@
+Heebo - SIL Open Font License 1.1
+=================================
+
+הגופן Heebo מופץ תחת רישיון SIL Open Font License, Version 1.1,
+המתיר שימוש, שינוי, הפצה ואחסון עצמי, כולל בשימוש מסחרי.
+
+Copyright (c) Oded Ezer, Ben Nathan
+נוסח הרישיון המלא: https://openfontlicense.org
+מקור הגופן: https://fonts.google.com/specimen/Heebo
+
+הקבצים בתיקייה זו הם תת-קבוצות (subsets) של הגרסה המשתנה של הגופן:
+  heebo-hebrew.woff2  - טווח עברית
+  heebo-latin.woff2   - טווח לטיני בסיסי
+שניהם מכסים את מלוא טווח המשקלים 400-900.
