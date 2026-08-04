@@ -13,6 +13,16 @@ const PAGES = [
   { f: 'contact/index.html',               url: '/contact/',               kw: 'צרו קשר' },
   { f: 'privacy-policy/index.html',        url: '/privacy-policy/',        kw: 'מדיניות פרטיות' },
   { f: 'accessibility/index.html',         url: '/accessibility/',         kw: 'הצהרת נגישות' },
+  { f: 'websites-for-lawyers/index.html', url: '/websites-for-lawyers/', kw: 'בניית אתרים לעורכי דין' },
+  { f: 'websites-for-accountants/index.html', url: '/websites-for-accountants/', kw: 'בניית אתרים לרואי חשבון' },
+  { f: 'websites-for-locksmiths/index.html', url: '/websites-for-locksmiths/', kw: 'בניית אתרים למנעולנים' },
+  { f: 'websites-for-electricians/index.html', url: '/websites-for-electricians/', kw: 'בניית אתרים לחשמלאים' },
+  { f: 'websites-for-business-consultants/index.html', url: '/websites-for-business-consultants/', kw: 'בניית אתרים ליועצים עסקיים' },
+  { f: 'ecommerce-websites/index.html', url: '/ecommerce-websites/', kw: 'בניית אתרי מסחר' },
+  { f: 'business-automation/index.html', url: '/business-automation/', kw: 'אוטומציות לעסקים' },
+  { f: 'organic-seo/index.html', url: '/organic-seo/', kw: 'קידום אורגני לעסקים' },
+  { f: 'seo-consultant/index.html', url: '/seo-consultant/', kw: 'יועץ קידום אתרים' },
+  { f: 'ai-website-building/index.html', url: '/ai-website-building/', kw: 'בניית אתרים בבינה מלאכותית' },
 ];
 
 const strip = s => s.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();

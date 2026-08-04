@@ -97,6 +97,18 @@ brandli/
 ├── accessibility/index.html          →  /accessibility/
 ├── 404.html                          עמוד שגיאה (נטען ע״י השרת, לא ע״י קישור)
 │
+│   עמודי נחיתה ממוקדי ביטוי, כל אחד עם זווית תוכן משלו:
+├── websites-for-lawyers/             →  /websites-for-lawyers/
+├── websites-for-accountants/         →  /websites-for-accountants/
+├── websites-for-locksmiths/          →  /websites-for-locksmiths/
+├── websites-for-electricians/        →  /websites-for-electricians/
+├── websites-for-business-consultants/ → /websites-for-business-consultants/
+├── ecommerce-websites/               →  /ecommerce-websites/
+├── business-automation/              →  /business-automation/
+├── organic-seo/                      →  /organic-seo/
+├── seo-consultant/                   →  /seo-consultant/
+├── ai-website-building/              →  /ai-website-building/
+│
 ├── assets/
 │   ├── css/style.css           מערכת העיצוב כולה (מקור אמת יחיד)
 │   ├── js/main.js              ניווט, scroll-spy, סליידר, טפסים, נגישות

@@ -38,6 +38,16 @@ description: Add or review internal links between Brandli site pages. Use when w
 | תקן 5568, WCAG, רכז נגישות | `/accessibility/` |
 | איסוף מידע, עוגיות, זכויות משתמש | `/privacy-policy/` |
 | שיחת ייעוץ, פנייה, טלפונים | `/contact/` |
+| קטלוג, סליקה, מלאי, עגלה, המרות בחנות | `/ecommerce-websites/` |
+| חיבור מערכות, CRM, וואטסאפ אוטומטי, תהליכים | `/business-automation/` |
+| מילות מפתח, תוכן לקידום, דירוגים, SEO טכני | `/organic-seo/` |
+| ביקורת SEO, מעבר דומיין, הערכת סוכנות | `/seo-consultant/` |
+| שימוש ב-AI בתהליך הבנייה, השפעה על מחיר וזמן | `/ai-website-building/` |
+| עורכי דין, כללי לשכת עוה״ד | `/websites-for-lawyers/` |
+| רואי חשבון, עונות דיווח, מחשבונים | `/websites-for-accountants/` |
+| מנעולנים, חירום, SEO מקומי לפי אזור | `/websites-for-locksmiths/` |
+| חשמלאים, רישיון, גלריית עבודות | `/websites-for-electricians/` |
+| יועצים עסקיים, מיצוב אישי, מקרי לקוח | `/websites-for-business-consultants/` |
 
 **מינימום קישורים מתוך הטקסט הזורם** (לא מהתפריט ולא מה-breadcrumbs):
 
@@ -46,6 +56,11 @@ description: Add or review internal links between Brandli site pages. Use when w
 - אודות: 3
 - צרו קשר: 2
 - עמודים משפטיים: 2
+- עמוד נחיתה ממוקד ביטוי: 3
+
+**זוג מיוחד:** `/organic-seo/` ו-`/seo-consultant/` חייבים לקשר זה לזה.
+הם קרובים מספיק כדי שגולש יתבלבל ביניהם, ולכן כל אחד מהם מסביר במפורש
+מתי השני מתאים יותר. זה גם מה שמונע ביניהם תחרות על אותה שאילתה.
 
 ---
 

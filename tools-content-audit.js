@@ -16,6 +16,18 @@ const PAGES = [
   { f: 'contact/index.html',              url: '/contact/',              kw: 'צרו קשר',            minLinks: 2 },
   { f: 'privacy-policy/index.html',       url: '/privacy-policy/',       kw: 'מדיניות פרטיות',     minLinks: 2 },
   { f: 'accessibility/index.html',        url: '/accessibility/',        kw: 'הצהרת נגישות',       minLinks: 2 },
+
+  /* עמודי נחיתה לפי ביטוי */
+  { f: 'websites-for-lawyers/index.html', url: '/websites-for-lawyers/', kw: 'בניית אתרים לעורכי דין', minLinks: 3 },
+  { f: 'websites-for-accountants/index.html', url: '/websites-for-accountants/', kw: 'בניית אתרים לרואי חשבון', minLinks: 3 },
+  { f: 'websites-for-locksmiths/index.html', url: '/websites-for-locksmiths/', kw: 'בניית אתרים למנעולנים', minLinks: 3 },
+  { f: 'websites-for-electricians/index.html', url: '/websites-for-electricians/', kw: 'בניית אתרים לחשמלאים', minLinks: 3 },
+  { f: 'websites-for-business-consultants/index.html', url: '/websites-for-business-consultants/', kw: 'בניית אתרים ליועצים עסקיים', minLinks: 3 },
+  { f: 'ecommerce-websites/index.html', url: '/ecommerce-websites/', kw: 'בניית אתרי מסחר', minLinks: 3 },
+  { f: 'business-automation/index.html', url: '/business-automation/', kw: 'אוטומציות לעסקים', minLinks: 3 },
+  { f: 'organic-seo/index.html', url: '/organic-seo/', kw: 'קידום אורגני לעסקים', minLinks: 3 },
+  { f: 'seo-consultant/index.html', url: '/seo-consultant/', kw: 'יועץ קידום אתרים', minLinks: 3 },
+  { f: 'ai-website-building/index.html', url: '/ai-website-building/', kw: 'בניית אתרים בבינה מלאכותית', minLinks: 3 },
 ];
 
 const MIN_KW = 5;
