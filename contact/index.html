@@ -42,16 +42,31 @@
       "name": "צרו קשר עם ברנדלי | שיחת ייעוץ חינם לבעלי עסקים",
       "description": "פרטי יצירת קשר עם ברנדלי: טלפון, דוא״ל, וואטסאפ, כתובת ושעות פעילות.",
       "inLanguage": "he-IL",
-      "isPartOf": { "@id": "https://brandli.co.il/#website" },
-      "about": { "@id": "https://brandli.co.il/#organization" },
-      "breadcrumb": { "@id": "https://brandli.co.il/contact/#breadcrumb" }
+      "isPartOf": {
+        "@id": "https://brandli.co.il/#website"
+      },
+      "about": {
+        "@id": "https://brandli.co.il/#organization"
+      },
+      "breadcrumb": {
+        "@id": "https://brandli.co.il/contact/#breadcrumb"
+      }
     },
     {
       "@type": "BreadcrumbList",
       "@id": "https://brandli.co.il/contact/#breadcrumb",
       "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "בית", "item": "https://brandli.co.il/" },
-        { "@type": "ListItem", "position": 2, "name": "צרו קשר" }
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "בית",
+          "item": "https://brandli.co.il/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "צרו קשר"
+        }
       ]
     },
     {
@@ -70,9 +85,87 @@
         "addressCountry": "IL"
       },
       "contactPoint": [
-        { "@type": "ContactPoint", "telephone": "+972-73-374-2200", "contactType": "sales", "areaServed": "IL", "availableLanguage": ["he","en","ru"] },
-        { "@type": "ContactPoint", "telephone": "+972-73-374-2201", "contactType": "technical support", "areaServed": "IL", "availableLanguage": ["he","en"] },
-        { "@type": "ContactPoint", "email": "support@brandli.co.il", "contactType": "customer support", "areaServed": "IL" }
+        {
+          "@type": "ContactPoint",
+          "telephone": "+972-73-374-2200",
+          "contactType": "sales",
+          "areaServed": "IL",
+          "availableLanguage": [
+            "he",
+            "en",
+            "ru"
+          ]
+        },
+        {
+          "@type": "ContactPoint",
+          "telephone": "+972-73-374-2201",
+          "contactType": "technical support",
+          "areaServed": "IL",
+          "availableLanguage": [
+            "he",
+            "en"
+          ]
+        },
+        {
+          "@type": "ContactPoint",
+          "email": "support@brandli.co.il",
+          "contactType": "customer support",
+          "areaServed": "IL"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://brandli.co.il/contact.html#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "תוך כמה זמן אתם חוזרים?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "תוך יום עסקים אחד. איש צוות אמיתי קורא את הפנייה, מסתכל על האתר הקיים אם ציינתם אותו, ורק אז חוזר אליכם. לא תקבלו מייל אוטומטי שמבקש למלא עוד טופס."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "שיחת הייעוץ באמת בחינם?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "כן, 30 דקות בלי עלות ובלי התחייבות. אנחנו לא גובים על אפיון ראשוני ולא מתנים אותו בחתימה. אם בסוף השיחה נגיע למסקנה שאתם לא צריכים אותנו, נגיד את זה. זה קורה, וזה בסדר."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "אני לא בטוח מה אני צריך. עדיין כדאי לפנות?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "דווקא אז. חלק גדול מהשיחות מתחילות ב\"יש לי אתר ואני לא יודע אם הוא בסדר\". אנחנו נסתכל עליו, נגיד לכם מה תקין ומה לא, ואם צריך נציע רק תחזוקת אתרים במקום בנייה מחדש."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "יש לי תקלה דחופה עכשיו. למי לפנות?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "לקוחות חבילת Care Max מתקשרים למוקד החירום 24/7. לקוחות אחרים ופונים חדשים מוזמנים להתקשר למספר הראשי בשעות הפעילות ולציין שמדובר באתר שנפל או נפרץ. גם אם אינכם לקוחות, ננסה לעזור או להפנות."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "אפשר להגיע למשרד?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "אפשר, בתיאום מראש. רוב הלקוחות מעדיפים זום או טלפון כי זה מהיר יותר, אבל אם נוח לכם להיפגש פנים אל פנים אנחנו בתל אביב והדלת פתוחה. הבניין נגיש, כולל חניית נכים ומעלית."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "מה כדאי להכין לשיחה?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "שום דבר מיוחד. אם יש לכם אתר קיים, כתובת שלו תספיק. אם אתם יודעים מה לא עובד היום או מה הייתם רוצים שהאתר יעשה, זה יקצר את השיחה. אם לא, נשאל את השאלות הנכונות."
+          }
+        }
       ]
     }
   ]
@@ -243,7 +336,7 @@
 
         <!-- DETAILS -->
         <div>
-          <h2 style="font-size:1.5rem">מעדיפים לדבר?</h2>
+          <h2 style="font-size:1.5rem">צרו קשר בדרך שנוחה לכם</h2>
           <p class="text-muted" style="margin-bottom:1.5rem">כל הדרכים מובילות לאותו צוות.</p>
 
           <div class="contact-tiles">
@@ -321,6 +414,86 @@
           <h3>3. הצעה מסודרת</h3>
           <p>מסמך אחד עם היקף, לוח זמנים ומחיר סגור. אין "בערך" ואין הפתעות בהמשך.</p>
         </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ WHEN TO CALL ============================ -->
+  <section class="section" aria-labelledby="whencall-title">
+    <div class="container container--narrow">
+      <div class="section-head section-head--start">
+        <span class="eyebrow">מתי לפנות</span>
+        <h2 id="whencall-title">צרו קשר גם אם עוד לא החלטתם</h2>
+        <p class="lead">
+          חלק גדול מהשיחות שלנו מתחילות ב"יש לי אתר ואני לא בטוח אם הוא בסדר".
+          זו נקודת פתיחה מצוינת.
+        </p>
+      </div>
+
+      <div class="prose">
+        <p>
+          אין צורך להגיע עם אפיון מוכן או עם תקציב מוגדר. צרו קשר בטלפון, בוואטסאפ,
+          בדוא״ל או בטופס שלמעלה, וכל הדרכים מגיעות לאותו צוות.
+        </p>
+        <p>
+          אלה המצבים שבהם שווה לפנות אלינו:
+        </p>
+        <ul>
+          <li>יש לכם אתר ואתם לא יודעים מי מאחסן אותו או מי מתחזק אותו</li>
+          <li>האתר נפל, נפרץ או מציג אזהרת אבטחה בדפדפן</li>
+          <li>אתם משלמים לשלושה ספקים שונים ומתעייפים מלתאם ביניהם</li>
+          <li>האתר עובד אבל כמעט לא מייצר פניות</li>
+          <li>אתם פותחים עסק ואין לכם עדיין נוכחות דיגיטלית</li>
+          <li>קיבלתם הצעת מחיר ואתם רוצים חוות דעת שנייה</li>
+        </ul>
+        <p>
+          גם אם בסוף השיחה נגיע למסקנה שאתם לא צריכים אותנו, נגיד את זה. זה קורה
+          לא מעט, ועדיף לשנינו על פני פרויקט שלא היה צריך לקרות.
+        </p>
+        <p>
+          לפני שאתם מחליטים, אולי יעזור לקרוא מה כוללת
+          <a href="/website-maintenance/">תחזוקת אתרים</a> אצלנו ומה נכנס לתהליך
+          <a href="/website-building/">בניית אתר חדש</a>. ואם אתם כבר יודעים בדיוק מה
+          אתם צריכים, צרו קשר ונדלג על ההסברים.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================ FAQ ================================ -->
+  <section class="section" id="faq" aria-labelledby="faq-title">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">שאלות נפוצות</span>
+        <h2 id="faq-title">לפני שאתם משאירים פרטים</h2>
+        <p class="lead">כמה דברים שאנשים שואלים אותנו רגע לפני שהם לוחצים על הכפתור.</p>
+      </div>
+
+      <div class="faq">
+        <details open>
+          <summary>תוך כמה זמן אתם חוזרים?<span class="plus" aria-hidden="true"></span></summary>
+          <div class="faq__body"><p>תוך יום עסקים אחד. איש צוות אמיתי קורא את הפנייה, מסתכל על האתר הקיים אם ציינתם אותו, ורק אז חוזר אליכם. לא תקבלו מייל אוטומטי שמבקש למלא עוד טופס.</p></div>
+        </details>
+        <details>
+          <summary>שיחת הייעוץ באמת בחינם?<span class="plus" aria-hidden="true"></span></summary>
+          <div class="faq__body"><p>כן, 30 דקות בלי עלות ובלי התחייבות. אנחנו לא גובים על אפיון ראשוני ולא מתנים אותו בחתימה. אם בסוף השיחה נגיע למסקנה שאתם לא צריכים אותנו, נגיד את זה. זה קורה, וזה בסדר.</p></div>
+        </details>
+        <details>
+          <summary>אני לא בטוח מה אני צריך. עדיין כדאי לפנות?<span class="plus" aria-hidden="true"></span></summary>
+          <div class="faq__body"><p>דווקא אז. חלק גדול מהשיחות מתחילות ב"יש לי אתר ואני לא יודע אם הוא בסדר". אנחנו נסתכל עליו, נגיד לכם מה תקין ומה לא, ואם צריך נציע רק <a href="/website-maintenance/">תחזוקת אתרים</a> במקום בנייה מחדש.</p></div>
+        </details>
+        <details>
+          <summary>יש לי תקלה דחופה עכשיו. למי לפנות?<span class="plus" aria-hidden="true"></span></summary>
+          <div class="faq__body"><p>לקוחות חבילת Care Max מתקשרים למוקד החירום 24/7. לקוחות אחרים ופונים חדשים מוזמנים להתקשר למספר הראשי בשעות הפעילות ולציין שמדובר באתר שנפל או נפרץ. גם אם אינכם לקוחות, ננסה לעזור או להפנות.</p></div>
+        </details>
+        <details>
+          <summary>אפשר להגיע למשרד?<span class="plus" aria-hidden="true"></span></summary>
+          <div class="faq__body"><p>אפשר, בתיאום מראש. רוב הלקוחות מעדיפים זום או טלפון כי זה מהיר יותר, אבל אם נוח לכם להיפגש פנים אל פנים אנחנו בתל אביב והדלת פתוחה. הבניין נגיש, כולל חניית נכים ומעלית.</p></div>
+        </details>
+        <details>
+          <summary>מה כדאי להכין לשיחה?<span class="plus" aria-hidden="true"></span></summary>
+          <div class="faq__body"><p>שום דבר מיוחד. אם יש לכם אתר קיים, כתובת שלו תספיק. אם אתם יודעים מה לא עובד היום או מה הייתם רוצים שהאתר יעשה, זה יקצר את השיחה. אם לא, נשאל את השאלות הנכונות.</p></div>
+        </details>
       </div>
     </div>
   </section>

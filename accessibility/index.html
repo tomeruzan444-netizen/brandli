@@ -42,17 +42,78 @@
       "name": "הצהרת נגישות | ברנדלי - ת״י 5568 ו-WCAG 2.0 AA",
       "description": "הצהרת הנגישות של אתר ברנדלי לפי תקן ישראלי 5568 ו-WCAG 2.0 ברמה AA.",
       "inLanguage": "he-IL",
-      "isPartOf": { "@id": "https://brandli.co.il/#website" },
-      "publisher": { "@id": "https://brandli.co.il/#organization" },
+      "isPartOf": {
+        "@id": "https://brandli.co.il/#website"
+      },
+      "publisher": {
+        "@id": "https://brandli.co.il/#organization"
+      },
       "dateModified": "2026-08-01",
-      "breadcrumb": { "@id": "https://brandli.co.il/accessibility/#breadcrumb" }
+      "breadcrumb": {
+        "@id": "https://brandli.co.il/accessibility/#breadcrumb"
+      }
     },
     {
       "@type": "BreadcrumbList",
       "@id": "https://brandli.co.il/accessibility/#breadcrumb",
       "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "בית", "item": "https://brandli.co.il/" },
-        { "@type": "ListItem", "position": 2, "name": "הצהרת נגישות" }
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "בית",
+          "item": "https://brandli.co.il/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "הצהרת נגישות"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://brandli.co.il/accessibility.html#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "מה זו הצהרת נגישות ולמי היא נדרשת?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "הצהרת נגישות היא עמוד שמפרט את רמת ההנגשה של האתר, אילו אמצעי נגישות זמינים בו, אילו מגבלות ידועות קיימות ואיך פונים בנושא. לפי תקנות שוויון זכויות לאנשים עם מוגבלות, עסק שמספק שירות לציבור נדרש לפרסם אותה באתרו."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "מצאתי בעיית נגישות באתר. למי לפנות?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "לרכז הנגישות שלנו, בטלפון 073-374-2205 או בדוא״ל accessibility@brandli.co.il. נשמח שתציינו את כתובת העמוד, תיאור קצר של הבעיה ואיזה דפדפן וטכנולוגיה מסייעת השתמשתם בהם. אנחנו משיבים תוך עד 5 ימי עסקים."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "האם תוסף נגישות מספיק כדי לעמוד בחוק?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "לא. תוסף מוסיף שכבת שליטה למשתמש, כמו הגדלת טקסט או ניגודיות, אבל הוא אינו מתקן קוד לא נגיש שמתחתיו. הנגשה אמיתית מתבצעת במבנה ה-HTML עצמו: תוויות, סדר כותרות, ניווט מקלדת ותמיכה בקוראי מסך. אנחנו עושים את שניהם."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "כל כמה זמן נבדקת הנגישות של האתר?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "אחת לרבעון וגם בכל שינוי מהותי בתוכן או במבנה. עמוד שנוסף לאחרונה עשוי להמתין לסבב הבדיקה הקרוב, ולכן מופיעה בהצהרת הנגישות רשימת מגבלות ידועות ולא רק הצהרה על תאימות מלאה."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "גם האתרים שאתם בונים ללקוחות נגישים?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "כן, וללא תוספת תשלום. כל אתר נבנה מלכתחילה לפי תקן ישראלי 5568 ו-WCAG 2.0 ברמה AA, כולל תוסף נגישות והצהרת נגישות ייעודית. פירוט בעמוד בניית אתרים."
+          }
+        }
       ]
     }
   ]
@@ -262,6 +323,40 @@
           ראו גם: <a href="/privacy-policy/">מדיניות פרטיות</a> ·
           <a href="/contact/">יצירת קשר</a>
         </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================ FAQ ================================ -->
+  <section class="section section--soft" id="faq" aria-labelledby="faq-title">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">שאלות נפוצות</span>
+        <h2 id="faq-title">שאלות על הצהרת הנגישות</h2>
+        <p class="lead">מה שחשוב לדעת, בקצרה.</p>
+      </div>
+
+      <div class="faq">
+        <details open>
+          <summary>מה זו הצהרת נגישות ולמי היא נדרשת?<span class="plus" aria-hidden="true"></span></summary>
+          <div class="faq__body"><p>הצהרת נגישות היא עמוד שמפרט את רמת ההנגשה של האתר, אילו אמצעי נגישות זמינים בו, אילו מגבלות ידועות קיימות ואיך פונים בנושא. לפי תקנות שוויון זכויות לאנשים עם מוגבלות, עסק שמספק שירות לציבור נדרש לפרסם אותה באתרו.</p></div>
+        </details>
+        <details>
+          <summary>מצאתי בעיית נגישות באתר. למי לפנות?<span class="plus" aria-hidden="true"></span></summary>
+          <div class="faq__body"><p>לרכז הנגישות שלנו, בטלפון 073-374-2205 או בדוא״ל accessibility@brandli.co.il. נשמח שתציינו את כתובת העמוד, תיאור קצר של הבעיה ואיזה דפדפן וטכנולוגיה מסייעת השתמשתם בהם. אנחנו משיבים תוך עד 5 ימי עסקים.</p></div>
+        </details>
+        <details>
+          <summary>האם תוסף נגישות מספיק כדי לעמוד בחוק?<span class="plus" aria-hidden="true"></span></summary>
+          <div class="faq__body"><p>לא. תוסף מוסיף שכבת שליטה למשתמש, כמו הגדלת טקסט או ניגודיות, אבל הוא אינו מתקן קוד לא נגיש שמתחתיו. הנגשה אמיתית מתבצעת במבנה ה-HTML עצמו: תוויות, סדר כותרות, ניווט מקלדת ותמיכה בקוראי מסך. אנחנו עושים את שניהם.</p></div>
+        </details>
+        <details>
+          <summary>כל כמה זמן נבדקת הנגישות של האתר?<span class="plus" aria-hidden="true"></span></summary>
+          <div class="faq__body"><p>אחת לרבעון וגם בכל שינוי מהותי בתוכן או במבנה. עמוד שנוסף לאחרונה עשוי להמתין לסבב הבדיקה הקרוב, ולכן מופיעה בהצהרת הנגישות רשימת מגבלות ידועות ולא רק הצהרה על תאימות מלאה.</p></div>
+        </details>
+        <details>
+          <summary>גם האתרים שאתם בונים ללקוחות נגישים?<span class="plus" aria-hidden="true"></span></summary>
+          <div class="faq__body"><p>כן, וללא תוספת תשלום. כל אתר נבנה מלכתחילה לפי תקן ישראלי 5568 ו-WCAG 2.0 ברמה AA, כולל תוסף נגישות והצהרת נגישות ייעודית. פירוט בעמוד <a href="/website-building/">בניית אתרים</a>.</p></div>
+        </details>
       </div>
     </div>
   </section>

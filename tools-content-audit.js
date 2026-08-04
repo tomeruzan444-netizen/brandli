@@ -1,0 +1,125 @@
+/* ============================================================================
+   ביקורת תוכן - בודקת את כללי מדריך התוכן (CONTENT-GUIDE.md) על כל עמודי האתר.
+   הרצה:  node tools-content-audit.js
+   ============================================================================ */
+const fs = require('fs');
+const path = require('path');
+const ROOT = __dirname;
+
+const PAGES = [
+  { f: 'index.html',                      url: '/',                      kw: 'בניית אתרים',        minLinks: 5 },
+  { f: 'website-building/index.html',     url: '/website-building/',     kw: 'בניית אתרים',        minLinks: 3 },
+  { f: 'website-maintenance/index.html',  url: '/website-maintenance/',  kw: 'תחזוקת אתרים',       minLinks: 3 },
+  { f: 'website-management/index.html',   url: '/website-management/',   kw: 'ניהול אתרים',        minLinks: 3 },
+  { f: 'websites-for-doctors/index.html', url: '/websites-for-doctors/', kw: 'בניית אתרים לרופאים', minLinks: 3 },
+  { f: 'about/index.html',                url: '/about/',                kw: 'ברנדלי',             minLinks: 3 },
+  { f: 'contact/index.html',              url: '/contact/',              kw: 'צרו קשר',            minLinks: 2 },
+  { f: 'privacy-policy/index.html',       url: '/privacy-policy/',       kw: 'מדיניות פרטיות',     minLinks: 2 },
+  { f: 'accessibility/index.html',        url: '/accessibility/',        kw: 'הצהרת נגישות',       minLinks: 2 },
+];
+
+const MIN_KW = 5;
+const MIN_FAQ = 4;
+const MAX_P_WORDS = 60;
+
+/* ------------------------- עזרים ------------------------- */
+const mainOf = html => {
+  const m = html.match(/<main[^>]*>([\s\S]*?)<\/main>/);
+  return m ? m[1] : '';
+};
+
+const visibleText = frag => frag
+  .replace(/<script[\s\S]*?<\/script>/g, ' ')
+  .replace(/<style[\s\S]*?<\/style>/g, ' ')
+  .replace(/<!--[\s\S]*?-->/g, ' ')
+  .replace(/<[^>]+>/g, ' ')
+  .replace(/&nbsp;/g, ' ')
+  .replace(/&amp;/g, '&')
+  .replace(/&quot;/g, '"')
+  .replace(/&lt;/g, '<')
+  .replace(/&gt;/g, '>')
+  .replace(/\s+/g, ' ')
+  .trim();
+
+const countAll = (hay, needle) => {
+  let n = 0, i = 0;
+  while ((i = hay.indexOf(needle, i)) !== -1) { n++; i += needle.length; }
+  return n;
+};
+
+/* ------------------------- הביקורת ------------------------- */
+let problems = 0;
+const rows = [];
+
+for (const p of PAGES) {
+  const file = path.join(ROOT, p.f);
+  if (!fs.existsSync(file)) { console.log(`חסר קובץ: ${p.f}`); problems++; continue; }
+
+  const html = fs.readFileSync(file, 'utf8');
+  const main = mainOf(html);
+  const text = visibleText(main);
+  const flags = [];
+
+  /* 1. צפיפות הביטוי המרכזי */
+  const kwCount = countAll(text, p.kw);
+  if (kwCount < MIN_KW) flags.push(`ביטוי מרכזי ${kwCount}/${MIN_KW}`);
+
+  /* 2. מקפים ארוכים */
+  // U+2013 = מקף בינוני, U+2014 = מקף ארוך. נכתבים כקוד ולא כתו, כדי שהקובץ עצמו יישאר נקי.
+  const emdash = (html.match(/[\u2013\u2014]/g) || []).length;
+  if (emdash) flags.push(`${emdash} מקפים ארוכים`);
+
+  /* 3. שאלות ותשובות + התאמה ל-JSON-LD */
+  const faqQs = [...main.matchAll(/<summary>([\s\S]*?)<span class="plus"/g)]
+    .map(m => visibleText(m[1]));
+  if (faqQs.length < MIN_FAQ) flags.push(`רק ${faqQs.length} שאלות נפוצות (מינימום ${MIN_FAQ})`);
+
+  const ld = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)]
+    .map(m => { try { return JSON.parse(m[1]); } catch { return null; } })
+    .filter(Boolean);
+  const faqNode = ld.flatMap(o => o['@graph'] || [o]).find(n => n && n['@type'] === 'FAQPage');
+  if (faqQs.length && !faqNode) flags.push('אין FAQPage ב-JSON-LD');
+  else if (faqNode) {
+    const ldQs = (faqNode.mainEntity || []).map(q => q.name);
+    const missing = faqQs.filter(q => !ldQs.includes(q));
+    if (missing.length) flags.push(`${missing.length} שאלות לא תואמות ל-JSON-LD: "${missing[0].slice(0, 34)}..."`);
+  }
+
+  /* 4. קישוריות פנימית מתוך הטקסט (בלי breadcrumbs) */
+  const prose = main.replace(/<nav[\s\S]*?<\/nav>/g, ' ');
+  const links = new Set(
+    [...prose.matchAll(/href="(\/[a-z0-9-]*\/)"/g)].map(m => m[1]).filter(u => u !== p.url)
+  );
+  if (links.size < p.minLinks) flags.push(`רק ${links.size} קישורים פנימיים (מינימום ${p.minLinks})`);
+
+  /* 5. אורך פסקאות */
+  // שימו לב: הביטוי מחייב רווח או סוגר מיד אחרי ה-p, אחרת הוא תופס גם <path> של SVG
+  const longPs = [...main.matchAll(/<p(?:\s[^>]*)?>([\s\S]*?)<\/p>/g)]
+    .map(m => visibleText(m[1]))
+    .filter(t => t.split(' ').length > MAX_P_WORDS);
+  if (longPs.length) flags.push(`${longPs.length} פסקאות ארוכות מ-${MAX_P_WORDS} מילים`);
+
+  /* 6. רשימת תבליטים */
+  const lists = (main.match(/<ul[^>]*>/g) || []).length;
+  if (!lists) flags.push('אין אף רשימת תבליטים');
+
+  /* 7. סימני קריאה */
+  const bangs = (text.match(/!/g) || []).length;
+  if (bangs) flags.push(`${bangs} סימני קריאה`);
+
+  if (flags.length) problems += flags.length;
+  rows.push({ url: p.url, kw: `${kwCount}`, faq: `${faqQs.length}`, links: `${links.size}`, words: `${text.split(' ').length}`, flags });
+}
+
+/* ------------------------- פלט ------------------------- */
+const pad = (s, n) => String(s) + ' '.repeat(Math.max(0, n - String(s).length));
+console.log(pad('עמוד', 26) + pad('מילים', 8) + pad('ביטוי', 8) + pad('שו״ת', 8) + pad('קישורים', 10) + 'סטטוס');
+console.log('-'.repeat(78));
+for (const r of rows) {
+  console.log(pad(r.url, 26) + pad(r.words, 8) + pad(r.kw, 8) + pad(r.faq, 8) + pad(r.links, 10) +
+    (r.flags.length ? 'X' : 'V'));
+  for (const f of r.flags) console.log('    - ' + f);
+}
+console.log('-'.repeat(78));
+console.log(problems ? `סה"כ ממצאים: ${problems}` : 'כל העמודים עומדים בכללי מדריך התוכן.');
+process.exitCode = problems ? 1 : 0;

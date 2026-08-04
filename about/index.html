@@ -42,16 +42,31 @@
       "name": "אודות ברנדלי",
       "description": "ברנדלי הוקמה ב-2017 כדי לפתור בעיה אחת: אתרים עסקיים שאף אחד לא באמת אחראי עליהם.",
       "inLanguage": "he-IL",
-      "isPartOf": { "@id": "https://brandli.co.il/#website" },
-      "about": { "@id": "https://brandli.co.il/#organization" },
-      "breadcrumb": { "@id": "https://brandli.co.il/about/#breadcrumb" }
+      "isPartOf": {
+        "@id": "https://brandli.co.il/#website"
+      },
+      "about": {
+        "@id": "https://brandli.co.il/#organization"
+      },
+      "breadcrumb": {
+        "@id": "https://brandli.co.il/about/#breadcrumb"
+      }
     },
     {
       "@type": "BreadcrumbList",
       "@id": "https://brandli.co.il/about/#breadcrumb",
       "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "בית", "item": "https://brandli.co.il/" },
-        { "@type": "ListItem", "position": 2, "name": "אודות" }
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "בית",
+          "item": "https://brandli.co.il/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "אודות"
+        }
       ]
     },
     {
@@ -62,7 +77,10 @@
       "url": "https://brandli.co.il/",
       "logo": "https://brandli.co.il/assets/img/favicon.svg",
       "foundingDate": "2017",
-      "numberOfEmployees": { "@type": "QuantitativeValue", "value": 18 },
+      "numberOfEmployees": {
+        "@type": "QuantitativeValue",
+        "value": 18
+      },
       "email": "info@brandli.co.il",
       "telephone": "+972-73-374-2200",
       "address": {
@@ -72,7 +90,69 @@
         "postalCode": "6789139",
         "addressCountry": "IL"
       },
-      "knowsAbout": ["בניית אתרים", "תחזוקת אתרים", "אחסון אתרים", "אבטחת אתרים", "קידום אתרים", "WordPress", "נגישות אתרים"]
+      "knowsAbout": [
+        "בניית אתרים",
+        "תחזוקת אתרים",
+        "אחסון אתרים",
+        "אבטחת אתרים",
+        "קידום אתרים",
+        "WordPress",
+        "נגישות אתרים"
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://brandli.co.il/about.html#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "מי הלקוחות של ברנדלי?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "רובם עסקים קטנים ובינוניים בישראל: משרדי מקצוע, נותני שירות, רשתות קטנות, קליניקות פרטיות וחנויות אונליין. המכנה המשותף הוא שאין להם איש IT פנימי, והאתר חשוב להם מספיק כדי שלא ירצו להתעסק איתו לבד."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "כמה אנשים עובדים בברנדלי?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "18 אנשי צוות, כולם פנימיים. אנחנו לא מעבירים פיתוח או תמיכה לקבלני משנה. זו הסיבה שאנחנו לא הכי זולים בשוק, וגם הסיבה שאפשר לקבל אצלנו אדם שמכיר את האתר שלכם בשם ולא מוקד מתחלף."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "אפשר לעבוד עם ברנדלי רק על חלק מהשירותים?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "אפשר, אבל לא תמיד נמליץ. אם אנחנו מתחזקים אתר שיושב על שרת שאין לנו גישה אליו, איננו יכולים להתחייב לזמני תגובה. במקרים כאלה נסביר את המגבלה מראש ונציע את מה שאפשר, בלי להתחייב למה שאי אפשר."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "למה ברנדלי לא מציעה קידום ממומן?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "כי אנחנו לא טובים בזה, וחברה שעושה הכל בדרך כלל לא מצטיינת בכלום. אנחנו מתמקדים במחזור החיים של האתר: בנייה, אחסון, אבטחה ותחזוקה. כשלקוח צריך ניהול קמפיינים, אנחנו מפנים למישהו שזה המקצוע שלו."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "מה קורה אם אני רוצה לעזוב את ברנדלי?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "מודיעים 30 יום מראש, מקבלים גיבוי מלא של האתר, של מסד הנתונים ושל כל פרטי הגישה, ואנחנו מסייעים לספק הבא במעבר. אין קנסות יציאה ואין החזקת דומיין כבן ערובה. שיעור חידוש החוזים שלנו הוא 96%, ואנחנו מעדיפים שזה יישאר ככה מרצון."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "ברנדלי עובדת עם לקוחות מחוץ לישראל?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "כן, אבל התמיכה ניתנת בעברית ובאנגלית בשעות ישראל. עבור עסק שפועל באזור זמן אחר וצריך מענה בשעות המקומיות שלו, אנחנו כנראה לא ההתאמה הנכונה, ונגיד את זה בשיחה הראשונה."
+          }
+        }
+      ]
     }
   ]
 }
@@ -272,6 +352,47 @@
     </div>
   </section>
 
+  <!-- ============================ WHAT WE DO ============================ -->
+  <section class="section" aria-labelledby="whatwedo-title">
+    <div class="container container--narrow">
+      <div class="section-head section-head--start">
+        <span class="eyebrow">מה אנחנו עושים</span>
+        <h2 id="whatwedo-title">ארבעה שירותים, מחזור חיים אחד</h2>
+        <p class="lead">
+          ברנדלי לא מוכרת שירותים נפרדים שאפשר להרכיב. אלה ארבעה שלבים של אותו נכס.
+        </p>
+      </div>
+
+      <div class="prose">
+        <p>
+          זה מתחיל ב<a href="/website-building/">בניית אתרים</a>: אפיון, עיצוב, כתיבת תוכן
+          ופיתוח. השלב הזה נגמר ביום שהאתר עולה לאוויר, וזה בערך שם שרוב הספקים בשוק
+          מסיימים את המעורבות שלהם.
+        </p>
+        <p>
+          מהיום הזה האתר צריך לרוץ על משהו. <a href="/website-management/">ניהול ואחסון</a>
+          הוא השרת, הדומיין, תעודת ה-SSL, תיבות הדוא״ל והניטור. זו התשתית שאף אחד לא
+          חושב עליה עד שהיא נופלת.
+        </p>
+        <p>
+          במקביל רצה <a href="/website-maintenance/">תחזוקת אתרים</a> שוטפת: עדכונים,
+          גיבויים, סריקות אבטחה ותיקון תקלות. זה החלק שהופך אתר בן שלוש שנים לאתר שעדיין
+          עובד, ולא לנטל.
+        </p>
+        <p>
+          ולחלק מהלקוחות יש דרישות שהתחום שלהם מכתיב. <a href="/websites-for-doctors/">אתרים
+          לרופאים ולקליניקות</a> הם דוגמה טובה: זימון תורים, פרטיות מטופלים וכללי פרסום
+          שדורשים זהירות בניסוח.
+        </p>
+        <p>
+          ברנדלי מחזיקה את כל ארבעת השלבים כי הניסיון שלנו הוא שברגע שמפצלים אותם,
+          כל תקלה הופכת לוויכוח על מי אחראי. <a href="/contact/">שיחת ייעוץ קצרה</a>
+          בדרך כלל מספיקה כדי להבין באיזה שלב אתם נמצאים.
+        </p>
+      </div>
+    </div>
+  </section>
+
   <!-- ============================ COMPARISON ============================ -->
   <section class="section section--soft" aria-labelledby="compare-title">
     <div class="container container--narrow">
@@ -299,6 +420,44 @@
             <tr><td>בעלות על הנכס</td><td>לעיתים אצל הספק</td><td>תמיד אצל הלקוח</td></tr>
           </tbody>
         </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================ FAQ ================================ -->
+  <section class="section section--soft" id="faq" aria-labelledby="faq-title">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">שאלות נפוצות</span>
+        <h2 id="faq-title">שאלות שנשאלות אותנו בשיחה הראשונה</h2>
+        <p class="lead">התשובות שאנחנו נותנים בטלפון, כתובות כאן במלואן.</p>
+      </div>
+
+      <div class="faq">
+        <details open>
+          <summary>מי הלקוחות של ברנדלי?<span class="plus" aria-hidden="true"></span></summary>
+          <div class="faq__body"><p>רובם עסקים קטנים ובינוניים בישראל: משרדי מקצוע, נותני שירות, רשתות קטנות, קליניקות פרטיות וחנויות אונליין. המכנה המשותף הוא שאין להם איש IT פנימי, והאתר חשוב להם מספיק כדי שלא ירצו להתעסק איתו לבד.</p></div>
+        </details>
+        <details>
+          <summary>כמה אנשים עובדים בברנדלי?<span class="plus" aria-hidden="true"></span></summary>
+          <div class="faq__body"><p>18 אנשי צוות, כולם פנימיים. אנחנו לא מעבירים פיתוח או תמיכה לקבלני משנה. זו הסיבה שאנחנו לא הכי זולים בשוק, וגם הסיבה שאפשר לקבל אצלנו אדם שמכיר את האתר שלכם בשם ולא מוקד מתחלף.</p></div>
+        </details>
+        <details>
+          <summary>אפשר לעבוד עם ברנדלי רק על חלק מהשירותים?<span class="plus" aria-hidden="true"></span></summary>
+          <div class="faq__body"><p>אפשר, אבל לא תמיד נמליץ. אם אנחנו מתחזקים אתר שיושב על שרת שאין לנו גישה אליו, איננו יכולים להתחייב לזמני תגובה. במקרים כאלה נסביר את המגבלה מראש ונציע את מה שאפשר, בלי להתחייב למה שאי אפשר.</p></div>
+        </details>
+        <details>
+          <summary>למה ברנדלי לא מציעה קידום ממומן?<span class="plus" aria-hidden="true"></span></summary>
+          <div class="faq__body"><p>כי אנחנו לא טובים בזה, וחברה שעושה הכל בדרך כלל לא מצטיינת בכלום. אנחנו מתמקדים במחזור החיים של האתר: בנייה, אחסון, אבטחה ותחזוקה. כשלקוח צריך ניהול קמפיינים, אנחנו מפנים למישהו שזה המקצוע שלו.</p></div>
+        </details>
+        <details>
+          <summary>מה קורה אם אני רוצה לעזוב את ברנדלי?<span class="plus" aria-hidden="true"></span></summary>
+          <div class="faq__body"><p>מודיעים 30 יום מראש, מקבלים גיבוי מלא של האתר, של מסד הנתונים ושל כל פרטי הגישה, ואנחנו מסייעים לספק הבא במעבר. אין קנסות יציאה ואין החזקת דומיין כבן ערובה. שיעור חידוש החוזים שלנו הוא 96%, ואנחנו מעדיפים שזה יישאר ככה מרצון.</p></div>
+        </details>
+        <details>
+          <summary>ברנדלי עובדת עם לקוחות מחוץ לישראל?<span class="plus" aria-hidden="true"></span></summary>
+          <div class="faq__body"><p>כן, אבל התמיכה ניתנת בעברית ובאנגלית בשעות ישראל. עבור עסק שפועל באזור זמן אחר וצריך מענה בשעות המקומיות שלו, אנחנו כנראה לא ההתאמה הנכונה, ונגיד את זה בשיחה הראשונה.</p></div>
+        </details>
       </div>
     </div>
   </section>
