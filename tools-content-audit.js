@@ -22,6 +22,12 @@ const MIN_KW = 5;
 const MIN_FAQ = 4;
 const MAX_P_WORDS = 60;
 
+/* גוף שלישי על עצמנו. המדריך מחייב גוף ראשון רבים בכל גוף הטקסט. */
+const THIRD_PERSON = /ברנדלי\s+(?:בונה|מספקת|מציעה|מלווה|אינה|פועלת|מחזיקה|מנהלת|עוסקת|מסייעת|רואה|נותנת|כותבת|מתחברת|בודקת|מאחסנת|מתחזקת|מוודאת|לא מוכרת|לא עושה)/g;
+
+/* חריגים מאושרים (סעיף 2 במדריך): הביוגרפיה של תומר נכתבת בגוף שלישי */
+const VOICE_ALLOW = ['ברנדלי נולדה'];
+
 /* ------------------------- עזרים ------------------------- */
 const mainOf = html => {
   const m = html.match(/<main[^>]*>([\s\S]*?)<\/main>/);
@@ -107,9 +113,67 @@ for (const p of PAGES) {
   const bangs = (text.match(/!/g) || []).length;
   if (bangs) flags.push(`${bangs} סימני קריאה`);
 
+  /* 8. גוף ראשון (סעיף 2 במדריך) */
+  const thirdPerson = [...main.matchAll(/<(?:p|li|h2|h3)(?:\s[^>]*)?>([\s\S]*?)<\/(?:p|li|h2|h3)>/g)]
+    .map(m => visibleText(m[1]))
+    .flatMap(t => [...t.matchAll(THIRD_PERSON)].map(x => x[0]))
+    .filter(hit => !VOICE_ALLOW.some(a => hit.startsWith(a)));
+  if (thirdPerson.length) {
+    flags.push(`${thirdPerson.length} מופעי גוף שלישי: "${thirdPerson[0]}"`);
+  }
+
   if (flags.length) problems += flags.length;
   rows.push({ url: p.url, kw: `${kwCount}`, faq: `${faqQs.length}`, links: `${links.size}`, words: `${text.split(' ').length}`, flags });
 }
+
+/* ==========================================================================
+   בדיקה חוצת-עמודים: תוכן כפול
+   גוגל מוריד בדירוג עמודים שחוזרים זה על זה. כאן משווים כל פסקה מול כל פסקה
+   בשאר העמודים לפי חפיפת רצפים של 6 מילים (shingles).
+   ========================================================================== */
+const SHINGLE = 6;
+const DUP_THRESHOLD = 0.55;   // חפיפה מעל זה נחשבת לשכפול
+const MIN_WORDS = 14;         // פסקאות קצרות מדי אינן מעניינות
+
+const shingles = words => {
+  const s = new Set();
+  for (let i = 0; i + SHINGLE <= words.length; i++) s.add(words.slice(i, i + SHINGLE).join(' '));
+  return s;
+};
+const overlap = (a, b) => {
+  if (!a.size || !b.size) return 0;
+  let hit = 0;
+  for (const g of a) if (b.has(g)) hit++;
+  return hit / Math.min(a.size, b.size);
+};
+
+/* בלוקי פרטי קשר (NAP) אמורים להיות זהים בין עמודים. עקביות בכתובת,
+   בטלפון ובדוא״ל היא סיגנל חיובי ל-SEO מקומי, לא תוכן משוכפל. */
+const isContactBlock = t =>
+  /יגאל אלון 94/.test(t) || /0\d{2}-\d{3}-\d{4}/.test(t) || /@brandli\.co\.il/.test(t);
+
+const paras = [];
+for (const p of PAGES) {
+  const file = path.join(ROOT, p.f);
+  if (!fs.existsSync(file)) continue;
+  const main = mainOf(fs.readFileSync(file, 'utf8'));
+  [...main.matchAll(/<(?:p|li)(?:\s[^>]*)?>([\s\S]*?)<\/(?:p|li)>/g)].forEach(m => {
+    const text = visibleText(m[1]);
+    const words = text.split(' ').filter(Boolean);
+    if (words.length < MIN_WORDS || isContactBlock(text)) return;
+    paras.push({ url: p.url, text, sh: shingles(words) });
+  });
+}
+
+const dups = [];
+for (let i = 0; i < paras.length; i++) {
+  for (let j = i + 1; j < paras.length; j++) {
+    if (paras[i].url === paras[j].url) continue;          // חזרה בתוך עמוד אינה שכפול חוצה עמודים
+    const score = overlap(paras[i].sh, paras[j].sh);
+    if (score >= DUP_THRESHOLD) dups.push({ a: paras[i], b: paras[j], score });
+  }
+}
+dups.sort((x, y) => y.score - x.score);
 
 /* ------------------------- פלט ------------------------- */
 const pad = (s, n) => String(s) + ' '.repeat(Math.max(0, n - String(s).length));
@@ -120,6 +184,20 @@ for (const r of rows) {
     (r.flags.length ? 'X' : 'V'));
   for (const f of r.flags) console.log('    - ' + f);
 }
+console.log('-'.repeat(78));
+
+console.log(`\nתוכן כפול בין עמודים (מתוך ${paras.length} פסקאות):`);
+if (!dups.length) {
+  console.log('  אין. כל פסקה באתר ייחודית לעמוד שלה.');
+} else {
+  problems += dups.length;
+  for (const d of dups.slice(0, 12)) {
+    console.log(`  ${Math.round(d.score * 100)}%  ${d.a.url}  <->  ${d.b.url}`);
+    console.log(`        "${d.a.text.slice(0, 88)}..."`);
+  }
+  if (dups.length > 12) console.log(`  ...ועוד ${dups.length - 12} זוגות`);
+}
+
 console.log('-'.repeat(78));
 console.log(problems ? `סה"כ ממצאים: ${problems}` : 'כל העמודים עומדים בכללי מדריך התוכן.');
 process.exitCode = problems ? 1 : 0;
