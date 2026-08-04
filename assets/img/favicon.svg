@@ -1,5 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48">
-  <rect width="48" height="48" rx="13" fill="#2E2870"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <title>Brandli</title>
+  <style>
+    /* בלוח כהה האריח מואר, אחרת הסמל נבלע בסרגל הכרטיסיות */
+    .tile { fill: #2E2870; }
+    @media (prefers-color-scheme: dark) { .tile { fill: #5B47F7; } }
+  </style>
+  <rect class="tile" width="32" height="32" rx="7"/>
   <path fill="#fff" fill-rule="evenodd"
-        d="M14 12h13a5.5 5.5 0 0 1 0 11h1.5a6.5 6.5 0 0 1 0 13H14V12Zm6 3.5h4.5a2 2 0 0 1 0 4H20v-4Zm0 11h5.5a3 3 0 0 1 0 6H20v-6Z"/>
+        d="M8 5h8a5.25 5.25 0 0 1 1 10.5h0A5.75 5.75 0 0 1 16 27H8V5Zm5 3.5v3.5h3.25a1.75 1.75 0 0 0 0-3.5H13Zm0 10.5v4.5h3.75a2.25 2.25 0 0 0 0-4.5H13Z"/>
 </svg>

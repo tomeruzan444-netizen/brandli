@@ -52,6 +52,7 @@ ErrorDocument 404 /404.html
   # קריטי: בלי זה הדפדפן עלול לדחות את הגופן המקומי
   AddType font/woff2                 .woff2
   AddType font/woff                  .woff
+  AddType image/x-icon               .ico
   AddCharset UTF-8                   .html .css .js .json .xml .txt .webmanifest
 </IfModule>
 
@@ -107,8 +108,13 @@ ErrorDocument 404 /404.html
     object-src 'none'"
 
   # קבצים סטטיים עם קאש ארוך - סימון immutable
-  <FilesMatch "\.(css|js|svg|png|jpg|jpeg|webp|woff2)$">
+  <FilesMatch "\.(css|js|svg|png|jpg|jpeg|webp|woff2|woff)$">
     Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+
+  # הפאביקון בשורש מתחלף לעיתים רחוקות אך לא אמור להיתקע לשנה
+  <FilesMatch "^favicon\.ico$">
+    Header set Cache-Control "public, max-age=604800"
   </FilesMatch>
 
   <FilesMatch "\.(html)$">
