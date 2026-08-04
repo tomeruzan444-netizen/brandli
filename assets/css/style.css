@@ -1052,6 +1052,57 @@ hr { border: 0; border-top: 1px solid var(--line); margin: 2.5rem 0; }
 }
 
 /* --------------------------------------------------------------------------
+   13b. Founder
+   -------------------------------------------------------------------------- */
+.founder {
+  display: grid;
+  grid-template-columns: 250px minmax(0, 1fr);
+  gap: clamp(1.5rem, 1rem + 2vw, 3rem);
+  align-items: start;
+}
+.founder__photo {
+  aspect-ratio: 1 / 1;
+  width: 100%;
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  background: linear-gradient(155deg, var(--ink) 0%, #2E2870 50%, var(--brand) 100%);
+  display: grid;
+  place-items: center;
+  color: #fff;
+  font-size: clamp(3.5rem, 2rem + 6vw, 5.5rem);
+  font-weight: 900;
+  line-height: 1;
+  box-shadow: var(--sh-lg);
+}
+.founder__photo img { width: 100%; height: 100%; object-fit: cover; }
+.founder__name { margin-top: 1.1rem; }
+.founder__name b { display: block; font-size: 1.125rem; font-weight: 800; color: var(--ink); }
+.founder__name span { font-size: var(--fs-sm); color: var(--muted); }
+
+.pullquote {
+  margin: 2rem 0 0;
+  padding: 1.35rem 1.6rem;
+  border: 1px solid var(--brand-100);
+  border-inline-start: 3px solid var(--brand);
+  border-radius: var(--r);
+  background: linear-gradient(160deg, var(--brand-50), #fff);
+  font-size: 1.0625rem;
+  line-height: 1.8;
+  color: var(--ink);
+}
+.pullquote footer {
+  margin-top: .85rem;
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  color: var(--muted);
+}
+
+@media (max-width: 720px) {
+  .founder { grid-template-columns: minmax(0, 1fr); }
+  .founder__photo { max-width: 190px; }
+}
+
+/* --------------------------------------------------------------------------
    14. Testimonials
    -------------------------------------------------------------------------- */
 /* רשת סטטית: ציטוט מוביל רחב + ארבעה רגילים */
