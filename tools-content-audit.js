@@ -164,11 +164,15 @@ const overlap = (a, b) => {
 const isContactBlock = t =>
   /יגאל אלון 94/.test(t) || /0\d{2}-\d{3}-\d{4}/.test(t) || /@brandli\.co\.il/.test(t);
 
+/* קרדיט המחבר הוא boilerplate שחוזר בכל עמוד, כמו הפוטר. הוא אינו תוכן גוף
+   ואינו נחשב לשכפול. מוסר מהבדיקה כדי שלא יטביע ממצאים אמיתיים. */
+const stripBoilerplate = m => m.replace(/<div class="byline">[\s\S]*?<\/div>\s*<\/div>/g, ' ');
+
 const paras = [];
 for (const p of PAGES) {
   const file = path.join(ROOT, p.f);
   if (!fs.existsSync(file)) continue;
-  const main = mainOf(fs.readFileSync(file, 'utf8'));
+  const main = stripBoilerplate(mainOf(fs.readFileSync(file, 'utf8')));
   [...main.matchAll(/<(?:p|li)(?:\s[^>]*)?>([\s\S]*?)<\/(?:p|li)>/g)].forEach(m => {
     const text = visibleText(m[1]);
     const words = text.split(' ').filter(Boolean);
