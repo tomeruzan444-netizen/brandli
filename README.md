@@ -103,6 +103,7 @@ brandli/
 ├── websites-for-locksmiths/          →  /websites-for-locksmiths/
 ├── websites-for-electricians/        →  /websites-for-electricians/
 ├── websites-for-business-consultants/ → /websites-for-business-consultants/
+├── brochure-website/                 →  /brochure-website/
 ├── ecommerce-websites/               →  /ecommerce-websites/
 ├── business-automation/              →  /business-automation/
 ├── organic-seo/                      →  /organic-seo/

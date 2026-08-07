@@ -38,6 +38,7 @@ description: Add or review internal links between Brandli site pages. Use when w
 | תקן 5568, WCAG, רכז נגישות | `/accessibility/` |
 | איסוף מידע, עוגיות, זכויות משתמש | `/privacy-policy/` |
 | שיחת ייעוץ, פנייה, טלפונים | `/contact/` |
+| מבנה אתר תדמית, כמה עמודים, עמודי שירות | `/brochure-website/` |
 | קטלוג, סליקה, מלאי, עגלה, המרות בחנות | `/ecommerce-websites/` |
 | חיבור מערכות, CRM, וואטסאפ אוטומטי, תהליכים | `/business-automation/` |
 | מילות מפתח, תוכן לקידום, דירוגים, SEO טכני | `/organic-seo/` |

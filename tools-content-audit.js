@@ -28,6 +28,7 @@ const PAGES = [
   { f: 'organic-seo/index.html', url: '/organic-seo/', kw: 'קידום אורגני לעסקים', minLinks: 3 },
   { f: 'seo-consultant/index.html', url: '/seo-consultant/', kw: 'יועץ קידום אתרים', minLinks: 3 },
   { f: 'ai-website-building/index.html', url: '/ai-website-building/', kw: 'בניית אתרים בבינה מלאכותית', minLinks: 3 },
+  { f: 'brochure-website/index.html', url: '/brochure-website/', kw: 'בניית אתר תדמית', minLinks: 3 },
 ];
 
 const MIN_KW = 5;

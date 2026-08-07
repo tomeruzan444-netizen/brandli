@@ -23,6 +23,7 @@ const PAGES = [
   { f: 'organic-seo/index.html', url: '/organic-seo/', kw: 'קידום אורגני לעסקים' },
   { f: 'seo-consultant/index.html', url: '/seo-consultant/', kw: 'יועץ קידום אתרים' },
   { f: 'ai-website-building/index.html', url: '/ai-website-building/', kw: 'בניית אתרים בבינה מלאכותית' },
+  { f: 'brochure-website/index.html', url: '/brochure-website/', kw: 'בניית אתר תדמית' },
 ];
 
 const strip = s => s.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
