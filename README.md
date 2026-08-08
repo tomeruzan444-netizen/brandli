@@ -114,7 +114,10 @@ brandli/
 │   ├── css/style.css           מערכת העיצוב כולה (מקור אמת יחיד)
 │   ├── js/main.js              ניווט, scroll-spy, סליידר, טפסים, נגישות
 │   └── img/
+│       ├── logo.webp           הלוגו בהדר ובפוטר, 382×112, רקע שקוף
+│       ├── Brandli Logo-selection.png   קובץ המקור שממנו נגזר logo.webp
 │       ├── favicon.svg
+│       ├── icon-192/512, icon-maskable-512, apple-touch-icon   נוצרים מ-favicon.svg
 │       ├── og-image.svg        מקור
 │       └── og-image.png        1200×630 לשיתוף ברשתות
 │

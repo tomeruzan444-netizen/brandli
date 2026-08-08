@@ -1,9 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
   <title>Brandli</title>
   <style>
-    /* בלוח כהה האריח מואר, אחרת הסמל נבלע בסרגל הכרטיסיות */
-    .tile { fill: #2E2870; }
-    @media (prefers-color-scheme: dark) { .tile { fill: #5B47F7; } }
+    /* אותו סגול של הלוגו ושל theme-color. בלוח כהה האריח מואר לגוון
+       brand-400, אחרת הסמל נבלע בסרגל הכרטיסיות */
+    .tile { fill: #4F39F6; }
+    @media (prefers-color-scheme: dark) { .tile { fill: #7C6CF9; } }
   </style>
   <rect class="tile" width="32" height="32" rx="7"/>
   <path fill="#fff" fill-rule="evenodd"

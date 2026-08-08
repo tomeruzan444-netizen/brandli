@@ -380,39 +380,19 @@ hr { border: 0; border-top: 1px solid var(--line); margin: 2.5rem 0; }
 }
 
 /* לוגו - סמל מונוגרמה + שם המותג באנגלית, נעילה בכיוון LTR */
+/* הלוגו הוא תמונה אחת, סמל ומילה יחד. הגובה קובע והרוחב נגזר ממנו,
+   ומאפייני width/height ב-HTML שומרים על היחס כדי שלא תהיה קפיצת פריסה */
 .brand-logo {
   display: inline-flex;
   align-items: center;
-  gap: .62rem;
   flex: none;
-  direction: ltr;
   transition: opacity .25s var(--ease);
 }
-.brand-logo svg { height: 38px; width: 38px; flex: none; }
+.brand-logo img { display: block; height: 38px; width: auto; }
 .brand-logo:hover { opacity: .82; }
-.brand-logo__text {
-  font-family: var(--font);
-  font-size: 1.05rem;
-  font-weight: 700;
-  letter-spacing: .19em;
-  text-transform: uppercase;
-  color: var(--ink);
-  line-height: 1;
-  white-space: nowrap;
-  margin-inline-end: -.19em; /* קיזוז הריווח שאחרי האות האחרונה */
-}
-.brand-logo__text small {
-  display: block;
-  font-size: .5625rem;
-  font-weight: 600;
-  letter-spacing: .22em;
-  color: var(--muted-2);
-  margin-top: 5px;
-}
 
 @media (max-width: 400px) {
-  .brand-logo svg { height: 34px; width: 34px; }
-  .brand-logo__text { font-size: .95rem; letter-spacing: .15em; }
+  .brand-logo img { height: 34px; }
 }
 
 .main-nav { display: flex; align-items: center; }

@@ -48,6 +48,7 @@ ErrorDocument 404 /404.html
 <IfModule mod_mime.c>
   AddType application/manifest+json  .webmanifest
   AddType image/svg+xml              .svg
+  AddType image/webp                 .webp
   AddType application/xml            .xml
   # קריטי: בלי זה הדפדפן עלול לדחות את הגופן המקומי
   AddType font/woff2                 .woff2
