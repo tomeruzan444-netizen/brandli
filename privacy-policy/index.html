@@ -145,9 +145,31 @@
   ]
 }
 </script>
+
+<!-- ===================== Meta Pixel (פיקסל פייסבוק) ===================== -->
+<!-- מזהה 329110551037026. הקוד מופיע ב-head כדי שיירה מוקדם הכל האפשר.
+     ה-noscript יושב בתחילת ה-body, כי תקן HTML מתיר בתוך head רק link, style ו-meta.
+     שינוי כלשהו בסקריפט מחייב חישוב hash חדש ל-CSP שב-htaccess. -->
+<link rel="preconnect" href="https://connect.facebook.net" crossorigin>
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '329110551037026');
+fbq('track', 'PageView');
+</script>
+<!-- =================== End Meta Pixel =================== -->
 </head>
 
 <body>
+<noscript><img height="1" width="1" style="display:none" alt=""
+  src="https://www.facebook.com/tr?id=329110551037026&amp;ev=PageView&amp;noscript=1"></noscript>
+
 <a class="skip-link" href="#main">דילוג לתוכן הראשי</a>
 
 <header class="site-header">
@@ -305,6 +327,7 @@
               <tr><td>אספקת השירות</td><td>בנייה, אחסון, תחזוקה, תמיכה וחיוב</td><td>ביצוע חוזה</td></tr>
               <tr><td>אבטחת מידע</td><td>זיהוי ניסיונות חדירה, חסימת בוטים, לוגים</td><td>אינטרס לגיטימי</td></tr>
               <tr><td>שיפור האתר</td><td>סטטיסטיקות שימוש מצטברות</td><td>הסכמתכם</td></tr>
+              <tr><td>מדידת פרסום</td><td>מדידת ביצועי קמפיינים ופרסום חוזר למי שביקר באתר</td><td>הסכמתכם</td></tr>
               <tr><td>דיוור שיווקי</td><td>עדכונים ותכנים מקצועיים</td><td>הסכמה נפרדת</td></tr>
               <tr><td>חובות חוקיות</td><td>ניהול ספרים, דיווחי מס, שמירת חשבוניות</td><td>חובה שבדין</td></tr>
             </tbody>
@@ -319,11 +342,18 @@
           <li><strong>עוגיות הכרחיות</strong> - נדרשות לתפקוד בסיסי של האתר ולאבטחתו. אי אפשר לכבות אותן.</li>
           <li><strong>עוגיות העדפה</strong> - למשל שמירת הגדרות הנגישות שבחרתם. נשמרות באחסון המקומי של הדפדפן ואינן נשלחות לשרתינו.</li>
           <li><strong>עוגיות מדידה</strong> - לניתוח שימוש מצטבר באתר (Google Analytics 4 ו-Google Search Console).</li>
+          <li><strong>עוגיות שיווק</strong> - אנחנו מפעילים באתר את Meta Pixel, כלי מדידה של Meta Platforms. הוא מדווח ל-Meta על צפייה בעמוד ועל פעולות כמו שליחת טופס, כדי שנוכל למדוד את הביצועים של הקמפיינים שלנו בפייסבוק ובאינסטגרם ולהציג פרסום למי שכבר ביקר אצלנו.</li>
         </ul>
         <p>
           ניתן למחוק עוגיות או לחסום אותן דרך הגדרות הדפדפן. חסימה של עוגיות הכרחיות
           עלולה לפגוע בתפקוד האתר. מידע נוסף על עיבוד הנתונים בשירותי גוגל זמין
           <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">במדיניות הפרטיות של Google</a>.
+        </p>
+        <p>
+          את המעקב של Meta אפשר לצמצם בשני מקומות: בהגדרות
+          <a href="https://www.facebook.com/adpreferences/ad_settings" target="_blank" rel="noopener noreferrer">העדפות הפרסום בחשבון הפייסבוק שלכם</a>,
+          ובהגדרות הדפדפן שחוסמות עוגיות של צד שלישי. פירוט מלא על סוג המידע שנאסף
+          זמין <a href="https://www.facebook.com/privacy/policy" target="_blank" rel="noopener noreferrer">במדיניות הפרטיות של Meta</a>.
         </p>
 
         <h2 id="p5">5. שיתוף מידע עם צדדים שלישיים</h2>
@@ -334,6 +364,7 @@
         <ul>
           <li><strong>ספקי תשתית ושירות</strong> - חוות שרתים, שירותי CDN ואבטחה, מערכת דיוור, מערכת CRM וספק סליקה. כל אחד מהם מחויב בהסכם לשמירת סודיות ולעיבוד המידע רק לפי הוראותינו.</li>
           <li><strong>ספקי אנליטיקס</strong> - לצורך ניתוח שימוש מצטבר באתר.</li>
+          <li><strong>פלטפורמות פרסום</strong> - Meta Platforms, דרך Meta Pixel שמותקן באתר, לצורך מדידת קמפיינים ופרסום חוזר. ראו סעיף 4.</li>
           <li><strong>יועצים מקצועיים</strong> - רואי חשבון ועורכי דין, ככל שנדרש.</li>
           <li><strong>רשויות מוסמכות</strong> - כאשר קיימת חובה חוקית או צו שיפוטי.</li>
           <li><strong>במקרה של שינוי מבני</strong> - מיזוג, רכישה או העברת פעילות, בכפוף להמשך תחולת מדיניות זו.</li>

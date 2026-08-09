@@ -93,16 +93,19 @@ ErrorDocument 404 /404.html
   Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), interest-cohort=()"
   Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains" env=HTTPS
 
-  # Content Security Policy - האתר אינו טוען דבר מדומיין חיצוני.
-  # ה-hash מתייחס לסקריפט ה-inline היחיד בעמוד (הוספת המחלקה js ל-html).
-  # אם משנים את הסקריפט הזה, יש לחשב hash חדש, אחרת הדפדפן יחסום אותו.
-  # אם מוסיפים Google Analytics / פיקסלים - יש להרחיב את script-src ו-connect-src.
+  # Content Security Policy.
+  # שני ה-hash מתייחסים לשני הסקריפטים ה-inline שבעמוד, לפי הסדר:
+  #   1. הוספת המחלקה js ל-html
+  #   2. קוד הבסיס של Meta Pixel
+  # שינוי כלשהו באחד מהם מחייב חישוב hash חדש, אחרת הדפדפן יחסום אותו.
+  # הדומיינים של פייסבוק פתוחים רק למה שהפיקסל באמת צריך: הסקריפט
+  # מ-connect.facebook.net, ופיקסל המדידה שנשלח אל facebook.com/tr.
   Header always set Content-Security-Policy "default-src 'self'; \
-    script-src 'self' 'sha256-Du+OJKJSbdUgz5nrHeWWINvez6XKDDU/tyj/5c2uvwo='; \
+    script-src 'self' 'sha256-Du+OJKJSbdUgz5nrHeWWINvez6XKDDU/tyj/5c2uvwo=' 'sha256-eDBUTjy4yZXQli8isSkK/Qx7Z9pK0FhIXXhxz9G5vsY=' https://connect.facebook.net; \
     style-src 'self' 'unsafe-inline'; \
     font-src 'self'; \
-    img-src 'self' data:; \
-    connect-src 'self'; \
+    img-src 'self' data: https://www.facebook.com; \
+    connect-src 'self' https://connect.facebook.net https://www.facebook.com; \
     form-action 'self'; \
     frame-ancestors 'self'; \
     base-uri 'self'; \
