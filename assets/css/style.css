@@ -474,6 +474,23 @@ hr { border: 0; border-top: 1px solid var(--line); margin: 2.5rem 0; }
 .header-phone .ico { width: 17px; height: 17px; color: var(--brand); }
 .header-phone:hover { color: var(--brand); }
 
+/* קישור לפייסבוק. אותה שפה ויזואלית של האייקונים בפוטר, בגודל
+   שמתאים לשורת הפעולות: עיגול בגוון brand-50 כמו כפתור ההמבורגר,
+   שמתמלא בסגול מלא במעבר עכבר */
+.header-social {
+  width: 36px; height: 36px;
+  flex: none;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--brand-50);
+  border: 1px solid var(--line);
+  color: var(--brand);
+  transition: background .25s var(--ease), color .25s var(--ease), border-color .25s var(--ease);
+}
+.header-social .ico { width: 18px; height: 18px; }
+.header-social:hover { background: var(--brand); border-color: var(--brand); color: #fff; }
+
 /* burger */
 .nav-toggle {
   display: none;
