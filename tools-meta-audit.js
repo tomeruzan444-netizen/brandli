@@ -9,7 +9,7 @@ const PAGES = [
   { f: 'website-maintenance/index.html',   url: '/website-maintenance/',   kw: 'תחזוקת אתרים' },
   { f: 'website-management/index.html',    url: '/website-management/',    kw: 'ניהול אתרים' },
   { f: 'websites-for-doctors/index.html',  url: '/websites-for-doctors/',  kw: 'בניית אתרים לרופאים' },
-  { f: 'about/index.html',                 url: '/about/',                 kw: 'ברנדלי' },
+  { f: 'about/index.html',                 url: '/about/',                 kw: 'חברת בניית אתרים' },
   { f: 'contact/index.html',               url: '/contact/',               kw: 'צרו קשר' },
   { f: 'privacy-policy/index.html',        url: '/privacy-policy/',        kw: 'מדיניות פרטיות' },
   { f: 'accessibility/index.html',         url: '/accessibility/',         kw: 'הצהרת נגישות' },
@@ -23,6 +23,7 @@ const PAGES = [
   { f: 'organic-seo/index.html', url: '/organic-seo/', kw: 'קידום אורגני לעסקים' },
   { f: 'seo-consultant/index.html', url: '/seo-consultant/', kw: 'יועץ קידום אתרים' },
   { f: 'ai-website-building/index.html', url: '/ai-website-building/', kw: 'בניית אתרים בבינה מלאכותית' },
+  { f: 'websites-for-cosmeticians/index.html', url: '/websites-for-cosmeticians/', kw: 'בניית אתר לקוסמטיקאיות' },
   { f: 'brochure-website/index.html', url: '/brochure-website/', kw: 'בניית אתר תדמית' },
 ];
 
@@ -48,7 +49,9 @@ for (const p of PAGES) {
   if (!title.includes(p.kw)) flags.push('ביטוי המפתח חסר בכותרת');
   else if (title.indexOf(p.kw) > 12) flags.push(`ביטוי המפתח לא בהתחלה (תו ${title.indexOf(p.kw)})`);
   if (!desc.includes(p.kw)) flags.push('ביטוי המפתח חסר בתיאור');
-  if (!h1.includes(p.kw) && p.kw !== 'ברנדלי' && p.kw !== 'צרו קשר') flags.push('ביטוי המפתח חסר ב-H1');
+  if (!h1.includes(p.kw) && p.kw !== 'חברת בניית אתרים' && p.kw !== 'צרו קשר') flags.push('ביטוי המפתח חסר ב-H1');
+  /* BRAND_IN_TITLE: שם המותג לא מופיע בכותרות. המקום שלו הוא og:site_name וה-JSON-LD */
+  if (/ברנדלי|Brandli/i.test(title)) flags.push('שם המותג בכותרת');
   if (titles.has(title)) flags.push('כותרת כפולה עם ' + titles.get(title));
   if (descs.has(desc)) flags.push('תיאור כפול עם ' + descs.get(desc));
   if (!ogT) flags.push('חסר og:title');
