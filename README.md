@@ -98,6 +98,7 @@ brandli/
 ├── 404.html                          עמוד שגיאה (נטען ע״י השרת, לא ע״י קישור)
 │
 │   עמודי נחיתה ממוקדי ביטוי, כל אחד עם זווית תוכן משלו:
+├── websites-for-cosmeticians/         →  /websites-for-cosmeticians/
 ├── websites-for-lawyers/             →  /websites-for-lawyers/
 ├── websites-for-accountants/         →  /websites-for-accountants/
 ├── websites-for-locksmiths/          →  /websites-for-locksmiths/

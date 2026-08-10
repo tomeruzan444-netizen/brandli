@@ -44,6 +44,7 @@ description: Add or review internal links between Brandli site pages. Use when w
 | מילות מפתח, תוכן לקידום, דירוגים, SEO טכני | `/organic-seo/` |
 | ביקורת SEO, מעבר דומיין, הערכת סוכנות | `/seo-consultant/` |
 | שימוש ב-AI בתהליך הבנייה, השפעה על מחיר וזמן | `/ai-website-building/` |
+| קוסמטיקאיות, גלריית לפני ואחרי, מחירון טיפולים | `/websites-for-cosmeticians/` |
 | עורכי דין, כללי לשכת עוה״ד | `/websites-for-lawyers/` |
 | רואי חשבון, עונות דיווח, מחשבונים | `/websites-for-accountants/` |
 | מנעולנים, חירום, SEO מקומי לפי אזור | `/websites-for-locksmiths/` |

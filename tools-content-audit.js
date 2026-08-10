@@ -12,6 +12,7 @@ const PAGES = [
   { f: 'website-maintenance/index.html',  url: '/website-maintenance/',  kw: 'תחזוקת אתרים',       minLinks: 3 },
   { f: 'website-management/index.html',   url: '/website-management/',   kw: 'ניהול אתרים',        minLinks: 3 },
   { f: 'websites-for-doctors/index.html', url: '/websites-for-doctors/', kw: 'בניית אתרים לרופאים', minLinks: 3 },
+  { f: 'websites-for-cosmeticians/index.html', url: '/websites-for-cosmeticians/', kw: 'בניית אתר לקוסמטיקאיות', minLinks: 3 },
   { f: 'about/index.html',                url: '/about/',                kw: 'ברנדלי',             minLinks: 3 },
   { f: 'contact/index.html',              url: '/contact/',              kw: 'צרו קשר',            minLinks: 2 },
   { f: 'privacy-policy/index.html',       url: '/privacy-policy/',       kw: 'מדיניות פרטיות',     minLinks: 2 },
