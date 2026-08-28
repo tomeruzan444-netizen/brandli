@@ -40,7 +40,8 @@ description: Add or review internal links between Brandli site pages. Use when w
 | שיחת ייעוץ, פנייה, טלפונים | `/contact/` |
 | מבנה אתר תדמית, כמה עמודים, עמודי שירות | `/brochure-website/` |
 | קטלוג, סליקה, מלאי, עגלה, המרות בחנות | `/ecommerce-websites/` |
-| חיבור מערכות, CRM, וואטסאפ אוטומטי, תהליכים | `/business-automation/` |
+| חיבור מערכות, וואטסאפ אוטומטי, תהליכים אוטומטיים | `/business-automation/` |
+| מערכת CRM עצמה: בחירה, הטמעה, בנייה מול קנייה | `/crm-system/` |
 | מילות מפתח, תוכן לקידום, דירוגים, SEO טכני | `/organic-seo/` |
 | ביקורת SEO, מעבר דומיין, הערכת סוכנות | `/seo-consultant/` |
 | שימוש ב-AI בתהליך הבנייה, השפעה על מחיר וזמן | `/ai-website-building/` |

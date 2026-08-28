@@ -20,6 +20,7 @@ const PAGES = [
   { f: 'websites-for-business-consultants/index.html', url: '/websites-for-business-consultants/', kw: 'בניית אתרים ליועצים עסקיים' },
   { f: 'ecommerce-websites/index.html', url: '/ecommerce-websites/', kw: 'בניית אתרי מסחר' },
   { f: 'business-automation/index.html', url: '/business-automation/', kw: 'אוטומציות לעסקים' },
+  { f: 'crm-system/index.html', url: '/crm-system/', kw: 'בניית מערכת CRM לעסק' },
   { f: 'organic-seo/index.html', url: '/organic-seo/', kw: 'קידום אורגני לעסקים' },
   { f: 'seo-consultant/index.html', url: '/seo-consultant/', kw: 'יועץ קידום אתרים' },
   { f: 'ai-website-building/index.html', url: '/ai-website-building/', kw: 'בניית אתרים בבינה מלאכותית' },
