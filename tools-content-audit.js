@@ -13,7 +13,7 @@ const PAGES = [
   { f: 'website-management/index.html',   url: '/website-management/',   kw: 'ניהול אתרים',        minLinks: 3 },
   { f: 'websites-for-doctors/index.html', url: '/websites-for-doctors/', kw: 'בניית אתרים לרופאים', minLinks: 3 },
   { f: 'websites-for-cosmeticians/index.html', url: '/websites-for-cosmeticians/', kw: 'בניית אתר לקוסמטיקאיות', minLinks: 3 },
-  { f: 'about/index.html',                url: '/about/',                kw: 'ברנדלי',             minLinks: 3 },
+  { f: 'about/index.html',                url: '/about/',                kw: 'חברת בניית אתרים',  minLinks: 3 },
   { f: 'contact/index.html',              url: '/contact/',              kw: 'צרו קשר',            minLinks: 2 },
   { f: 'privacy-policy/index.html',       url: '/privacy-policy/',       kw: 'מדיניות פרטיות',     minLinks: 2 },
   { f: 'accessibility/index.html',        url: '/accessibility/',        kw: 'הצהרת נגישות',       minLinks: 2 },
@@ -31,11 +31,12 @@ const PAGES = [
   { f: 'seo-consultant/index.html', url: '/seo-consultant/', kw: 'יועץ קידום אתרים', minLinks: 3 },
   { f: 'ai-website-building/index.html', url: '/ai-website-building/', kw: 'בניית אתרים בבינה מלאכותית', minLinks: 3 },
   { f: 'brochure-website/index.html', url: '/brochure-website/', kw: 'בניית אתר תדמית', minLinks: 3 },
+  { f: 'sales-website/index.html', url: '/sales-website/', kw: 'בניית אתר מכירות', minLinks: 3 },
 ];
 
 const MIN_KW = 5;
 const MIN_FAQ = 10;   // מדריך התוכן 2.0, סעיף 8
-const QUICK_MIN = 40, QUICK_MAX = 60;  // התשובה המהירה, סעיף 7   // מדריך התוכן 2.0, סעיף 8
+const QUICK_MIN = 40, QUICK_MAX = 60;  // התשובה המהירה, סעיף 7
 const MAX_P_WORDS = 60;
 
 /* גוף שלישי על עצמנו. המדריך מחייב גוף ראשון רבים בכל גוף הטקסט. */

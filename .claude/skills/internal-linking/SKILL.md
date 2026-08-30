@@ -39,6 +39,7 @@ description: Add or review internal links between Brandli site pages. Use when w
 | איסוף מידע, עוגיות, זכויות משתמש | `/privacy-policy/` |
 | שיחת ייעוץ, פנייה, טלפונים | `/contact/` |
 | מבנה אתר תדמית, כמה עמודים, עמודי שירות | `/brochure-website/` |
+| אחוז המרה, סדר טיעון, התנגדויות בעמוד מכירה | `/sales-website/` |
 | קטלוג, סליקה, מלאי, עגלה, המרות בחנות | `/ecommerce-websites/` |
 | חיבור מערכות, וואטסאפ אוטומטי, תהליכים אוטומטיים | `/business-automation/` |
 | מערכת CRM עצמה: בחירה, הטמעה, בנייה מול קנייה | `/crm-system/` |

@@ -26,6 +26,7 @@ const PAGES = [
   { f: 'ai-website-building/index.html', url: '/ai-website-building/', kw: 'בניית אתרים בבינה מלאכותית' },
   { f: 'websites-for-cosmeticians/index.html', url: '/websites-for-cosmeticians/', kw: 'בניית אתר לקוסמטיקאיות' },
   { f: 'brochure-website/index.html', url: '/brochure-website/', kw: 'בניית אתר תדמית' },
+  { f: 'sales-website/index.html', url: '/sales-website/', kw: 'בניית אתר מכירות' },
 ];
 
 const strip = s => s.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
