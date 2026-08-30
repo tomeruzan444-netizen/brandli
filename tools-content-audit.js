@@ -34,7 +34,8 @@ const PAGES = [
 ];
 
 const MIN_KW = 5;
-const MIN_FAQ = 4;
+const MIN_FAQ = 10;   // מדריך התוכן 2.0, סעיף 8
+const QUICK_MIN = 40, QUICK_MAX = 60;  // התשובה המהירה, סעיף 7   // מדריך התוכן 2.0, סעיף 8
 const MAX_P_WORDS = 60;
 
 /* גוף שלישי על עצמנו. המדריך מחייב גוף ראשון רבים בכל גוף הטקסט. */
@@ -93,6 +94,15 @@ for (const p of PAGES) {
   /* 3. שאלות ותשובות + התאמה ל-JSON-LD */
   const faqQs = [...main.matchAll(/<summary>([\s\S]*?)<span class="plus"/g)]
     .map(m => visibleText(m[1]));
+  /* התשובה המהירה: בלוק definition של 40-60 מילים, מה שמנוע AI מרים לציטוט */
+  const defBlock = (main.match(/<div class="definition">([\s\S]*?)<\/div>/) || [])[1];
+  if (!defBlock) flags.push('אין בלוק תשובה מהירה');
+  else {
+    const dw = defBlock.replace(/<h2[^>]*>[\s\S]*?<\/h2>/g, ' ')
+                       .replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim().split(' ').length;
+    if (dw < QUICK_MIN || dw > QUICK_MAX) flags.push(`תשובה מהירה ${dw} מילים (טווח ${QUICK_MIN}-${QUICK_MAX})`);
+  }
+
   if (faqQs.length < MIN_FAQ) flags.push(`רק ${faqQs.length} שאלות נפוצות (מינימום ${MIN_FAQ})`);
 
   const ld = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)]

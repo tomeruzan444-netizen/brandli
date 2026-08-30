@@ -46,7 +46,7 @@ for (const p of PAGES) {
   if (title.length > 60) flags.push(`כותרת ארוכה (${title.length})`);
   if (title.length < 30) flags.push(`כותרת קצרה (${title.length})`);
   if (desc.length > 160) flags.push(`תיאור ארוך (${desc.length})`);
-  if (desc.length < 120) flags.push(`תיאור קצר (${desc.length})`);
+  if (desc.length < 150) flags.push(`תיאור קצר (${desc.length})`);
   if (!title.includes(p.kw)) flags.push('ביטוי המפתח חסר בכותרת');
   else if (title.indexOf(p.kw) > 12) flags.push(`ביטוי המפתח לא בהתחלה (תו ${title.indexOf(p.kw)})`);
   if (!desc.includes(p.kw)) flags.push('ביטוי המפתח חסר בתיאור');
