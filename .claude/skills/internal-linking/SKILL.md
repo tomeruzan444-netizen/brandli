@@ -43,6 +43,7 @@ description: Add or review internal links between Brandli site pages. Use when w
 | קטלוג, סליקה, מלאי, עגלה, המרות בחנות | `/ecommerce-websites/` |
 | חיבור מערכות, וואטסאפ אוטומטי, תהליכים אוטומטיים | `/business-automation/` |
 | מערכת CRM עצמה: בחירה, הטמעה, בנייה מול קנייה | `/crm-system/` |
+| סוכני AI, גבולות והסלמה, מה שאינו כלל קבוע | `/ai-agents/` |
 | מילות מפתח, תוכן לקידום, דירוגים, SEO טכני | `/organic-seo/` |
 | ביקורת SEO, מעבר דומיין, הערכת סוכנות | `/seo-consultant/` |
 | שימוש ב-AI בתהליך הבנייה, השפעה על מחיר וזמן | `/ai-website-building/` |

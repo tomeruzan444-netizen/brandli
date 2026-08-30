@@ -27,6 +27,7 @@ const PAGES = [
   { f: 'ecommerce-websites/index.html', url: '/ecommerce-websites/', kw: 'בניית אתרי מסחר', minLinks: 3 },
   { f: 'business-automation/index.html', url: '/business-automation/', kw: 'אוטומציות לעסקים', minLinks: 3 },
   { f: 'crm-system/index.html', url: '/crm-system/', kw: 'בניית מערכת CRM לעסק', minLinks: 3 },
+  { f: 'ai-agents/index.html', url: '/ai-agents/', kw: 'שירות סוכני AI', minLinks: 3 },
   { f: 'organic-seo/index.html', url: '/organic-seo/', kw: 'קידום אורגני לעסקים', minLinks: 3 },
   { f: 'seo-consultant/index.html', url: '/seo-consultant/', kw: 'יועץ קידום אתרים', minLinks: 3 },
   { f: 'ai-website-building/index.html', url: '/ai-website-building/', kw: 'בניית אתרים בבינה מלאכותית', minLinks: 3 },
