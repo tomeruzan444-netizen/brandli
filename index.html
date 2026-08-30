@@ -436,7 +436,9 @@ fbq('track', 'PageView');
         <h1 class="hero__title" id="hero-title">
           בניית אתרים, אחסון אתרים<br>
           ותחזוקת אתרים.<br>
-          <span class="mark-brand">הכל תחת גג אחד.</span>
+          <!-- שני span ולא אחד: mark-brand הוא nowrap, ושורה אחת ארוכה
+               גלשה מחוץ למסך ב-360px ומטה. הפיצול מאפשר שבירה ביניהם -->
+          <span class="mark-brand">ברנדלי,</span> <span class="mark-brand">הכל תחת גג אחד.</span>
         </h1>
         <p class="hero__lead">
           בברנדלי אנחנו בונים אתרי בינה מלאכותית מהירים, מאחסנים אותם בשרתים
