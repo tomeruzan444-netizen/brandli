@@ -110,6 +110,7 @@ brandli/
 ├── business-automation/              →  /business-automation/
 ├── crm-system/                       →  /crm-system/
 ├── ai-agents/                        →  /ai-agents/
+├── automation-consulting/            →  /automation-consulting/
 ├── organic-seo/                      →  /organic-seo/
 ├── seo-consultant/                   →  /seo-consultant/
 ├── ai-website-building/              →  /ai-website-building/
