@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<!-- תבנית תמונת שער לכתבה, 1200x630. scripts/cover.js ממלא את ה-placeholders
+     ומצלם את העמוד עם Chrome בלי ממשק. נתיבי __ROOT__ מצביעים על שורש הריפו. -->
+<style>
+@font-face { font-family: "Heebo"; font-weight: 400 900; font-display: block;
+  src: url("__ROOT__/assets/fonts/heebo-hebrew.woff2") format("woff2");
+  unicode-range: U+0307-0308, U+0590-05FF, U+200C-2010, U+20AA, U+25CC, U+FB1D-FB4F; }
+@font-face { font-family: "Heebo"; font-weight: 400 900; font-display: block;
+  src: url("__ROOT__/assets/fonts/heebo-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+                 U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215; }
+
+:root {
+  /* צבעי המותג, מתוך assets/css/style.css */
+  --ink: #1B1840; --ink-700: #2E2870; --brand: #4F39F6;
+  --muted: #B9B5EA; --line: rgba(255, 255, 255, .14);
+  --accent: __ACCENT__;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { width: 1200px; height: 630px; overflow: hidden; }
+body {
+  font-family: "Heebo", sans-serif; color: #fff; position: relative;
+  background: linear-gradient(135deg, var(--ink) 0%, var(--ink-700) 55%, #4030A8 100%);
+}
+/* רשת נקודות וזוהר, באותה שפה של og-image ושל ה-grid-bg באתר */
+.dots { position: absolute; inset: 0;
+  background-image: radial-gradient(rgba(255, 255, 255, .13) 1.6px, transparent 1.7px);
+  background-size: 26px 26px; }
+.glow { position: absolute; border-radius: 50%; filter: blur(10px); }
+.glow--a { width: 760px; height: 600px; left: -260px; top: -240px;
+  background: radial-gradient(closest-side, color-mix(in srgb, var(--accent) 45%, transparent), transparent); }
+.glow--b { width: 700px; height: 520px; right: -200px; bottom: -300px;
+  background: radial-gradient(closest-side, rgba(244, 63, 94, .30), transparent); }
+
+.frame { position: absolute; inset: 0; padding: 56px 64px 52px; display: grid;
+  grid-template-columns: 1fr 410px; gap: 52px; }
+
+/* ---------- עמודת הטקסט (ימין) ---------- */
+.copy { display: flex; flex-direction: column; min-width: 0; }
+.top { display: flex; align-items: center; gap: 18px; }
+.logo { background: #fff; border-radius: 16px; padding: 10px 18px 10px 14px; display: flex;
+  box-shadow: 0 14px 34px -16px rgba(0, 0, 0, .6); }
+.logo img { height: 40px; display: block; }
+.tag { font-size: 21px; font-weight: 700; color: var(--ink); background: var(--accent);
+  padding: 7px 18px; border-radius: 999px; white-space: nowrap; }
+.title { margin-top: auto; font-weight: 800; line-height: 1.12; letter-spacing: -.01em;
+  font-size: 68px; text-wrap: balance; }
+.title em { font-style: normal; color: var(--accent); }
+.byline { margin-top: 26px; display: flex; align-items: center; gap: 14px; font-size: 22px; color: var(--muted); }
+.byline b { color: #fff; font-weight: 700; }
+.byline .sep { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+
+/* ---------- עמודת הוויזואל (שמאל) ---------- */
+.visual { align-self: stretch; border-radius: 30px; border: 1px solid var(--line);
+  background: linear-gradient(160deg, rgba(255, 255, 255, .10), rgba(255, 255, 255, .03));
+  padding: 34px 34px 30px; display: flex; flex-direction: column; justify-content: center;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .12), 0 30px 60px -30px rgba(0, 0, 0, .55); }
+.caption { margin-top: auto; padding-top: 18px; font-size: 18px; color: var(--muted); line-height: 1.35; }
+
+/* stat: מספר אחד גדול */
+.stat { margin-top: auto; }
+.stat__value { font-size: 128px; font-weight: 900; line-height: 1; color: var(--accent);
+  direction: ltr; text-align: right; letter-spacing: -.03em; }
+.stat__label { margin-top: 18px; font-size: 29px; font-weight: 700; line-height: 1.25; }
+
+/* compare: שני ערכים או שלושה, בעמודות פסים */
+.cmp { display: flex; flex-direction: column; gap: 38px; margin-top: auto; }
+.cmp__row { display: grid; gap: 10px; }
+.cmp__head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+.cmp__label { font-size: 26px; font-weight: 600; color: #fff; }
+.cmp__value { font-size: 72px; font-weight: 900; line-height: 1; direction: ltr; color: #fff; letter-spacing: -.02em; }
+.cmp__bar { height: 22px; border-radius: 999px; background: rgba(255, 255, 255, .10); overflow: hidden; }
+.cmp__bar i { display: block; height: 100%; border-radius: inherit; background: rgba(255, 255, 255, .45); }
+.cmp__row.is-key .cmp__value { color: var(--accent); }
+.cmp__row.is-key .cmp__bar i { background: var(--accent); }
+
+/* icon: איור סמלי בטבעות */
+.icon { position: relative; width: 300px; height: 300px; margin: auto auto 0; display: grid; place-items: center; }
+.icon .ring { position: absolute; inset: 0; border-radius: 50%; border: 1.5px solid var(--line); }
+.icon .ring:nth-child(2) { inset: 38px; border-color: color-mix(in srgb, var(--accent) 45%, transparent); }
+.icon .ring:nth-child(3) { inset: 76px; background: color-mix(in srgb, var(--accent) 16%, transparent); border: 0; }
+.icon svg { position: relative; width: 120px; height: 120px; color: var(--accent); }
+.icon .orbit { position: absolute; width: 14px; height: 14px; border-radius: 50%; background: var(--accent);
+  box-shadow: 0 0 0 6px color-mix(in srgb, var(--accent) 25%, transparent); }
+</style>
+</head>
+<body>
+<div class="dots"></div>
+<div class="glow glow--a"></div>
+<div class="glow glow--b"></div>
+
+<div class="frame">
+  <div class="copy">
+    <div class="top">
+      <span class="logo"><img src="__ROOT__/assets/img/logo.webp" alt=""></span>
+      <span class="tag">__TAG__</span>
+    </div>
+    <h1 class="title" id="title">__TITLE__</h1>
+    <div class="byline"><b>תומר אוזן</b><span class="sep"></span><span dir="ltr">brandli.co.il/blog</span></div>
+  </div>
+  <div class="visual">__VISUAL__</div>
+</div>
+
+<script>
+/* מקטין את הכותרת עד שהיא נכנסת בגובה המותר, אחרי שהפונט נטען */
+document.fonts.ready.then(() => {
+  const t = document.getElementById('title');
+  /* גובה מקסימלי: שלוש שורות בגודל המלא. אותיות עבריות חורגות מעט מתיבת השורה,
+     ולכן משווים לגובה קבוע ולא ל-clientHeight */
+  const MAX = 3 * 68 * 1.12 + 8;
+  let size = 68;
+  while (t.getBoundingClientRect().height > MAX && size > 40) { size -= 2; t.style.fontSize = size + 'px'; }
+  document.body.dataset.ready = '1';
+});
+</script>
+</body>
+</html>

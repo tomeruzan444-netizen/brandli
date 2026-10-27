@@ -24,6 +24,11 @@ const POSTS = [
     og: 'מה תוסף נגישות באמת עושה, מה קרה ל-accessiBe, ובדיקה של 10 דקות שאפשר לעשות לבד.',
     card: 'מה קבעה רשות הסחר האמריקאית על accessiBe, מה מצאנו כשבדקנו את האתר שלנו, ובדיקה של 10 דקות לאתר שלכם.',
     about: ['Web accessibility', 'Accessibility overlays', 'WCAG', 'IS 5568'],
+    cover: {
+      title: 'תוסף נגישות לאתר: מה הוא באמת עושה, ומה נשאר שבור מתחתיו', highlight: 'ומה נשאר שבור',
+      tag: 'נגישות', accent: 'rose',
+      visual: { type: 'stat', value: '95.9%', label: 'מעמודי הבית הגדולים בעולם נכשלו בבדיקת נגישות אוטומטית', caption: 'דוח WebAIM Million, 2026' },
+    },
   },
   {
     slug: 'google-ai-overviews-clicks', main: 'posts/google-ai-overviews-clicks.html', date: '2026-10-27',
@@ -33,15 +38,44 @@ const POSTS = [
     og: 'מה המחקרים העדכניים מראים על סקירות AI וקליקים, ואיך בודקים את זה באתר שלכם.',
     card: 'מה מצאו Pew ו-Ahrefs, אילו חיפושים נפגעים, ואיך בודקים ב-Search Console אם זה קורה גם אצלכם.',
     about: ['Google AI Overviews', 'AI Mode', 'Google Search Console'],
+    cover: {
+      title: 'סקירות AI של גוגל: כמה קליקים הן לוקחות מהאתר שלכם?', highlight: 'כמה קליקים',
+      tag: 'AI וחיפוש', accent: 'cyan',
+      visual: { type: 'compare', caption: 'ביקורים שהסתיימו בקליק על תוצאה רגילה, לפי Pew Research',
+        items: [{ label: 'בלי סקירת AI', value: '15%' }, { label: 'עם סקירת AI', value: '8%', key: true }] },
+    },
   },
 ];
+
+/* --- תמונות שער (הסקיל blog-cover). נוצרות מחדש רק כשה-spec השתנה --- */
+const COVER = path.join(R, '.claude/skills/blog-cover/scripts/cover.js');
+const LOCK = path.join(SRC, 'covers.lock.json');
+const lock = fs.existsSync(LOCK) ? JSON.parse(fs.readFileSync(LOCK, 'utf8')) : {};
+const hash = s => require('crypto').createHash('sha1').update(JSON.stringify(s)).digest('hex').slice(0, 12);
+for (const P of POSTS) {
+  if (!P.cover) continue;
+  const dir = path.join(R, 'blog', P.slug);
+  const fresh = lock[P.slug] === hash(P.cover) && fs.existsSync(path.join(dir, 'cover.jpg')) && fs.existsSync(path.join(dir, 'card.webp'));
+  if (fresh) continue;
+  const spec = path.join(S, `${P.slug}-cover.json`);
+  fs.writeFileSync(spec, JSON.stringify(P.cover));
+  try {
+    execFileSync(process.execPath, [COVER, spec, dir], { stdio: 'inherit' });
+    lock[P.slug] = hash(P.cover);
+  } catch {
+    console.error(`תמונת השער של ${P.slug} לא נוצרה. הכתבה תיבנה עם תמונת ברירת המחדל של האתר.`);
+  }
+}
+fs.writeFileSync(LOCK, JSON.stringify(lock, null, 2) + '\n');
+const hasCover = P => fs.existsSync(path.join(R, 'blog', P.slug, 'cover.jpg'));
 
 for (const P of POSTS) {
   const PU = `${B}/blog/${P.slug}/`;
   fs.writeFileSync(`${S}/${P.slug}-ld.json`, JSON.stringify([
     { '@type': 'BlogPosting', '@id': PU + '#article', headline: P.title, description: P.desc, url: PU,
       mainEntityOfPage: { '@id': PU + '#webpage' }, inLanguage: 'he-IL', datePublished: P.date, dateModified: P.modified || P.date,
-      author: { '@id': B + '/#founder' }, publisher: { '@id': B + '/#organization' }, image: B + '/assets/img/og-image.png',
+      author: { '@id': B + '/#founder' }, publisher: { '@id': B + '/#organization' },
+      image: hasCover(P) ? `${PU}cover.jpg` : B + '/assets/img/og-image.png',
       isPartOf: { '@id': B + '/blog/#blog' }, about: P.about },
     { '@type': 'WebPage', '@id': PU + '#webpage', url: PU, name: P.metaTitle, inLanguage: 'he-IL',
       isPartOf: { '@id': B + '/#website' }, breadcrumb: { '@id': PU + '#breadcrumb' }, mainEntity: { '@id': PU + '#article' } },
@@ -51,11 +85,15 @@ for (const P of POSTS) {
       { '@type': 'ListItem', position: 3, name: P.title } ] },
   ]));
   fs.writeFileSync(`${S}/${P.slug}.json`, JSON.stringify({ root: R, out: `blog/${P.slug}/index.html`, shellFrom: 'websites-for-architects/index.html',
-    title: P.metaTitle, description: P.desc, ogDescription: P.og, canonical: PU, ogType: 'article', main: path.join(SRC, P.main), ld: `${S}/${P.slug}-ld.json` }));
+    title: P.metaTitle, description: P.desc, ogDescription: P.og, canonical: PU, ogType: 'article',
+    ...(hasCover(P) && { ogImage: `${PU}cover.jpg`, ogImageAlt: P.title }),
+    main: path.join(SRC, P.main), ld: `${S}/${P.slug}-ld.json` }));
 }
 
 /* --- blog index --- */
-const cards = POSTS.map(P => `        <article class="card post-card reveal">
+/* התמונה בכרטיס דקורטיבית: הכותרת שלה חוזרת ב-h3, ולכן alt ריק */
+const cards = POSTS.map(P => `        <article class="card post-card reveal">${hasCover(P) ? `
+          <img class="post-card__img" src="/blog/${P.slug}/card.webp" alt="" width="600" height="315" loading="lazy" decoding="async">` : ''}
           <time datetime="${P.date}">${he(P.date)}</time>
           <h3>${P.title}</h3>
           <p>${P.card}</p>

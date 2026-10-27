@@ -1649,6 +1649,7 @@ html.a11y-bigcursor, html.a11y-bigcursor * {
 /* blog */
 .post-meta { display: flex; flex-wrap: wrap; gap: .35rem .9rem; margin-top: 1rem; font-size: var(--fs-sm); color: var(--muted); }
 .post-meta span + span::before { content: "·"; margin-inline-end: .9rem; color: var(--muted-2); }
+.post-card__img { display: block; width: 100%; height: auto; aspect-ratio: 40 / 21; border-radius: calc(var(--r) - 6px); margin-bottom: 1.1rem; background: var(--ink); }
 .post-card time { font-size: var(--fs-xs); font-weight: 600; color: var(--muted-2); }
 .post-card h3 { margin-top: .6rem; }
 

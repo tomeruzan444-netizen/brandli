@@ -4,7 +4,8 @@
    ה-FAQPage נגזר אוטומטית מהשאלות הגלויות, כדי שהניסוח יהיה זהה (סעיף 8).
    הרצה:  node tools-build-page.js <config.json>
    config: { root, out, shellFrom, title, description, ogDescription, canonical,
-             ogType?, main, ld }   ld = מערך צמתים ל-@graph, בלי FAQPage ו-Person
+             ogType?, ogImage?, ogImageAlt?, main, ld }
+   ld = מערך צמתים ל-@graph, בלי FAQPage ו-Person
    ============================================================================ */
 const fs = require('fs');
 const cfg = JSON.parse(fs.readFileSync(process.argv[2], 'utf8'));
@@ -48,6 +49,13 @@ head = head
   .replace(/(<meta name="twitter:description" content=")[^"]*/, `$1${esc(cfg.ogDescription)}`)
   .replace(/(<meta property="og:url" content=")[^"]*/, `$1${cfg.canonical}`);
 if (cfg.ogType) head = head.replace(/(<meta property="og:type" content=")[^"]*/, `$1${cfg.ogType}`);
+/* תמונת שיתוף ייעודית (למשל cover.jpg של כתבה), עם מידות וטקסט חלופי */
+if (cfg.ogImage) head = head
+  .replace(/<meta property="og:image" content="[^"]*">/, `<meta property="og:image" content="${cfg.ogImage}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="${esc(cfg.ogImageAlt || cfg.title)}">`)
+  .replace(/(<meta name="twitter:card" content="[^"]*">)/, `$1\n<meta name="twitter:image" content="${cfg.ogImage}">`);
 
 const ldEnd = sib.indexOf('</script>', sib.indexOf('<script type="application/ld+json">')) + '</script>'.length;
 const between = sib.slice(ldEnd, sib.indexOf('<main id="main">'));
