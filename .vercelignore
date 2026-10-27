@@ -1,0 +1,8 @@
+# קבצים פנימיים שלא עולים לאתר החי.
+# בלי הקובץ הזה Vercel מפרסם כל קובץ בריפו, כולל מדריך התוכן וכלי הבדיקה.
+CONTENT-GUIDE.md
+BLOG-PLAN.md
+tools-*.js
+.claude/
+.htaccess
+.gitignore
