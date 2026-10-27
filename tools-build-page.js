@@ -10,8 +10,20 @@ const fs = require('fs');
 const cfg = JSON.parse(fs.readFileSync(process.argv[2], 'utf8'));
 const R = cfg.root;
 const sib = fs.readFileSync(R + '/' + cfg.shellFrom, 'utf8');
-const main = fs.readFileSync(cfg.main, 'utf8');
 const strip = s => s.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
+
+/* תוכן עניינים: <!--TOC--> מוחלף ברשימה של כל ה-H2 שיש להם id, לפי הסדר */
+let main = fs.readFileSync(cfg.main, 'utf8');
+if (main.includes('<!--TOC-->')) {
+  const items = [...main.matchAll(/<h2 id="([^"]+)">([\s\S]*?)<\/h2>/g)]
+    .map(m => `            <li><a href="#${m[1]}">${strip(m[2])}</a></li>`).join('\n');
+  main = main.replace('<!--TOC-->', `<nav class="toc" aria-labelledby="toc-title">
+          <h2 id="toc-title">תוכן העניינים</h2>
+          <ol>
+${items}
+          </ol>
+        </nav>`);
+}
 
 const faq = [...main.matchAll(/<summary>([\s\S]*?)<span class="plus"[\s\S]*?<div class="faq__body"><p>([\s\S]*?)<\/p><\/div>/g)]
   .map(m => ({ '@type': 'Question', name: strip(m[1]), acceptedAnswer: { '@type': 'Answer', text: strip(m[2]) } }));
