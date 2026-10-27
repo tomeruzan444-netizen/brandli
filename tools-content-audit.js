@@ -39,6 +39,7 @@ const PAGES = [
   /* הבלוג (סעיף 12 במדריך): בעמוד הראשי אין שו"ת, ובכתבה מספיקות 5 שאלות */
   { f: 'blog/index.html', url: '/blog/', kw: 'בלוג בניית אתרים', minLinks: 3, minFaq: 0 },
   { f: 'blog/google-ai-overviews-clicks/index.html', url: '/blog/google-ai-overviews-clicks/', kw: 'סקירות AI של גוגל', minLinks: 3, minFaq: 5 },
+  { f: 'blog/accessibility-overlays/index.html', url: '/blog/accessibility-overlays/', kw: 'תוסף נגישות לאתר', minLinks: 3, minFaq: 5 },
 ];
 
 const MIN_KW = 5;

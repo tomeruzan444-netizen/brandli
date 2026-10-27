@@ -21,6 +21,7 @@ const PAGES = [
   { f: 'websites-for-architects/index.html', url: '/websites-for-architects/', kw: 'בניית אתרים לאדריכלים' },
   { f: 'blog/index.html', url: '/blog/', kw: 'בלוג בניית אתרים' },
   { f: 'blog/google-ai-overviews-clicks/index.html', url: '/blog/google-ai-overviews-clicks/', kw: 'סקירות AI של גוגל' },
+  { f: 'blog/accessibility-overlays/index.html', url: '/blog/accessibility-overlays/', kw: 'תוסף נגישות לאתר' },
   { f: 'ecommerce-websites/index.html', url: '/ecommerce-websites/', kw: 'בניית אתרי מסחר' },
   { f: 'business-automation/index.html', url: '/business-automation/', kw: 'אוטומציות לעסקים' },
   { f: 'crm-system/index.html', url: '/crm-system/', kw: 'בניית מערכת CRM לעסק' },

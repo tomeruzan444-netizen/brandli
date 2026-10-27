@@ -752,7 +752,7 @@ JSON-LD: `BlogPosting` עם `datePublished`, `dateModified`, `author` שמצבי
 
 ### רישום כתבה חדשה
 
-כרטיס בעמוד `/blog/`, שורה ב-`sitemap.xml`, שורה ב-`llms.txt` תחת "בלוג", רישום
+מקור הכתבה (רק ה-`main`) נשמר ב-`blog-src/posts/<slug>.html`, והמטא שלה (כותרת, תיאור, תאריך) בשורה חדשה בראש `POSTS` ב-`blog-src/build.js`. `node blog-src/build.js` בונה את כל הכתבות ואת עמוד הבלוג, כולל הכרטיסים. אחר כך: שורה ב-`sitemap.xml`, שורה ב-`llms.txt` תחת "בלוג", רישום
 ב-`tools-content-audit.js` (עם `minFaq: 5`) וב-`tools-meta-audit.js`. כלי הקול
 וכלי המבנה מוצאים כתבות לבד.
 

@@ -10,7 +10,8 @@ const SITE = 'https://brandli.co.il';
 /* כל קבצי ה-HTML, כולל אלה שבתיקיות */
 function walk(dir, acc = []) {
   for (const e of fs.readdirSync(dir, { withFileTypes: true })) {
-    if (e.name === 'assets' || e.name === 'node_modules' || e.name.startsWith('.')) continue;
+    /* blog-src מכיל מקטעי main של כתבות, לא עמודים שלמים */
+    if (e.name === 'assets' || e.name === 'node_modules' || e.name === 'blog-src' || e.name.startsWith('.')) continue;
     const p = path.join(dir, e.name);
     if (e.isDirectory()) walk(p, acc);
     else if (e.name.endsWith('.html')) acc.push(p);

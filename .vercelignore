@@ -6,3 +6,4 @@ tools-*.js
 .claude/
 .htaccess
 .gitignore
+blog-src/
