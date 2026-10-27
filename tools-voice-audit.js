@@ -75,6 +75,11 @@ for (const e of fs.readdirSync(ROOT, { withFileTypes: true })) {
   if (!e.isDirectory() || ['assets', '.git', '.claude', 'node_modules'].includes(e.name)) continue;
   const f = path.join(e.name, 'index.html');
   if (fs.existsSync(path.join(ROOT, f))) pages.push({ url: `/${e.name}/`, f });
+  /* כתבות הבלוג יושבות רמה אחת עמוק יותר: /blog/<slug>/ */
+  if (e.name === 'blog') for (const s of fs.readdirSync(path.join(ROOT, 'blog'), { withFileTypes: true })) {
+    const sf = path.join('blog', s.name, 'index.html');
+    if (s.isDirectory() && fs.existsSync(path.join(ROOT, sf))) pages.push({ url: `/blog/${s.name}/`, f: sf });
+  }
 }
 
 const rows = [], h1Template = [], ctaOpeners = new Map(), labels = new Map(), phrasePages = new Map();

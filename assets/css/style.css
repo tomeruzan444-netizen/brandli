@@ -1646,6 +1646,15 @@ html.a11y-bigcursor, html.a11y-bigcursor * {
   color: var(--muted); padding: .4rem .9rem; border-radius: var(--r-pill);
 }
 
+/* blog */
+.post-meta { display: flex; flex-wrap: wrap; gap: .35rem .9rem; margin-top: 1rem; font-size: var(--fs-sm); color: var(--muted); }
+.post-meta span + span::before { content: "·"; margin-inline-end: .9rem; color: var(--muted-2); }
+.post-card time { font-size: var(--fs-xs); font-weight: 600; color: var(--muted-2); }
+.post-card h3 { margin-top: .6rem; }
+.sources { font-size: var(--fs-sm); color: var(--muted); padding-inline-start: 1.4rem; }
+.sources li { margin-bottom: .6rem; overflow-wrap: anywhere; }
+.sources a { font-weight: 600; }
+
 /* print */
 @media print {
   .site-header, .scroll-progress, .fab-wa, .a11y-btn, .a11y-panel, .site-footer, .cta-band { display: none !important; }

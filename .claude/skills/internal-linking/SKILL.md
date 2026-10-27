@@ -54,6 +54,8 @@ description: Add or review internal links between Brandli site pages. Use when w
 | מנעולנים, חירום, SEO מקומי לפי אזור | `/websites-for-locksmiths/` |
 | חשמלאים, רישיון, גלריית עבודות | `/websites-for-electricians/` |
 | יועצים עסקיים, מיצוב אישי, מקרי לקוח | `/websites-for-business-consultants/` |
+| אדריכלים, עמודי פרויקט, הכנת צילומים, זכויות צלם, הדמיות | `/websites-for-architects/` |
+| ניתוח שינויים בגוגל ובכלי AI, מקרי בוחן, מדריכים עם תאריך | `/blog/` וכתבות תחת `/blog/<slug>/` |
 
 **מינימום קישורים מתוך הטקסט הזורם** (לא מהתפריט ולא מה-breadcrumbs):
 
@@ -63,6 +65,7 @@ description: Add or review internal links between Brandli site pages. Use when w
 - צרו קשר: 2
 - עמודים משפטיים: 2
 - עמוד נחיתה ממוקד ביטוי: 3
+- כתבה בבלוג: 3, לעמודי הבעלים של הנושאים שהיא נוגעת בהם
 
 **זוג מיוחד:** `/organic-seo/` ו-`/seo-consultant/` חייבים לקשר זה לזה.
 הם קרובים מספיק כדי שגולש יתבלבל ביניהם, ולכן כל אחד מהם מסביר במפורש

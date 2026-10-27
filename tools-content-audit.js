@@ -24,6 +24,7 @@ const PAGES = [
   { f: 'websites-for-locksmiths/index.html', url: '/websites-for-locksmiths/', kw: 'בניית אתרים למנעולנים', minLinks: 3 },
   { f: 'websites-for-electricians/index.html', url: '/websites-for-electricians/', kw: 'בניית אתרים לחשמלאים', minLinks: 3 },
   { f: 'websites-for-business-consultants/index.html', url: '/websites-for-business-consultants/', kw: 'בניית אתרים ליועצים עסקיים', minLinks: 3 },
+  { f: 'websites-for-architects/index.html', url: '/websites-for-architects/', kw: 'בניית אתרים לאדריכלים', minLinks: 3 },
   { f: 'ecommerce-websites/index.html', url: '/ecommerce-websites/', kw: 'בניית אתרי מסחר', minLinks: 3 },
   { f: 'business-automation/index.html', url: '/business-automation/', kw: 'אוטומציות לעסקים', minLinks: 3 },
   { f: 'crm-system/index.html', url: '/crm-system/', kw: 'בניית מערכת CRM לעסק', minLinks: 3 },
@@ -34,6 +35,10 @@ const PAGES = [
   { f: 'ai-website-building/index.html', url: '/ai-website-building/', kw: 'בניית אתרים בבינה מלאכותית', minLinks: 3 },
   { f: 'brochure-website/index.html', url: '/brochure-website/', kw: 'בניית אתר תדמית', minLinks: 3 },
   { f: 'sales-website/index.html', url: '/sales-website/', kw: 'בניית אתר מכירות', minLinks: 3 },
+
+  /* הבלוג (סעיף 12 במדריך): בעמוד הראשי אין שו"ת, ובכתבה מספיקות 5 שאלות */
+  { f: 'blog/index.html', url: '/blog/', kw: 'בלוג בניית אתרים', minLinks: 3, minFaq: 0 },
+  { f: 'blog/google-ai-overviews-clicks/index.html', url: '/blog/google-ai-overviews-clicks/', kw: 'סקירות AI של גוגל', minLinks: 3, minFaq: 5 },
 ];
 
 const MIN_KW = 5;
@@ -106,7 +111,8 @@ for (const p of PAGES) {
     if (dw < QUICK_MIN || dw > QUICK_MAX) flags.push(`תשובה מהירה ${dw} מילים (טווח ${QUICK_MIN}-${QUICK_MAX})`);
   }
 
-  if (faqQs.length < MIN_FAQ) flags.push(`רק ${faqQs.length} שאלות נפוצות (מינימום ${MIN_FAQ})`);
+  const minFaq = p.minFaq ?? MIN_FAQ;
+  if (faqQs.length < minFaq) flags.push(`רק ${faqQs.length} שאלות נפוצות (מינימום ${minFaq})`);
 
   const ld = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)]
     .map(m => { try { return JSON.parse(m[1]); } catch { return null; } })
@@ -122,7 +128,7 @@ for (const p of PAGES) {
   /* 4. קישוריות פנימית מתוך הטקסט (בלי breadcrumbs) */
   const prose = main.replace(/<nav[\s\S]*?<\/nav>/g, ' ');
   const links = new Set(
-    [...prose.matchAll(/href="(\/[a-z0-9-]*\/)"/g)].map(m => m[1]).filter(u => u !== p.url)
+    [...prose.matchAll(/href="(\/[a-z0-9\/-]*\/)"/g)].map(m => m[1]).filter(u => u !== p.url)
   );
   if (links.size < p.minLinks) flags.push(`רק ${links.size} קישורים פנימיים (מינימום ${p.minLinks})`);
 
