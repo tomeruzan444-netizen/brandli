@@ -1651,9 +1651,6 @@ html.a11y-bigcursor, html.a11y-bigcursor * {
 .post-meta span + span::before { content: "·"; margin-inline-end: .9rem; color: var(--muted-2); }
 .post-card time { font-size: var(--fs-xs); font-weight: 600; color: var(--muted-2); }
 .post-card h3 { margin-top: .6rem; }
-.sources { font-size: var(--fs-sm); color: var(--muted); padding-inline-start: 1.4rem; }
-.sources li { margin-bottom: .6rem; overflow-wrap: anywhere; }
-.sources a { font-weight: 600; }
 
 /* print */
 @media print {
