@@ -1,4 +1,8 @@
 {
-  "accessibility-overlays": "9d2c00b71f13",
-  "google-ai-overviews-clicks": "3d94970bfadc"
+  "accessibility-overlays": "18ac4ef1e28b",
+  "accessibility-overlays/overlay-vs-code": "bba50d2919b2",
+  "accessibility-overlays/webaim-errors": "3e1e47ab963d",
+  "google-ai-overviews-clicks": "770f5584dcde",
+  "google-ai-overviews-clicks/serp-ai-box": "6b5baafff9c3",
+  "google-ai-overviews-clicks/search-console-trend": "9249b5a9899f"
 }

@@ -24,11 +24,15 @@ const POSTS = [
     og: 'מה תוסף נגישות באמת עושה, מה קרה ל-accessiBe, ובדיקה של 10 דקות שאפשר לעשות לבד.',
     card: 'מה קבעה רשות הסחר האמריקאית על accessiBe, מה מצאנו כשבדקנו את האתר שלנו, ובדיקה של 10 דקות לאתר שלכם.',
     about: ['Web accessibility', 'Accessibility overlays', 'WCAG', 'IS 5568'],
-    cover: {
-      title: 'תוסף נגישות לאתר: מה הוא באמת עושה, ומה נשאר שבור מתחתיו', highlight: 'ומה נשאר שבור',
-      tag: 'נגישות', accent: 'rose',
-      visual: { type: 'stat', value: '95.9%', label: 'מעמודי הבית הגדולים בעולם נכשלו בבדיקת נגישות אוטומטית', caption: 'דוח WebAIM Million, 2026' },
-    },
+    cover: { tag: 'נגישות', accent: 'rose', scene: { type: 'browser-a11y' },
+      badge: { value: '95.9%', label: 'מעמודי הבית נכשלו בבדיקה' } },
+    figures: [
+      { name: 'overlay-vs-code', accent: 'rose', scene: { type: 'browser-a11y' } },
+      { name: 'webaim-errors', accent: 'rose', scene: { type: 'bars', title: 'השגיאות הנפוצות בעמודי הבית, 2026', max: 100, highlightFirst: true,
+        items: [{ label: 'ניגודיות טקסט נמוכה', value: '83.9%' }, { label: 'תמונות בלי טקסט חלופי', value: '53.1%' },
+          { label: 'שדות בטופס בלי תווית', value: '51%' }, { label: 'קישורים ריקים', value: '46.3%' },
+          { label: 'כפתורים ריקים', value: '30.6%' }, { label: 'שפת עמוד לא מוגדרת', value: '13.5%' }] } },
+    ],
   },
   {
     slug: 'google-ai-overviews-clicks', main: 'posts/google-ai-overviews-clicks.html', date: '2026-10-27',
@@ -38,33 +42,41 @@ const POSTS = [
     og: 'מה המחקרים העדכניים מראים על סקירות AI וקליקים, ואיך בודקים את זה באתר שלכם.',
     card: 'מה מצאו Pew ו-Ahrefs, אילו חיפושים נפגעים, ואיך בודקים ב-Search Console אם זה קורה גם אצלכם.',
     about: ['Google AI Overviews', 'AI Mode', 'Google Search Console'],
-    cover: {
-      title: 'סקירות AI של גוגל: כמה קליקים הן לוקחות מהאתר שלכם?', highlight: 'כמה קליקים',
-      tag: 'AI וחיפוש', accent: 'cyan',
-      visual: { type: 'compare', caption: 'ביקורים שהסתיימו בקליק על תוצאה רגילה, לפי Pew Research',
-        items: [{ label: 'בלי סקירת AI', value: '15%' }, { label: 'עם סקירת AI', value: '8%', key: true }] },
-    },
+    cover: { tag: 'AI וחיפוש', accent: 'cyan', scene: { type: 'serp' },
+      badge: { value: '8%', label: 'לוחצים כשיש סקירת AI' } },
+    figures: [
+      { name: 'serp-ai-box', accent: 'cyan', scene: { type: 'serp', query: 'כמה עולה להחליף צילינדר' } },
+      { name: 'search-console-trend', accent: 'cyan', scene: { type: 'dashboard' } },
+    ],
   },
 ];
 
-/* --- תמונות שער (הסקיל blog-cover). נוצרות מחדש רק כשה-spec השתנה --- */
-const COVER = path.join(R, '.claude/skills/blog-cover/scripts/cover.js');
+/* --- תמונות (הסקיל blog-cover): שער לכל כתבה ואיורים לתוך הכתבה.
+       כל תמונה נוצרת מחדש רק כשה-spec שלה השתנה --- */
+const RENDER = path.join(R, '.claude/skills/blog-cover/scripts/cover.js');
 const LOCK = path.join(SRC, 'covers.lock.json');
 const lock = fs.existsSync(LOCK) ? JSON.parse(fs.readFileSync(LOCK, 'utf8')) : {};
 const hash = s => require('crypto').createHash('sha1').update(JSON.stringify(s)).digest('hex').slice(0, 12);
 for (const P of POSTS) {
-  if (!P.cover) continue;
   const dir = path.join(R, 'blog', P.slug);
-  const fresh = lock[P.slug] === hash(P.cover) && fs.existsSync(path.join(dir, 'cover.jpg')) && fs.existsSync(path.join(dir, 'card.webp'));
-  if (fresh) continue;
-  const spec = path.join(S, `${P.slug}-cover.json`);
-  fs.writeFileSync(spec, JSON.stringify(P.cover));
-  try {
-    execFileSync(process.execPath, [COVER, spec, dir], { stdio: 'inherit' });
-    lock[P.slug] = hash(P.cover);
-  } catch {
-    console.error(`תמונת השער של ${P.slug} לא נוצרה. הכתבה תיבנה עם תמונת ברירת המחדל של האתר.`);
+  const jobs = [];
+  if (P.cover) jobs.push({ key: P.slug, spec: { kind: 'cover', ...P.cover }, files: ['cover.jpg', 'card.webp'] });
+  for (const f of P.figures || []) jobs.push({ key: `${P.slug}/${f.name}`, spec: { kind: 'figure', ...f }, files: [`${f.name}.webp`] });
+  for (const j of jobs) {
+    if (lock[j.key] === hash(j.spec) && j.files.every(f => fs.existsSync(path.join(dir, f)))) continue;
+    const spec = path.join(S, `${j.key.replace('/', '--')}-img.json`);
+    fs.writeFileSync(spec, JSON.stringify(j.spec));
+    try {
+      execFileSync(process.execPath, [RENDER, spec, dir], { stdio: 'inherit' });
+      lock[j.key] = hash(j.spec);
+    } catch {
+      console.error(`התמונה ${j.key} לא נוצרה.${j.spec.kind === 'cover' ? ' הכתבה תיבנה עם תמונת ברירת המחדל של האתר.' : ''}`);
+    }
   }
+  /* כל איור שהכתבה מפנה אליו חייב להיות מוגדר ב-figures, אחרת התמונה תישבר באתר */
+  const main = fs.readFileSync(path.join(SRC, P.main), 'utf8');
+  for (const m of main.matchAll(new RegExp(`/blog/${P.slug}/([a-z0-9-]+)\\.webp`, 'g')))
+    if (m[1] !== 'card' && !(P.figures || []).some(f => f.name === m[1])) throw new Error(`${P.slug}: האיור ${m[1]} מופיע בכתבה אבל לא מוגדר ב-figures`);
 }
 fs.writeFileSync(LOCK, JSON.stringify(lock, null, 2) + '\n');
 const hasCover = P => fs.existsSync(path.join(R, 'blog', P.slug, 'cover.jpg'));
