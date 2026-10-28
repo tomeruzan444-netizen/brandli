@@ -42,7 +42,7 @@ body.light { background: linear-gradient(160deg, #F7F8FD 0%, #EEF0FE 100%); }
   box-shadow: 0 14px 34px -16px rgba(0, 0, 0, .6); }
 .logo img { height: 40px; display: block; }
 .tag { font-size: 21px; font-weight: 700; color: var(--ink); background: var(--accent); padding: 7px 18px; border-radius: 999px; }
-.badge { position: absolute; right: 52px; top: 50%; transform: translateY(-46%); width: 300px; z-index: 5; text-align: right; }
+.badge { position: absolute; right: 52px; top: 50%; transform: translateY(-46%); width: 340px; z-index: 5; text-align: right; }
 .badge__value { font-size: 116px; font-weight: 900; line-height: .95; letter-spacing: -.03em; color: var(--accent); direction: ltr; text-align: right; }
 .badge__label { margin-top: 14px; font-size: 27px; font-weight: 700; line-height: 1.25; }
 .kicker { position: absolute; right: 52px; bottom: 50px; width: 300px; font-size: 30px; font-weight: 800; line-height: 1.15; z-index: 5; }
@@ -68,6 +68,11 @@ body.light { background: linear-gradient(160deg, #F7F8FD 0%, #EEF0FE 100%); }
 .okmark { position: absolute; width: 34px; height: 34px; border-radius: 50%; background: var(--ok); display: grid; place-items: center;
   box-shadow: 0 0 0 7px rgba(16, 185, 129, .2); }
 .okmark svg, .mark svg { width: 20px; height: 20px; }
+
+/* איור מוכן על כל הקנבס. בשער מכהים את הצד הימני, שם יושבים הלוגו והמספר */
+.art { position: absolute; inset: 0; background-size: cover; background-repeat: no-repeat; }
+.cover .art::after { content: ""; position: absolute; inset: 0;
+  background: linear-gradient(to left, rgba(27, 24, 64, .9) 0%, rgba(27, 24, 64, .55) 28%, rgba(27, 24, 64, 0) 52%); }
 
 /* אייקון בטבעות, כשאין מוקאפ שמתאים */
 .iconart { position: absolute; inset: 0; display: grid; place-items: center; }

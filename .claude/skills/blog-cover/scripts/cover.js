@@ -204,6 +204,15 @@ const SCENES = {
     </div>`;
   },
 
+  /* איור מוכן מקובץ (למשל איור AI מ-Canva, בלי טקסט), על כל הרוחב. שכבת המותג מעליו */
+  art(s) {
+    if (!s.src) fail('art צריך src: נתיב לקובץ התמונה, יחסי לשורש הריפו');
+    const file = path.resolve(ROOT, s.src);
+    if (!fs.existsSync(file)) fail(`קובץ האיור לא נמצא: ${s.src}`);
+    const url = 'file:///' + file.replace(/\\/g, '/').replace(/^\//, '');
+    return `<div class="art" style="background-image:url('${url}');background-position:${esc(s.position || 'left center')}"></div>`;
+  },
+
   icon(s) {
     if (!ICONS[s.icon]) fail(`icon לא מוכר: ${s.icon}. קיימים: ${Object.keys(ICONS).join(', ')}`);
     return `<div class="iconart">
@@ -220,7 +229,8 @@ const accentKey = spec.accent || 'brand';
 const A = (theme === 'light' ? ACCENTS_LIGHT : ACCENTS)[accentKey] || fail(`accent לא מוכר: ${accentKey}`);
 const scene = spec.scene || fail('חסר scene');
 const render = SCENES[scene.type] || fail(`scene.type לא מוכר: ${scene.type}. קיימים: ${Object.keys(SCENES).join(', ')}`);
-const sceneHtml = `<div class="scene">${render(scene, A, theme)}</div>`;
+/* איור מוכן תופס את כל הקנבס. כל סצנה אחרת יושבת במסגרת שלה */
+const sceneHtml = scene.type === 'art' ? render(scene, A, theme) : `<div class="scene">${render(scene, A, theme)}</div>`;
 
 let body;
 if (kind === 'cover') {

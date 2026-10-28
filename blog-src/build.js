@@ -24,7 +24,8 @@ const POSTS = [
     og: 'מה תוסף נגישות באמת עושה, מה קרה ל-accessiBe, ובדיקה של 10 דקות שאפשר לעשות לבד.',
     card: 'מה קבעה רשות הסחר האמריקאית על accessiBe, מה מצאנו כשבדקנו את האתר שלנו, ובדיקה של 10 דקות לאתר שלכם.',
     about: ['Web accessibility', 'Accessibility overlays', 'WCAG', 'IS 5568'],
-    cover: { tag: 'נגישות', accent: 'rose', scene: { type: 'browser-a11y' },
+    /* איור AI מ-Canva (27.10.2026), בלי טקסט. שכבת המותג מעליו */
+    cover: { tag: 'נגישות', accent: 'rose', scene: { type: 'art', src: 'blog-src/art/accessibility-overlays-cover.webp' },
       badge: { value: '95.9%', label: 'מעמודי הבית נכשלו בבדיקה' } },
     figures: [
       { name: 'overlay-vs-code', accent: 'rose', scene: { type: 'browser-a11y' } },
@@ -56,7 +57,14 @@ const POSTS = [
 const RENDER = path.join(R, '.claude/skills/blog-cover/scripts/cover.js');
 const LOCK = path.join(SRC, 'covers.lock.json');
 const lock = fs.existsSync(LOCK) ? JSON.parse(fs.readFileSync(LOCK, 'utf8')) : {};
-const hash = s => require('crypto').createHash('sha1').update(JSON.stringify(s)).digest('hex').slice(0, 12);
+/* כשהסצנה היא איור מקובץ, גם תוכן הקובץ נכנס לחישוב, כדי שהחלפת איור תייצר את השער מחדש */
+const hash = s => {
+  /* גם שינוי בתבנית או בסקריפט של הסקיל מייצר את כל התמונות מחדש */
+  const h = require('crypto').createHash('sha1').update(JSON.stringify(s))
+    .update(fs.readFileSync(RENDER)).update(fs.readFileSync(path.join(path.dirname(RENDER), '..', 'template.html')));
+  if (s.scene && s.scene.src) h.update(fs.readFileSync(path.join(R, s.scene.src)));
+  return h.digest('hex').slice(0, 12);
+};
 for (const P of POSTS) {
   const dir = path.join(R, 'blog', P.slug);
   const jobs = [];
