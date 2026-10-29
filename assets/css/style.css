@@ -951,6 +951,7 @@ hr { border: 0; border-top: 1px solid var(--line); margin: 2.5rem 0; }
 }
 .stat span { font-size: var(--fs-sm); color: var(--muted); font-weight: 600; }
 @media (max-width: 700px) { .stats { grid-template-columns: repeat(2, 1fr); } }
+.stats--3 { grid-template-columns: repeat(3, 1fr); }
 
 /* --------------------------------------------------------------------------
    12. Before / after comparison
