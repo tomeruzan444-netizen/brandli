@@ -1,0 +1,249 @@
+<main id="main">
+
+  <section class="page-hero grid-bg">
+    <div class="container">
+      <div class="page-hero__inner">
+        <nav class="breadcrumbs" aria-label="מסלול ניווט">
+          <ol>
+            <li><a href="/">בית</a></li>
+            <li><a href="/blog/">בלוג</a></li>
+            <li><span aria-current="page">סורקי AI ו-robots.txt</span></li>
+          </ol>
+        </nav>
+        <span class="eyebrow">מדריך מעשי</span>
+        <h1>3 סורקי AI של אותה חברה, ורק אחד מהם לומד מהאתר שלכם</h1>
+        <p class="post-meta">
+          <span>פורסם: <time datetime="2026-10-29">29 באוקטובר 2026</time></span>
+          <span>עודכן: <time datetime="2026-10-29">29 באוקטובר 2026</time></span>
+          <span>5 דקות קריאה</span>
+        </p>
+        <p class="lead">
+          מישהו אמר לכם ש-AI לוקח תוכן מאתרים בלי לשאול, אז ביקשתם מהמפתח לחסום אותו. שורה אחת בקובץ קטן, והעניין סגור. רק שאותה שורה יכולה לסגור גם את הדלת שדרכה צ׳טבוט היה מגיע לאתר כדי להמליץ עליכם.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ DEFINITION ============================ -->
+  <section class="section section--tight">
+    <div class="container container--narrow">
+      <div class="definition">
+        <h2>מה קורה כשחוסמים סורקי AI באתר?</h2>
+        <p>חסימת סורקי AI נעשית בקובץ robots.txt, והסורקים לא עושים כולם אותו דבר. ל-Anthropic, למשל, יש 3: אחד אוסף תוכן לאימון, אחד בונה מאגר לחיפוש, ואחד נכנס כשמשתמש שואל שאלה. חסימה גורפת סוגרת את שלושתם. ובספירה שלנו, רק ל-62 מתוך 200 סורקי AI יש תיעוד שהם מכבדים את הקובץ.</p>
+      </div>
+        <!--TOC-->
+    </div>
+  </section>
+
+  <!-- ============================== WHAT ================================ -->
+  <section class="section" aria-labelledby="what">
+    <div class="container container--narrow">
+      <div class="section-head section-head--start">
+        <span class="eyebrow">מה זה בכלל</span>
+        <h2 id="what">מה זה robots.txt, ולמה סורקי AI קוראים אותו?</h2>
+      </div>
+      <div class="prose">
+        <p>
+          robots.txt הוא קובץ טקסט קטן שיושב בשורש של האתר, ואפשר לפתוח אותו בדפדפן כמו כל עמוד.
+          תחשבו עליו כמו שלט על דלת הכניסה: "שליחים מחברה א׳ נכנסים, מחברה ב׳ לא".
+          את השלט קוראים סורקים, תוכנות שעוברות מעמוד לעמוד וקוראות את מה שכתוב בו.
+        </p>
+        <p>
+          פעם הקוראים העיקריים היו מנועי חיפוש. היום יש בתור גם את הסורקים של חברות ה-AI.
+        </p>
+        <p>
+          כל קבוצה בקובץ בנויה משתי שורות: <span class="ltr">User-agent</span>, השם של הסורק,
+          ומתחתיה <span class="ltr">Allow</span> או <span class="ltr">Disallow</span>, מותר או אסור.
+          כוכבית במקום שם פירושה "כל מי שלא הוזכר בשם".
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== THREE =============================== -->
+  <section class="section section--soft" aria-labelledby="three">
+    <div class="container container--narrow">
+      <div class="section-head section-head--start">
+        <span class="eyebrow">דוגמה אחת</span>
+        <h2 id="three">למה חברה אחת צריכה 3 סורקים שונים?</h2>
+      </div>
+      <div class="prose">
+        <p>
+          כי כל אחד מהם עושה עבודה אחרת. Anthropic, החברה שמפתחת את Claude, מפרסמת בעמוד
+          העזרה שלה טבלה מסודרת של הסורקים שלה, ומה קורה לאתר שחוסם כל אחד מהם:
+        </p>
+        <ul>
+          <li><strong>ClaudeBot</strong> אוסף תוכן שעשוי לשמש לאימון המודלים. חסימה שלו מסמנת שחומרים עתידיים מהאתר לא ייכנסו לאימון</li>
+          <li><strong>Claude-SearchBot</strong> סורק כדי לשפר את תוצאות החיפוש של Claude. חסימה שלו עלולה להוריד את הנראות של האתר בתוצאות האלה</li>
+          <li><strong>Claude-User</strong> נכנס כשמשתמש שואל את Claude שאלה ו-Claude צריך לקרוא עמוד כדי לענות. חסימה שלו מונעת מ-Claude להביא את התוכן שלכם לתשובה</li>
+        </ul>
+        <figure class="post-figure">
+          <img src="/blog/ai-crawlers-robots-txt/robots-three-bots.webp" alt="איור של קובץ robots.txt עם שלוש קבוצות: ClaudeBot מסומן באדום עם Disallow, ו-Claude-SearchBot ו-Claude-User מסומנים בירוק עם Allow" width="1200" height="675" loading="lazy" decoding="async">
+          <figcaption>כך נראית בקובץ החלטה לחסום רק את סורק האימון, ולהשאיר פתוחים את החיפוש ואת השאלות של משתמשים. איור להמחשה.</figcaption>
+        </figure>
+        <p>
+          כלומר, מי שכותב בקובץ שורה אחת שחוסמת "את ה-AI" מוותר על שלושה דברים שונים בבת אחת.
+          גם OpenAI וגוגל מחזיקות עמודי תיעוד עם השמות של הסורקים שלהן, וכדאי לקרוא אותם לפני שמוחקים או מוסיפים שורה.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== COUNT =============================== -->
+  <section class="section" aria-labelledby="count">
+    <div class="container container--narrow">
+      <div class="section-head section-head--start">
+        <span class="eyebrow">מה ספרנו</span>
+        <h2 id="count">כמה מסורקי AI בכלל מקשיבים לקובץ?</h2>
+      </div>
+      <div class="prose">
+        <p>
+          פחות ממה שנדמה. ב-29 באוקטובר 2026 הורדנו את הרשימה הפתוחה ai.robots.txt, פרויקט בגיטהאב
+          שאוסף שמות של סורקי AI, וספרנו לפי הסימון של הפרויקט עצמו. ברשימה 200 שמות.
+          ל-62 מהם, כ-31%, יש תיעוד שהם מכבדים את robots.txt. על 11 מתועד שהם לא מכבדים אותו, ועל 127 פשוט לא ידוע.
+        </p>
+        <figure class="post-figure">
+          <img src="/blog/ai-crawlers-robots-txt/ai-bots-respect.webp" alt="גרף עמודות של 200 סורקי AI ברשימה ai.robots.txt: על 127 לא ידוע אם הם מכבדים את robots.txt, ל-62 יש תיעוד שהם מכבדים, ועל 11 מתועד שלא" width="1200" height="675" loading="lazy" decoding="async">
+          <figcaption>ספירה שלנו ברשימה הפתוחה ai.robots.txt, לפי הסימון של הפרויקט, 29 באוקטובר 2026.</figcaption>
+        </figure>
+        <p>
+          וזה מה שכדאי לזכור על הקובץ: הוא בקשה מנומסת. סורק שמכבד אותו יעצור, וסורק שלא, ימשיך.
+        </p>
+        <p>
+          ובכל זאת, יותר ויותר אתרים כותבים בו לסורקי AI. בדוח Web Almanac 2025 של HTTP Archive,
+          הסורק GPTBot של OpenAI מוזכר בשמו ב-4.5% מאתרי הדסקטופ שנבדקו, לעומת 2.9% שנה קודם.
+          אזכור יכול להיות היתר, חסימה או הגבלת קצב, והדוח לא מפריד ביניהם.
+        </p>
+        <p>
+          מי שרוצה לחסום באמת חוסם ברמת השרת, למשל לפי כתובת IP, וזה כבר עניין
+          של <a href="/website-management/">ניהול השרת והאחסון</a>. אבל Anthropic מציינת שחסימה כזו
+          עלולה לא לעבוד כמו שצריך, כי היא מונעת מהסורק לקרוא את robots.txt ולדעת שביקשתם ממנו להתרחק.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== OURS ================================ -->
+  <section class="section section--soft" aria-labelledby="ours">
+    <div class="container container--narrow">
+      <div class="section-head section-head--start">
+        <span class="eyebrow">ההחלטה שלנו</span>
+        <h2 id="ours">מה כתבנו בקובץ של האתר הזה, ולמה?</h2>
+      </div>
+      <div class="prose">
+        <p>
+          באתר שלנו סורקי ה-AI של החברות הגדולות מקבלים היתר מפורש, כולל סורקי האימון. בקובץ מופיעים בשמם
+          הסורקים של OpenAI, Anthropic, Perplexity, Apple ואחרים, כל אחד עם <span class="ltr">Allow: /</span>.
+        </p>
+        <p>
+          הסיבה פשוטה. לעסק שמוכר שירות, להיות מוכר למודלים שווה יותר מהסיכון שמישהו ילמד משהו
+          מעמוד השירות שלו. ואת מה שכן חסמנו בחרנו בכוונה: סורקים של כלי SEO מסחריים, כמו
+          AhrefsBot ו-SemrushBot, שצורכים משאבי שרת בלי תועלת לעסק.
+        </p>
+        <p>
+          לעסק אחר ההחלטה יכולה להיות הפוכה. מי שהתוכן הוא המוצר שלו, למשל קורס בתשלום או מאגר מתכונים,
+          יכול לחסום רק את סורק האימון ולהשאיר פתוחים את החיפוש ואת השאלות של משתמשים.
+          לבדוק שהסורקים של מנועי התשובות לא חסומים בטעות זה חלק מהעבודה שלנו
+          ב<a href="/organic-seo/">קידום אורגני לעסקים</a>.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== CHECK =============================== -->
+  <section class="section" aria-labelledby="check">
+    <div class="container container--narrow">
+      <div class="section-head section-head--start">
+        <span class="eyebrow">עכשיו אצלכם</span>
+        <h2 id="check">איך בודקים את הקובץ שלכם בחמש דקות?</h2>
+      </div>
+      <div class="prose">
+        <p>לא צריך שום כלי. דפדפן מספיק:</p>
+        <ol>
+          <li><strong>פתחו את הקובץ.</strong> הקלידו בשורת הכתובת את הדומיין שלכם ואחריו <span class="ltr">/robots.txt</span>, למשל <span class="ltr">example.co.il/robots.txt</span>.</li>
+          <li><strong>אם קיבלתם עמוד שגיאה</strong>, אין לכם קובץ, וכל הסורקים רשאים להיכנס. זה לא בהכרח רע.</li>
+          <li><strong>חפשו את המילה Disallow</strong> בעזרת Ctrl ו-F. מתחת לכל שם של סורק, השורה <span class="ltr">Disallow: /</span> אומרת "כל האתר סגור בפניך".</li>
+          <li><strong>בדקו את הכוכבית.</strong> אם מתחת ל-<span class="ltr">User-agent: *</span> כתוב <span class="ltr">Disallow: /</span>, האתר סגור גם בפני גוגל. זו תקלה דחופה.</li>
+          <li><strong>רשמו את השמות שחסומים</strong>, ולכל אחד שאלו: הוא לומד, מחפש או עונה לשאלה של משתמש? אם אתם לא יודעים מי הוסיף את החסימה, שאלו את מי שמתחזק את האתר.</li>
+        </ol>
+        <p>
+          תוספי SEO ותבניות בוורדפרס יכולים לכתוב לקובץ שורות בלי שמישהו שם לב, אז שווה לחזור עליו
+          אחרי עדכון גדול. שינוי כזה אחרי עדכון הוא בדיוק מה ש<a href="/website-maintenance/">תחזוקת אתרים</a> אמורה לתפוס.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== BYLINE ============================== -->
+  <section class="section section--tight" aria-label="על כותב התוכן">
+    <div class="container">
+      <div class="byline">
+        <span class="byline__avatar" aria-hidden="true">ת</span>
+        <div>
+          <p><b>נכתב על ידי תומר אוזן</b>, מייסד ברנדלי</p>
+          <p>
+            יזם דיגיטל שהתחיל את דרכו בקידום אתרים אורגני, וליווה עשרות רבות של בעלי
+            עסקים בדרך לעצמאות כלכלית ולשיווק עצמי יעיל. הקים את ברנדלי, שמנהלת היום
+            עשרות אתרים של עסקים. <a href="/about/">עוד על תומר ועל הצוות</a>.
+          </p>
+          <p><time datetime="2026-10-29">עודכן לאחרונה: 29 באוקטובר 2026</time></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================ FAQ ================================ -->
+  <section class="section section--soft" id="faq" aria-labelledby="faq-title">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">שאלות נפוצות</span>
+        <h2 id="faq-title">סורקי AI ו-robots.txt: מה עוד רציתם לדעת</h2>
+      </div>
+
+      <div class="faq">
+        <details open>
+          <summary>חסימה של סורקי AI תפגע במיקום שלי בגוגל?<span class="plus" aria-hidden="true"></span></summary>
+          <div class="faq__body"><p>רק אם חסמתם את הסורק של גוגל עצמו, Googlebot, או את כולם בבת אחת עם כוכבית. כל קבוצה בקובץ חלה על השם שכתוב מעליה. שורה שחוסמת את ClaudeBot נוגעת ל-Anthropic בלבד, והסורק של גוגל ממשיך לפי הכללים שנכתבו לו.</p></div>
+        </details>
+        <details>
+          <summary>אם אחסום את ClaudeBot היום, Claude ישכח את האתר שלי?<span class="plus" aria-hidden="true"></span></summary>
+          <div class="faq__body"><p>לפי Anthropic, החסימה מסמנת שחומרים עתידיים מהאתר לא ייכנסו לאימון. על מה שנאסף לפני כן היא לא אומרת דבר. וכל עוד Claude-SearchBot ו-Claude-User לא חסומים, Claude עדיין יכול לקרוא את האתר כשמשתמש שואל עליו.</p></div>
+        </details>
+        <details>
+          <summary>צריך לכתוב בקובץ שורה לכל סורק?<span class="plus" aria-hidden="true"></span></summary>
+          <div class="faq__body"><p>רק לסורק שאתם רוצים להתייחס אליו אחרת מכולם. הכללים שמתחת לכוכבית חלים על כל מי שלא הוזכר בשם. אנחנו כתבנו את סורקי ה-AI בשמם גם כדי לאשר אותם, כי ככה מי שפותח את הקובץ רואה שזו החלטה ולא שכחה.</p></div>
+        </details>
+        <details>
+          <summary>מה ההבדל בין robots.txt ל-llms.txt?<span class="plus" aria-hidden="true"></span></summary>
+          <div class="faq__body"><p>robots.txt אומר לסורקים לאן מותר להם להיכנס. llms.txt הוא הצעה חדשה יותר: קובץ שמסכם למודלי AI את האתר בטקסט פשוט. לפי Web Almanac 2025 הוא קיים רק בכ-2% מהאתרים, ואין עדיין הסכמה שהמנועים הגדולים קוראים אותו. לאתר שלנו יש אחד.</p></div>
+        </details>
+        <details>
+          <summary>הקובץ מסתיר עמודים מגולשים?<span class="plus" aria-hidden="true"></span></summary>
+          <div class="faq__body"><p>שום דבר. גולש שמקליד כתובת של עמוד יגיע אליו בלי קשר למה שכתוב בקובץ. ויש לזה צד הפוך: כל אחד יכול לקרוא את robots.txt, אז כתובת של עמוד שאתם רוצים להסתיר רק תמשוך אליו תשומת לב. עמוד פרטי מגינים עליו בסיסמה.</p></div>
+        </details>
+        <details>
+          <summary>איך יודעים אם סורק AI באמת נכנס לאתר?<span class="plus" aria-hidden="true"></span></summary>
+          <div class="faq__body"><p>ביומני השרת, שבהם כל ביקור נרשם יחד עם השם שהסורק מציג. מי שמנהל את האחסון יכול לסנן לפי ClaudeBot, GPTBot או כל שם אחר ולראות כמה פעמים ביקשו עמודים ומתי. כלי אנליטיקס רגיל בדרך כלל לא מראה את הביקורים האלה.</p></div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================ CTA ================================ -->
+  <section class="section">
+    <div class="container">
+      <div class="cta-band">
+        <span class="eyebrow eyebrow--onDark">קובץ אחד</span>
+        <h2>הקובץ אצלכם נראה כמו שפה זרה? נקרא אותו יחד</h2>
+        <p class="lead">שלחו את כתובת האתר, ונגיד לכם אילו סורקים נכנסים, אילו חסומים, ואם החסימה נראית כמו החלטה או כמו שארית של תוסף.</p>
+        <div class="btn-row btn-row--center">
+          <a class="btn btn-white btn-lg" href="/contact/">
+            לפנייה אלינו
+            <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>

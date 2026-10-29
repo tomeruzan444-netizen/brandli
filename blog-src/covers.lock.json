@@ -1,8 +1,11 @@
 {
-  "accessibility-overlays": "d673a8da9a47",
-  "accessibility-overlays/overlay-vs-code": "f108170be76d",
-  "accessibility-overlays/webaim-errors": "9aa616fa03cc",
-  "google-ai-overviews-clicks": "065ea848392b",
-  "google-ai-overviews-clicks/serp-ai-box": "152369b7463c",
-  "google-ai-overviews-clicks/search-console-trend": "cd33211a30ed"
+  "accessibility-overlays": "d23fdd1c65cf",
+  "accessibility-overlays/overlay-vs-code": "57ccdae04da5",
+  "accessibility-overlays/webaim-errors": "74768ba24b23",
+  "google-ai-overviews-clicks": "21150ad748e6",
+  "google-ai-overviews-clicks/serp-ai-box": "8445651ea233",
+  "google-ai-overviews-clicks/search-console-trend": "b39afb4f7d4f",
+  "ai-crawlers-robots-txt": "33d16abc8db1",
+  "ai-crawlers-robots-txt/robots-three-bots": "e772ef5ab120",
+  "ai-crawlers-robots-txt/ai-bots-respect": "cfad9d1e60a5"
 }

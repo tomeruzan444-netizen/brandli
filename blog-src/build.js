@@ -17,6 +17,25 @@ const he = d => { const [y, m, day] = d.split('-').map(Number);
 /* חדש ראשון */
 const POSTS = [
   {
+    slug: 'ai-crawlers-robots-txt', main: 'posts/ai-crawlers-robots-txt.html', date: '2026-10-29',
+    title: '3 סורקי AI של אותה חברה, ורק אחד מהם לומד מהאתר שלכם',
+    metaTitle: 'סורקי AI באתר שלכם | מי חסום ב-robots.txt ולמה זה משנה',
+    desc: 'סורקי AI נכנסים לאתר שלכם למטרות שונות: אימון, חיפוש ותשובה למשתמש. מה חוסמת שורה אחת ב-robots.txt, כמה מ-200 סורקים מכבדים אותו, ובדיקה עצמית של 5 דקות.',
+    og: 'סורק אחד לומד, אחד מחפש ואחד עונה למשתמש. מה חוסמת שורה אחת ב-robots.txt, ואיך בודקים את הקובץ שלכם בדפדפן.',
+    card: 'ספרנו 200 סורקי AI ברשימה פתוחה ובדקנו כמה מהם מכבדים את robots.txt. ובדיקה של 5 דקות לקובץ שלכם.',
+    about: ['robots.txt', 'AI crawlers', 'ClaudeBot', 'GPTBot'],
+    cover: { tag: 'סורקי AI', accent: 'emerald', scene: { type: 'robots', rules: [{ agent: 'ClaudeBot', allow: false },
+      { agent: 'Claude-SearchBot', allow: true }, { agent: 'Claude-User', allow: true }] },
+      badge: { value: '31%', label: 'מסורקי ה-AI ידוע שמכבדים את הקובץ' } },
+    figures: [
+      { name: 'robots-three-bots', accent: 'emerald', scene: { type: 'robots', rules: [{ agent: 'ClaudeBot', allow: false },
+        { agent: 'Claude-SearchBot', allow: true }, { agent: 'Claude-User', allow: true }] } },
+      { name: 'ai-bots-respect', accent: 'emerald', scene: { type: 'bars', title: '200 סורקי AI: מי מכבד את robots.txt', max: 200,
+        items: [{ label: 'לא ידוע', value: '127' }, { label: 'מתועד שמכבדים', value: '62', key: true },
+          { label: 'מתועד שלא מכבדים', value: '11' }] } },
+    ],
+  },
+  {
     slug: 'accessibility-overlays', main: 'posts/accessibility-overlays.html', date: '2026-10-27',
     title: 'תוסף נגישות לאתר: מה הוא באמת עושה, ומה נשאר שבור מתחתיו',
     metaTitle: 'תוסף נגישות לאתר | מה הוא עושה ומה הוא לא מתקן',

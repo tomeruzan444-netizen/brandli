@@ -51,6 +51,7 @@ figures: [
 | `dashboard` | גרף בסגנון Search Console, שני קווים | `upLabel`, `downLabel`, `impressions[]`, `clicks[]` (0-100) | מגמות, מדידה, ירידה בתנועה |
 | `browser-a11y` | אתר עם תפריט נגישות פתוח ובעיות מסומנות באדום | (אין) | נגישות, בעיות קוד, תוספים |
 | `chat` | שיחה עם צ׳טבוט שממליץ על עסקים | `question` (לא חובה) | ChatGPT, מנועי תשובות, AI |
+| `robots` | קובץ robots.txt בחלון: שם סורק, ומתחתיו Allow בירוק או Disallow באדום | `rules[{agent,allow}]` (2-4) | סורקים, robots.txt, חסימות |
 | `bars` | עמודות אופקיות עם תוויות וערכים | `items[{label,value,key}]` (2-7), `title`, `max`, `highlightFirst` | נתונים אמיתיים מהכתבה |
 | `art` | איור מוכן מקובץ על כל הקנבס, ושכבת המותג מעליו | `src` (נתיב בריפו), `position` | שער עם איור AI מ-Canva, ראו למטה |
 | `icon` | אייקון גדול בטבעות | `icon` | כשאין סצנה שמתאימה |

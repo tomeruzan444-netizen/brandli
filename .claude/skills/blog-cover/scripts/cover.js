@@ -17,7 +17,7 @@
      { "kind": "figure", "name": "serp-ai-box", "accent": "cyan", "scene": { ... } }
      פלט: <name>.webp (1200x675)
 
-   סוגי scene: serp, dashboard, browser-a11y, chat, bars, icon. פירוט ב-SKILL.md.
+   סוגי scene: serp, dashboard, browser-a11y, chat, bars, robots, art, icon. פירוט ב-SKILL.md.
    ============================================================================ */
 const fs = require('fs');
 const os = require('os');
@@ -200,6 +200,27 @@ const SCENES = {
             <i style="display:block;width:${Math.max(3, nums[n] / max * 100)}%;border-radius:inherit;background:${it.key || n === 0 && s.highlightFirst ? A : '#B9C2F5'}"></i></span>
           <span style="font-size:${rowH > 50 ? 30 : 25}px;font-weight:900;direction:ltr;text-align:left;color:${it.key || n === 0 && s.highlightFirst ? A : 'var(--ink)'}">${esc(it.value)}</span>
         </div>`).join('')}
+      </div>
+    </div>`;
+  },
+
+  /* קובץ robots.txt בחלון: שם של סורק, ומתחתיו אם הוא מורשה או חסום. ירוק נכנס, אדום בחוץ */
+  robots(s) {
+    const rules = s.rules || [{ agent: 'Search-Bot', allow: true }, { agent: 'Training-Bot', allow: false }, { agent: 'User-Bot', allow: true }];
+    if (rules.length < 2 || rules.length > 4) fail('robots צריך בין 2 ל-4 rules');
+    const mono = 'font-family:ui-monospace,Menlo,Consolas,monospace;direction:ltr;text-align:left';
+    const block = r => `<div style="position:relative;display:flex;align-items:center;gap:22px;padding:18px 24px;border-radius:16px;direction:ltr;
+        background:${r.allow ? 'rgba(16,185,129,.08)' : 'rgba(244,63,94,.08)'};border:2px solid ${r.allow ? 'rgba(16,185,129,.45)' : 'rgba(244,63,94,.45)'}">
+        <span style="flex:none;width:52px;height:52px;border-radius:14px;display:grid;place-items:center;color:#fff;background:${r.allow ? 'var(--ok)' : 'var(--bad)'}">
+          ${r.allow ? svg('check', 'width="28" height="28" stroke-width="3"') : '<svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>'}</span>
+        <div style="${mono};font-size:25px;line-height:1.45;font-weight:600">
+          <div><span style="color:#8288A1">User-agent:</span> ${esc(r.agent)}</div>
+          <div><span style="color:#8288A1">${r.allow ? 'Allow:' : 'Disallow:'}</span> <span style="color:${r.allow ? '#059669' : '#E11D48'}">/</span></div>
+        </div></div>`;
+    return `<div class="win" style="inset:0">${winBar}
+      <div style="padding:26px 34px;display:grid;gap:${rules.length > 3 ? 14 : 20}px">
+        <div style="${mono};font-size:20px;font-weight:700;color:#8288A1"># robots.txt</div>
+        ${rules.map(block).join('')}
       </div>
     </div>`;
   },
