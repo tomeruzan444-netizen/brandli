@@ -19,6 +19,7 @@ const PAGES = [
   { f: 'websites-for-electricians/index.html', url: '/websites-for-electricians/', kw: 'בניית אתרים לחשמלאים' },
   { f: 'websites-for-business-consultants/index.html', url: '/websites-for-business-consultants/', kw: 'בניית אתרים ליועצים עסקיים' },
   { f: 'websites-for-architects/index.html', url: '/websites-for-architects/', kw: 'בניית אתרים לאדריכלים' },
+  { f: 'websites-for-insurance-agents/index.html', url: '/websites-for-insurance-agents/', kw: 'בניית אתרים לסוכני ביטוח' },
   { f: 'blog/index.html', url: '/blog/', kw: 'בלוג בניית אתרים' },
   { f: 'blog/ai-crawlers-robots-txt/index.html', url: '/blog/ai-crawlers-robots-txt/', kw: 'סורקי AI' },
   { f: 'blog/google-ai-overviews-clicks/index.html', url: '/blog/google-ai-overviews-clicks/', kw: 'סקירות AI של גוגל' },

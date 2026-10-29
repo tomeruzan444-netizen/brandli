@@ -55,6 +55,7 @@ description: Add or review internal links between Brandli site pages. Use when w
 | חשמלאים, רישיון, גלריית עבודות | `/websites-for-electricians/` |
 | יועצים עסקיים, מיצוב אישי, מקרי לקוח | `/websites-for-business-consultants/` |
 | אדריכלים, עמודי פרויקט, הכנת צילומים, זכויות צלם, הדמיות | `/websites-for-architects/` |
+| סוכני ביטוח, רגעי חיים, משכנתא, תאונה ותביעה, הר הביטוח, רישיון סוכן | `/websites-for-insurance-agents/` |
 | ניתוח שינויים בגוגל ובכלי AI, מקרי בוחן, מדריכים עם תאריך | `/blog/` וכתבות תחת `/blog/<slug>/` |
 
 **מינימום קישורים מתוך הטקסט הזורם** (לא מהתפריט ולא מה-breadcrumbs):

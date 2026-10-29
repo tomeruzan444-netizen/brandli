@@ -25,6 +25,7 @@ const PAGES = [
   { f: 'websites-for-electricians/index.html', url: '/websites-for-electricians/', kw: 'בניית אתרים לחשמלאים', minLinks: 3 },
   { f: 'websites-for-business-consultants/index.html', url: '/websites-for-business-consultants/', kw: 'בניית אתרים ליועצים עסקיים', minLinks: 3 },
   { f: 'websites-for-architects/index.html', url: '/websites-for-architects/', kw: 'בניית אתרים לאדריכלים', minLinks: 3 },
+  { f: 'websites-for-insurance-agents/index.html', url: '/websites-for-insurance-agents/', kw: 'בניית אתרים לסוכני ביטוח', minLinks: 3 },
   { f: 'ecommerce-websites/index.html', url: '/ecommerce-websites/', kw: 'בניית אתרי מסחר', minLinks: 3 },
   { f: 'business-automation/index.html', url: '/business-automation/', kw: 'אוטומציות לעסקים', minLinks: 3 },
   { f: 'crm-system/index.html', url: '/crm-system/', kw: 'בניית מערכת CRM לעסק', minLinks: 3 },
