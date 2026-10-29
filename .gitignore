@@ -21,3 +21,6 @@ package-lock.json
 _*.html
 
 blog-src/.build/
+
+# הערות עבודה פנימיות על הסקילים (נשארות רק במחשב, הריפו ציבורי)
+.claude/skill-notes.md
