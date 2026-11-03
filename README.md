@@ -19,7 +19,7 @@
 | טלפון ראשי | 03-376-8177 | כל העמודים (header, footer, CTA) |
 | תמיכה טכנית | 073-374-2201 | contact.html |
 | מוקד חירום | 073-374-2299 | contact.html |
-| דוא״ל | info@ / support@ / privacy@ / accessibility@brandli.co.il | כל העמודים |
+| דוא״ל | brandliweb100@gmail.com | כל העמודים |
 | קואורדינטות | 32.0715, 34.7938 | JSON-LD ב-index.html |
 | רשתות חברתיות | `linkedin.com/company/brandli` וכו׳ | פוטר + `sameAs` ב-JSON-LD |
 | רכז נגישות | "אורי לביא" | accessibility.html |
