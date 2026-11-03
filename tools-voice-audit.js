@@ -56,6 +56,7 @@ const strip = s => s
 /* מה שחוזר בכוונה בכל עמוד לא נחשב: מסלול ניווט, חתימת הכותב, תגיות, כרטיס
    מחיר, כפתורים ושאלות השו"ת עצמן (חמש שאלות חוזרות מומלצות במדריך) */
 const clean = main => main
+  .replace(/<form[\s\S]*?<\/form>/g, ' ')
   .replace(/<nav[\s\S]*?<\/nav>/g, ' ')
   .replace(/<div class="byline">[\s\S]*?<\/div>\s*<\/div>/g, ' ')
   .replace(/<div class="pill-tags">[\s\S]*?<\/div>/g, ' ')

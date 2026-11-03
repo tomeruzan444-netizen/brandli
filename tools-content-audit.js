@@ -194,7 +194,7 @@ const isContactBlock = t =>
 
 /* קרדיט המחבר הוא boilerplate שחוזר בכל עמוד, כמו הפוטר. הוא אינו תוכן גוף
    ואינו נחשב לשכפול. מוסר מהבדיקה כדי שלא יטביע ממצאים אמיתיים. */
-const stripBoilerplate = m => m.replace(/<div class="byline">[\s\S]*?<\/div>\s*<\/div>/g, ' ');
+const stripBoilerplate = m => m.replace(/<form[\s\S]*?<\/form>/g, ' ').replace(/<div class="byline">[\s\S]*?<\/div>\s*<\/div>/g, ' ');
 
 const paras = [];
 for (const p of PAGES) {

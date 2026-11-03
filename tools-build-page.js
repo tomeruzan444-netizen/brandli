@@ -8,6 +8,7 @@
    ld = מערך צמתים ל-@graph, בלי FAQPage ו-Person
    ============================================================================ */
 const fs = require('fs');
+const { addLeadForm } = require('./tools-lead-form.js');
 const cfg = JSON.parse(fs.readFileSync(process.argv[2], 'utf8'));
 const R = cfg.root;
 const sib = fs.readFileSync(R + '/' + cfg.shellFrom, 'utf8');
@@ -63,5 +64,5 @@ const after = sib.slice(sib.indexOf('</main>') + '</main>'.length);
 
 fs.mkdirSync(R + '/' + cfg.out.replace(/\/index\.html$/, ''), { recursive: true });
 fs.writeFileSync(R + '/' + cfg.out,
-  head + '<script type="application/ld+json">\n' + json + '\n</script>' + between + main.trimEnd() + after);
+  head + '<script type="application/ld+json">\n' + json + '\n</script>' + between + addLeadForm(main.trimEnd()) + after);
 console.log(cfg.out, '| faq', faq.length, '| title', [...cfg.title].length, '| desc', [...cfg.description].length);
