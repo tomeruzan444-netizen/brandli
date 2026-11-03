@@ -124,6 +124,7 @@
   /* ------------------------------------------------------------------
      5. ולידציה + שליחת טופס
      ------------------------------------------------------------------ */
+  var LEAD_INBOX = 'ben3n4456@gmail.com';
   $$('form[data-validate]').forEach(function (form) {
     var status = $('.form-status', form);
 
@@ -154,7 +155,7 @@
         setError(field, 'כתובת דוא״ל לא תקינה');
         return false;
       }
-      if (value && type === 'tel' && !/^0\d{1,2}[-\s]?\d{7}$|^\+972[-\s]?\d{8,9}$/.test(value.replace(/\s/g, ''))) {
+      if (value && type === 'tel' && !/^0\d{8,9}$|^\+972\d{8,9}$/.test(value.replace(/[\s-]/g, ''))) {
         setError(field, 'מספר טלפון לא תקין (למשל 050-1234567)');
         return false;
       }
@@ -203,23 +204,72 @@
       }
 
       /* --------------------------------------------------------------
-         TODO לפני עלייה לאוויר: לחבר לשרת / CRM.
-         כרגע מדובר בהדגמה בצד לקוח בלבד - הנתונים אינם נשלחים לשום מקום.
-         דוגמה:
-           fetch('/api/lead', { method: 'POST', body: new FormData(form) })
+         שליחה למייל דרך FormSubmit. הודעת הצלחה מוצגת רק אחרי אישור מהשירות.
          -------------------------------------------------------------- */
+      var showStatus = function (cls, text) {
+        if (!status) return;
+        status.className = 'form-status ' + cls;
+        status.textContent = text;
+        if (status.focus) status.focus();
+      };
+      var okText = 'תודה! הפנייה התקבלה. נחזור אליכם בתוך יום עסקים אחד.';
+
+      /* שדה מלכודת לבוטים: מדווחים הצלחה ולא שולחים כלום */
+      var honey = $('input[name="_honey"]', form);
+      if (honey && honey.value) {
+        showStatus('is-ok', okText);
+        form.reset();
+        return;
+      }
+
       var btn = $('button[type="submit"]', form);
       if (btn) { btn.disabled = true; btn.dataset.label = btn.textContent; btn.textContent = 'שולח…'; }
 
-      window.setTimeout(function () {
-        if (status) {
-          status.className = 'form-status is-ok';
-          status.textContent = 'תודה! הפנייה התקבלה. נחזור אליכם בתוך יום עסקים אחד.';
-        }
-        form.reset();
-        if (btn) { btn.disabled = false; btn.textContent = btn.dataset.label || 'שליחה'; }
-        if (status) status.focus && status.focus();
-      }, 700);
+      var source = form.getAttribute('data-lead') || 'טופס באתר';
+      var payload = {
+        _subject: 'פנייה חדשה מהאתר - ' + source,
+        _template: 'table',
+        _captcha: 'false',
+        'מקור': source,
+        'עמוד': window.location.href
+      };
+      $$('.field', form).forEach(function (field) {
+        var input = $('input, select, textarea', field);
+        var label = $('label', field);
+        if (!input || !label || input.type === 'checkbox') return;
+        var value = input.tagName === 'SELECT'
+          ? (input.value ? input.options[input.selectedIndex].text : '')
+          : input.value.trim();
+        if (!value) return;
+        /* השירות מזהה את השדה email כדי לאפשר "השב" ישירות לפונה */
+        var key = input.name === 'email' ? 'email' : label.textContent.replace('*', '').trim();
+        payload[key] = value;
+      });
+
+      var controller = window.AbortController ? new AbortController() : null;
+      var timer = controller ? window.setTimeout(function () { controller.abort(); }, 20000) : null;
+
+      fetch('https://formsubmit.co/ajax/' + LEAD_INBOX, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(payload),
+        signal: controller ? controller.signal : undefined
+      })
+        .then(function (res) { return res.json(); })
+        .then(function (data) {
+          if (String(data.success) !== 'true') throw new Error(data.message || 'send failed');
+          showStatus('is-ok', okText);
+          form.reset();
+          if (window.fbq) window.fbq('track', 'Lead');
+        })
+        .catch(function () {
+          /* הפרטים נשארים בטופס כדי שלא יצטרכו להקליד שוב */
+          showStatus('is-err', 'הפנייה לא נשלחה בגלל תקלה אצלנו. נסו שוב או התקשרו ל-03-376-8177.');
+        })
+        .then(function () {
+          if (timer) window.clearTimeout(timer);
+          if (btn) { btn.disabled = false; btn.textContent = btn.dataset.label || 'שליחה'; }
+        });
     });
   });
 

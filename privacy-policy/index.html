@@ -51,7 +51,7 @@
       "publisher": {
         "@id": "https://brandli.co.il/#organization"
       },
-      "dateModified": "2026-08-05",
+      "dateModified": "2026-11-03",
       "breadcrumb": {
         "@id": "https://brandli.co.il/privacy-policy/#breadcrumb"
       },
@@ -263,6 +263,34 @@ fbq('track', 'PageView');
 </header>
 
 <div class="page-body">
+<!-- טופס יצירת קשר עליון -->
+<section class="top-lead" aria-labelledby="top-lead-title">
+  <div class="container">
+    <form class="top-lead__form" data-validate data-lead="טופס עליון" novalidate action="#" method="post">
+      <p class="top-lead__title" id="top-lead-title">השאירו פרטים ונחזור אליכם</p>
+      <div class="field">
+        <label for="tl-name">שם מלא</label>
+        <input type="text" id="tl-name" name="name" autocomplete="name" required aria-describedby="tl-e-name">
+        <span class="err" id="tl-e-name" role="alert" aria-live="polite"></span>
+      </div>
+      <div class="field">
+        <label for="tl-business">תחום העסק</label>
+        <input type="text" id="tl-business" name="business" required aria-describedby="tl-e-business">
+        <span class="err" id="tl-e-business" role="alert" aria-live="polite"></span>
+      </div>
+      <div class="field">
+        <label for="tl-phone">מספר טלפון</label>
+        <input type="tel" id="tl-phone" name="phone" autocomplete="tel" required dir="ltr" aria-describedby="tl-e-phone">
+        <span class="err" id="tl-e-phone" role="alert" aria-live="polite"></span>
+      </div>
+      <input class="hp-field" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <button class="btn btn-primary" type="submit">שליחה</button>
+      <p class="form-status" role="status" aria-live="polite" tabindex="-1"></p>
+      <p class="top-lead__note">בשליחה אתם מאשרים את <a href="/privacy-policy/">מדיניות הפרטיות</a> ושניצור איתכם קשר בנוגע לפנייה.</p>
+    </form>
+  </div>
+</section>
+
 <main id="main">
 
   <section class="page-hero">
@@ -297,7 +325,7 @@ fbq('track', 'PageView');
   <section class="section section--tight">
     <div class="container">
       <div class="prose">
-        <p class="updated">עודכן לאחרונה: 1 באוגוסט 2026 · גרסה 1.0</p>
+        <p class="updated">עודכן לאחרונה: 3 בנובמבר 2026 · גרסה 1.1</p>
 
         <div class="callout">
           <p>
@@ -347,7 +375,7 @@ fbq('track', 'PageView');
 
         <h3>2.1 מידע שאתם מוסרים לנו ביוזמתכם</h3>
         <ul>
-          <li>שם מלא, שם העסק, מספר טלפון וכתובת דוא״ל - בעת מילוי טופס יצירת קשר.</li>
+          <li>שם מלא, שם העסק או תחום העסק, מספר טלפון וכתובת דוא״ל - בעת מילוי טופס יצירת קשר.</li>
           <li>כתובת האתר הקיים ופרטים על העסק - כשאתם מבקשים בדיקת אתר או הצעת מחיר.</li>
           <li>תוכן ההודעה שאתם כותבים לנו, בכל ערוץ (טופס, דוא״ל, טלפון או וואטסאפ).</li>
           <li>פרטי התקשרות וחיוב, לרבות פרטי חשבונית - ללקוחות שהתקשרו איתנו בהסכם.</li>
@@ -418,6 +446,7 @@ fbq('track', 'PageView');
         </p>
         <ul>
           <li><strong>ספקי תשתית ושירות</strong> - חוות שרתים, שירותי CDN ואבטחה, מערכת דיוור, מערכת CRM וספק סליקה. כל אחד מהם מחויב בהסכם לשמירת סודיות ולעיבוד המידע רק לפי הוראותינו.</li>
+          <li><strong>שליחת טפסים</strong> - פרטים שאתם ממלאים בטופס באתר עוברים דרך השירות FormSubmit ונשלחים לתיבת הדוא״ל שלנו ב-Gmail.</li>
           <li><strong>ספקי אנליטיקס</strong> - לצורך ניתוח שימוש מצטבר באתר.</li>
           <li><strong>פלטפורמות פרסום</strong> - Meta Platforms, דרך Meta Pixel שמותקן באתר, לצורך מדידת קמפיינים ופרסום חוזר. ראו סעיף 4.</li>
           <li><strong>יועצים מקצועיים</strong> - רואי חשבון ועורכי דין, ככל שנדרש.</li>

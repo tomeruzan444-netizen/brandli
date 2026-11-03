@@ -198,6 +198,34 @@ fbq('track', 'PageView');
 </header>
 
 <div class="page-body">
+<!-- טופס יצירת קשר עליון -->
+<section class="top-lead" aria-labelledby="top-lead-title">
+  <div class="container">
+    <form class="top-lead__form" data-validate data-lead="טופס עליון" novalidate action="#" method="post">
+      <p class="top-lead__title" id="top-lead-title">השאירו פרטים ונחזור אליכם</p>
+      <div class="field">
+        <label for="tl-name">שם מלא</label>
+        <input type="text" id="tl-name" name="name" autocomplete="name" required aria-describedby="tl-e-name">
+        <span class="err" id="tl-e-name" role="alert" aria-live="polite"></span>
+      </div>
+      <div class="field">
+        <label for="tl-business">תחום העסק</label>
+        <input type="text" id="tl-business" name="business" required aria-describedby="tl-e-business">
+        <span class="err" id="tl-e-business" role="alert" aria-live="polite"></span>
+      </div>
+      <div class="field">
+        <label for="tl-phone">מספר טלפון</label>
+        <input type="tel" id="tl-phone" name="phone" autocomplete="tel" required dir="ltr" aria-describedby="tl-e-phone">
+        <span class="err" id="tl-e-phone" role="alert" aria-live="polite"></span>
+      </div>
+      <input class="hp-field" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <button class="btn btn-primary" type="submit">שליחה</button>
+      <p class="form-status" role="status" aria-live="polite" tabindex="-1"></p>
+      <p class="top-lead__note">בשליחה אתם מאשרים את <a href="/privacy-policy/">מדיניות הפרטיות</a> ושניצור איתכם קשר בנוגע לפנייה.</p>
+    </form>
+  </div>
+</section>
+
 <main id="main">
 
   <section class="page-hero grid-bg">
