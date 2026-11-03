@@ -17,6 +17,27 @@ const he = d => { const [y, m, day] = d.split('-').map(Number);
 /* חדש ראשון */
 const POSTS = [
   {
+    slug: 'web-page-weight', main: 'posts/web-page-weight.html', date: '2026-11-03',
+    title: 'בדקנו את משקל עמוד הבית שלנו, והאותיות שקלו כמעט פי 4 מהמילים',
+    metaTitle: 'משקל עמוד באתר | הגופן שלנו שקל כמעט פי 4 מהמילים',
+    desc: 'משקל עמוד באתר: שקלנו 29 עמודים שלנו וגילינו שהגופן כבד כמעט פי 4 מהמילים. כמה זמן זה לוקח בקליטה חלשה, איפה המשקל מסתתר, ואיך שוקלים עמוד אצלכם ב-5 דקות.',
+    og: 'שקלנו כל עמוד באתר שלנו, והגופן שקל יותר מכל המילים. כמה זה בשניות, ואיך שוקלים עמוד אצלכם ב-5 דקות.',
+    card: 'שקלנו 29 עמודים באתר שלנו, מצאנו שהגופן כבד מהמילים, והראינו איך שוקלים עמוד אצלכם בלי לדעת קוד.',
+    about: ['Web page weight', 'Web fonts', 'Page speed', 'Chrome DevTools'],
+    cover: { tag: 'משקל עמוד', accent: 'brand', scene: { type: 'network', files: [
+      { name: 'heebo-latin.woff2', size: 30.1, key: true }, { name: 'heebo-hebrew.woff2', size: 12.0, key: true },
+      { name: 'index.html', size: 11.8 }, { name: 'style.css', size: 11.4 }, { name: 'logo.webp', size: 4.7 }, { name: 'main.js', size: 3.2 }] },
+      badge: { value: '58%', label: 'ממשקל עמוד הבית הוא הגופן' } },
+    figures: [
+      { name: 'network-home', accent: 'brand', scene: { type: 'network', files: [
+        { name: 'heebo-latin.woff2', size: 30.1, key: true }, { name: 'heebo-hebrew.woff2', size: 12.0, key: true },
+        { name: 'index.html', size: 11.8 }, { name: 'style.css', size: 11.4 }, { name: 'logo.webp', size: 4.7 }, { name: 'main.js', size: 3.2 }] } },
+      { name: 'font-vs-words', accent: 'brand', scene: { type: 'bars', title: 'הגופן מול המילים, בקילובייט', max: 45,
+        items: [{ label: 'הגופן, בכל עמוד', value: '42.2', key: true }, { label: 'מילים: מאמני כושר', value: '16.8' },
+          { label: 'מילים: עמוד הבית', value: '11.4' }, { label: 'מילים: צרו קשר', value: '6.8' }] } },
+    ],
+  },
+  {
     slug: 'ai-crawlers-robots-txt', main: 'posts/ai-crawlers-robots-txt.html', date: '2026-10-29',
     title: '3 סורקי AI של אותה חברה, ורק אחד מהם לומד מהאתר שלכם',
     metaTitle: 'סורקי AI באתר שלכם | מי חסום ב-robots.txt ולמה זה משנה',

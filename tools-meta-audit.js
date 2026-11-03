@@ -1,7 +1,7 @@
 /* ביקורת מטא: אורך, מיקום ביטוי המפתח, ייחודיות, התאמה ל-H1 ול-OG */
 const fs = require('fs');
 const path = require('path');
-const ROOT = 'c:\\d-e-v\\brandli';
+const ROOT = __dirname;
 
 const PAGES = [
   { f: 'index.html',                       url: '/',                       kw: 'בניית אתרים' },
@@ -23,6 +23,7 @@ const PAGES = [
   { f: 'websites-for-photographers/index.html', url: '/websites-for-photographers/', kw: 'בניית אתרים לצלמים' },
   { f: 'websites-for-fitness-trainers/index.html', url: '/websites-for-fitness-trainers/', kw: 'בניית אתרים למאמני כושר' },
   { f: 'blog/index.html', url: '/blog/', kw: 'בלוג בניית אתרים' },
+  { f: 'blog/web-page-weight/index.html', url: '/blog/web-page-weight/', kw: 'משקל עמוד' },
   { f: 'blog/ai-crawlers-robots-txt/index.html', url: '/blog/ai-crawlers-robots-txt/', kw: 'סורקי AI' },
   { f: 'blog/google-ai-overviews-clicks/index.html', url: '/blog/google-ai-overviews-clicks/', kw: 'סקירות AI של גוגל' },
   { f: 'blog/accessibility-overlays/index.html', url: '/blog/accessibility-overlays/', kw: 'תוסף נגישות לאתר' },

@@ -1,11 +1,14 @@
 {
-  "accessibility-overlays": "d23fdd1c65cf",
-  "accessibility-overlays/overlay-vs-code": "57ccdae04da5",
-  "accessibility-overlays/webaim-errors": "74768ba24b23",
-  "google-ai-overviews-clicks": "21150ad748e6",
-  "google-ai-overviews-clicks/serp-ai-box": "8445651ea233",
-  "google-ai-overviews-clicks/search-console-trend": "b39afb4f7d4f",
-  "ai-crawlers-robots-txt": "33d16abc8db1",
-  "ai-crawlers-robots-txt/robots-three-bots": "e772ef5ab120",
-  "ai-crawlers-robots-txt/ai-bots-respect": "cfad9d1e60a5"
+  "accessibility-overlays": "55a8dc659fd2",
+  "accessibility-overlays/overlay-vs-code": "1da3ea599d46",
+  "accessibility-overlays/webaim-errors": "c6aff4f87d54",
+  "google-ai-overviews-clicks": "ee6a7605f218",
+  "google-ai-overviews-clicks/serp-ai-box": "a74aaa5742e5",
+  "google-ai-overviews-clicks/search-console-trend": "1a09846aae22",
+  "ai-crawlers-robots-txt": "1642594c44b1",
+  "ai-crawlers-robots-txt/robots-three-bots": "a71ea24cf4fa",
+  "ai-crawlers-robots-txt/ai-bots-respect": "e4ff0a8beb42",
+  "web-page-weight": "0f517cb84b46",
+  "web-page-weight/network-home": "c868de4c6d47",
+  "web-page-weight/font-vs-words": "1b93be447a3c"
 }

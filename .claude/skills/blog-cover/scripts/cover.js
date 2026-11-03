@@ -17,7 +17,7 @@
      { "kind": "figure", "name": "serp-ai-box", "accent": "cyan", "scene": { ... } }
      פלט: <name>.webp (1200x675)
 
-   סוגי scene: serp, dashboard, browser-a11y, chat, bars, robots, art, icon. פירוט ב-SKILL.md.
+   סוגי scene: serp, dashboard, browser-a11y, chat, bars, robots, network, art, icon. פירוט ב-SKILL.md.
    ============================================================================ */
 const fs = require('fs');
 const os = require('os');
@@ -221,6 +221,31 @@ const SCENES = {
       <div style="padding:26px 34px;display:grid;gap:${rules.length > 3 ? 14 : 20}px">
         <div style="${mono};font-size:20px;font-weight:700;color:#8288A1"># robots.txt</div>
         ${rules.map(block).join('')}
+      </div>
+    </div>`;
+  },
+
+  /* חלון "רשת" בסגנון כלי המפתחים: כל קובץ שהעמוד הוריד, עם פס לפי המשקל, וסיכום בתחתית.
+     files[{name,size,key}] בקילובייט, 3-7 שורות. רק משקלים שנמדדו באמת */
+  network(s, A) {
+    const files = s.files || [];
+    if (files.length < 3 || files.length > 7) fail('network צריך בין 3 ל-7 files');
+    const nums = files.map(f => Number(f.size));
+    if (nums.some(n => isNaN(n) || n <= 0)) fail('כל size ב-network חייב להיות מספר חיובי בקילובייט');
+    const max = Math.max(...nums), total = nums.reduce((a, c) => a + c, 0);
+    const mono = 'font-family:ui-monospace,Menlo,Consolas,monospace';
+    const rowH = Math.min(58, Math.floor(400 / files.length));
+    return `<div class="win" style="inset:0">${winBar}
+      <div style="padding:22px 34px 0;direction:ltr">
+        <div style="display:grid;grid-template-columns:300px 1fr 110px;gap:18px;padding-bottom:12px;border-bottom:1.5px solid var(--line);${mono};font-size:17px;font-weight:700;color:#8288A1">
+          <span>Name</span><span></span><span style="text-align:right">Size</span></div>
+        ${files.map((f, n) => `<div style="display:grid;grid-template-columns:300px 1fr 110px;gap:18px;align-items:center;height:${rowH}px;border-bottom:1px solid var(--line)">
+          <span style="${mono};font-size:${rowH > 50 ? 21 : 19}px;font-weight:600;color:${f.key ? A : 'var(--ink)'};white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${esc(f.name)}</span>
+          <span style="height:${Math.round(rowH * 0.36)}px;border-radius:999px;background:var(--sk-2);overflow:hidden;display:flex">
+            <i style="display:block;width:${Math.max(3, nums[n] / max * 100)}%;border-radius:inherit;background:${f.key ? A : '#B9C2F5'}"></i></span>
+          <span style="${mono};font-size:${rowH > 50 ? 22 : 20}px;font-weight:800;text-align:right;color:${f.key ? A : 'var(--ink)'}">${esc(nums[n].toFixed(1))} kB</span>
+        </div>`).join('')}
+        <div style="padding:14px 0;${mono};font-size:18px;font-weight:700;color:#8288A1">${files.length} requests &nbsp;|&nbsp; ${esc(total.toFixed(1))} kB transferred</div>
       </div>
     </div>`;
   },
