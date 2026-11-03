@@ -21,7 +21,7 @@
 | מוקד חירום | 073-374-2299 | contact.html |
 | דוא״ל | brandliweb100@gmail.com | כל העמודים |
 | קואורדינטות | 32.0715, 34.7938 | JSON-LD ב-index.html |
-| רשתות חברתיות | `facebook.com/brandli.co.il` | פוטר + `sameAs` ב-JSON-LD |
+| רשתות חברתיות | `facebook.com/brandli.co.il`, `instagram.com/brandliweb` | כותרת + פוטר + `sameAs` ב-JSON-LD |
 | רכז נגישות | "אורי לביא" | accessibility.html |
 | מחירים | 250-24,900 ₪ | עמודי השירותים + llms.txt |
 | נתונים סטטיסטיים | עשרות אתרים, 99.9%, 8 שנים, 96% | index.html, about.html |

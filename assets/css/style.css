@@ -527,6 +527,7 @@ hr { border: 0; border-top: 1px solid var(--line); margin: 2.5rem 0; }
 
 @media (max-width: 1120px) {
   .header-phone { display: none; }
+  .main-nav > ul > li > a { padding-inline: .45rem; } /* מקום לשני אייקוני הרשתות לפני מעבר להמבורגר */
 }
 
 @media (max-width: 1000px) {
