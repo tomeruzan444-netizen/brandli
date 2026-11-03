@@ -125,6 +125,8 @@
      5. ולידציה + שליחת טופס
      ------------------------------------------------------------------ */
   var LEAD_INBOX = 'ben3n4456@gmail.com';
+  /* שמות השדות במייל באנגלית: FormSubmit מציג שמות בעברית כסימני שאלה. השם email מאפשר "השב" ישירות לפונה */
+  var LEAD_FIELDS = { name: 'Full name', business: 'Business field', company: 'Company', phone: 'Phone', email: 'email', subject: 'Topic', url: 'Website', message: 'Details' };
   $$('form[data-validate]').forEach(function (form) {
     var status = $('.form-status', form);
 
@@ -230,20 +232,17 @@
         _subject: 'פנייה חדשה מהאתר - ' + source,
         _template: 'table',
         _captcha: 'false',
-        'מקור': source,
-        'עמוד': window.location.href
+        Source: source,
+        Page: window.location.href
       };
       $$('.field', form).forEach(function (field) {
         var input = $('input, select, textarea', field);
-        var label = $('label', field);
-        if (!input || !label || input.type === 'checkbox') return;
+        if (!input || !LEAD_FIELDS[input.name]) return;
         var value = input.tagName === 'SELECT'
           ? (input.value ? input.options[input.selectedIndex].text : '')
           : input.value.trim();
         if (!value) return;
-        /* השירות מזהה את השדה email כדי לאפשר "השב" ישירות לפונה */
-        var key = input.name === 'email' ? 'email' : label.textContent.replace('*', '').trim();
-        payload[key] = value;
+                payload[LEAD_FIELDS[input.name]] = value;
       });
 
       var controller = window.AbortController ? new AbortController() : null;
