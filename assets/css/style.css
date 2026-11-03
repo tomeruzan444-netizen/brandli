@@ -1499,24 +1499,8 @@ table.data td:first-child { color: var(--ink); font-weight: 600; }
 .footer-bottom a { font-size: var(--fs-xs); }
 
 /* --------------------------------------------------------------------------
-   23. Floating utilities (WhatsApp + accessibility)
+   23. Floating utilities (accessibility)
    -------------------------------------------------------------------------- */
-.fab-wa {
-  position: fixed;
-  inset-inline-end: 20px;
-  bottom: 20px;
-  z-index: 880;
-  width: 54px; height: 54px;
-  border-radius: 50%;
-  background: #25D366;
-  color: #fff;
-  display: grid; place-items: center;
-  box-shadow: 0 12px 28px -10px rgba(37, 211, 102, .7);
-  transition: transform .25s var(--ease);
-}
-.fab-wa:hover { transform: scale(1.08); color: #fff; }
-.fab-wa .ico { width: 28px; height: 28px; }
-
 .a11y-btn {
   position: fixed;
   inset-inline-start: 20px;
@@ -1659,7 +1643,7 @@ html.a11y-bigcursor, html.a11y-bigcursor * {
 
 /* print */
 @media print {
-  .site-header, .scroll-progress, .fab-wa, .a11y-btn, .a11y-panel, .site-footer, .cta-band { display: none !important; }
+  .site-header, .scroll-progress, .a11y-btn, .a11y-panel, .site-footer, .cta-band { display: none !important; }
   body { font-size: 11pt; }
   .page-body { padding-top: 0; }
 }
