@@ -1425,6 +1425,19 @@ hr { border: 0; border-top: 1px solid var(--line); margin: 2.5rem 0; }
 .definition p { color: var(--ink); font-size: 1.03rem; line-height: 1.8; margin: 0; }
 
 /* Comparison table */
+/* דוגמה לעמוד תקלה (עמוד האינסטלטורים) */
+.fault-sample {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-inline-start: 4px solid var(--brand);
+  border-radius: var(--r);
+  padding: 1.5rem;
+}
+.fault-sample__tag { font-size: var(--fs-xs); font-weight: 700; color: var(--brand); margin: 0 0 .5rem; }
+.fault-sample h3 { font-size: 1.125rem; margin: 0 0 .85rem; }
+.fault-sample p:not(.fault-sample__tag) { color: var(--ink); font-size: var(--fs-sm); margin: 0 0 .7rem; }
+.fault-sample p:last-child { margin-bottom: 0; }
+
 .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: var(--r); margin: 1.75rem 0; -webkit-overflow-scrolling: touch; }
 table.data { width: 100%; border-collapse: collapse; font-size: var(--fs-sm); min-width: 520px; }
 table.data th, table.data td { padding: .95rem 1.15rem; text-align: start; border-bottom: 1px solid var(--line-soft); }

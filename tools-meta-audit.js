@@ -22,6 +22,7 @@ const PAGES = [
   { f: 'websites-for-insurance-agents/index.html', url: '/websites-for-insurance-agents/', kw: 'בניית אתרים לסוכני ביטוח' },
   { f: 'websites-for-photographers/index.html', url: '/websites-for-photographers/', kw: 'בניית אתרים לצלמים' },
   { f: 'websites-for-fitness-trainers/index.html', url: '/websites-for-fitness-trainers/', kw: 'בניית אתרים למאמני כושר' },
+  { f: 'websites-for-plumbers/index.html', url: '/websites-for-plumbers/', kw: 'בניית אתרים לאינסטלטורים' },
   { f: 'blog/index.html', url: '/blog/', kw: 'בלוג בניית אתרים' },
   { f: 'blog/web-page-weight/index.html', url: '/blog/web-page-weight/', kw: 'משקל עמוד' },
   { f: 'blog/ai-crawlers-robots-txt/index.html', url: '/blog/ai-crawlers-robots-txt/', kw: 'סורקי AI' },
