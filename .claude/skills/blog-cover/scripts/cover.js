@@ -17,7 +17,7 @@
      { "kind": "figure", "name": "serp-ai-box", "accent": "cyan", "scene": { ... } }
      פלט: <name>.webp (1200x675)
 
-   סוגי scene: serp, dashboard, browser-a11y, chat, bars, robots, network, art, icon. פירוט ב-SKILL.md.
+   סוגי scene: serp, dashboard, browser-a11y, chat, bars, robots, network, tokens, art, icon. פירוט ב-SKILL.md.
    ============================================================================ */
 const fs = require('fs');
 const os = require('os');
@@ -246,6 +246,29 @@ const SCENES = {
           <span style="${mono};font-size:${rowH > 50 ? 22 : 20}px;font-weight:800;text-align:right;color:${f.key ? A : 'var(--ink)'}">${esc(nums[n].toFixed(1))} kB</span>
         </div>`).join('')}
         <div style="padding:14px 0;${mono};font-size:18px;font-weight:700;color:#8288A1">${files.length} requests &nbsp;|&nbsp; ${esc(total.toFixed(1))} kB transferred</div>
+      </div>
+    </div>`;
+  },
+
+  /* מילים שמפורקות לטוקנים: כל מילה בשורה, החלקים שלה כשבבים צבעוניים, ומספר החלקים בצד.
+     rows[{parts:[...]}] 2-6 שורות. רק פירוקים אמיתיים מהמקודד שנבדק */
+  tokens(s, A) {
+    const rows = s.rows || [];
+    if (rows.length < 2 || rows.length > 6) fail('tokens צריך בין 2 ל-6 rows');
+    if (rows.some(r => !Array.isArray(r.parts) || !r.parts.length)) fail('כל row ב-tokens צריך parts');
+    const tints = [A, '#7C6CF9', '#F59E0B', '#10B981'];
+    const rowH = Math.min(84, Math.floor(390 / rows.length));
+    return `<div class="win" style="inset:0">${winBar}
+      <div style="padding:22px 40px;display:grid;gap:${Math.round(rowH * 0.18)}px">
+        ${rows.map(r => {
+          const rtl = /[֐-׿]/.test(r.parts.join(''));
+          return `<div style="display:flex;align-items:center;gap:22px;height:${rowH}px;border-bottom:1px solid var(--line)">
+            <div style="flex:1;display:flex;gap:6px;direction:${rtl ? 'rtl' : 'ltr'};justify-content:${rtl ? 'flex-start' : 'flex-end'}">
+              ${r.parts.map((p, n) => `<span style="font-size:${Math.round(rowH * 0.46)}px;font-weight:800;padding:2px 14px;border-radius:12px;
+                background:color-mix(in srgb, ${tints[n % tints.length]} 18%, #fff);border:2px solid ${tints[n % tints.length]};white-space:pre">${esc(p)}</span>`).join('')}
+            </div>
+            <span style="flex:none;min-width:150px;text-align:left;font-size:${Math.round(rowH * 0.32)}px;font-weight:800;color:${r.parts.length > 1 ? A : '#8288A1'}">${r.parts.length === 1 ? 'טוקן 1' : `${r.parts.length} טוקנים`}</span>
+          </div>`; }).join('')}
       </div>
     </div>`;
   },

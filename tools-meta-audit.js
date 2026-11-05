@@ -24,6 +24,7 @@ const PAGES = [
   { f: 'websites-for-fitness-trainers/index.html', url: '/websites-for-fitness-trainers/', kw: 'בניית אתרים למאמני כושר' },
   { f: 'websites-for-plumbers/index.html', url: '/websites-for-plumbers/', kw: 'בניית אתרים לאינסטלטורים' },
   { f: 'blog/index.html', url: '/blog/', kw: 'בלוג בניית אתרים' },
+  { f: 'blog/hebrew-tokens/index.html', url: '/blog/hebrew-tokens/', kw: 'טוקנים בעברית' },
   { f: 'blog/web-page-weight/index.html', url: '/blog/web-page-weight/', kw: 'משקל עמוד' },
   { f: 'blog/ai-crawlers-robots-txt/index.html', url: '/blog/ai-crawlers-robots-txt/', kw: 'סורקי AI' },
   { f: 'blog/google-ai-overviews-clicks/index.html', url: '/blog/google-ai-overviews-clicks/', kw: 'סקירות AI של גוגל' },

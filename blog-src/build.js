@@ -17,6 +17,26 @@ const he = d => { const [y, m, day] = d.split('-').map(Number);
 /* חדש ראשון */
 const POSTS = [
   {
+    slug: 'hebrew-tokens', main: 'posts/hebrew-tokens.html', date: '2026-11-05',
+    title: 'האם טוקנים בעברית באמת עולים פי 3 מאנגלית?',
+    metaTitle: 'טוקנים בעברית | ספרנו כמה יותר הם עולים מאנגלית ב-GPT-5',
+    desc: 'טוקנים בעברית: ספרנו 5 טקסטים עסקיים בשני המקודדים של OpenAI. בישן העברית דרשה פי 2.8 טוקנים, ובחדש רק 15% יותר. מה זה עושה לחשבון, ואיך מעריכים לבד ב-5 דקות.',
+    og: 'ספרנו טקסטים של עסק קטן בעברית ובאנגלית. פעם העברית דרשה פי 2.8 טוקנים, היום רק 15% יותר. ומה זה אומר על החשבון של בוט או אוטומציה.',
+    card: 'ספרנו 5 טקסטים עסקיים בשני המקודדים של OpenAI, בדקנו אם עברית עדיין עולה פי 3, והראינו איך מעריכים טוקנים בלי שום כלי.',
+    about: ['Tokenization', 'Hebrew language', 'OpenAI tokenizer', 'AI cost'],
+    cover: { tag: 'AI בעברית', accent: 'cyan', scene: { type: 'tokens', rows: [
+      { parts: ['שלום'] }, { parts: ['ק', 'פה'] }, { parts: ['ש', 'מט', 'פט', 'ף'] }] },
+      badge: { value: '15%', label: 'יותר טוקנים לעברית ב-GPT-5' } },
+    figures: [
+      { name: 'tokens-old-new', accent: 'cyan', scene: { type: 'bars', title: 'אותם 5 טקסטים, בטוקנים', max: 700,
+        items: [{ label: 'עברית, מקודד של GPT-4', value: '647' }, { label: 'אנגלית, מקודד של GPT-4', value: '232' },
+          { label: 'עברית, מקודד של GPT-5', value: '263', key: true }, { label: 'אנגלית, מקודד של GPT-5', value: '229' }] } },
+      { name: 'word-pieces', accent: 'cyan', scene: { type: 'tokens', rows: [
+        { parts: ['שלום'] }, { parts: ['לקוחות'] }, { parts: ['coffee'] }, { parts: ['ק', 'פה'] },
+        { parts: ['ש', 'מט', 'פט', 'ף'] }, { parts: ['dr', 'ipping'] }] } },
+    ],
+  },
+  {
     slug: 'web-page-weight', main: 'posts/web-page-weight.html', date: '2026-11-03',
     title: 'בדקנו את משקל עמוד הבית שלנו, והאותיות שקלו כמעט פי 4 מהמילים',
     metaTitle: 'משקל עמוד באתר | הגופן שלנו שקל כמעט פי 4 מהמילים',
