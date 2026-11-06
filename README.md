@@ -110,6 +110,7 @@ brandli/
 ├── websites-for-electricians/        →  /websites-for-electricians/
 ├── websites-for-plumbers/            →  /websites-for-plumbers/
 ├── websites-for-renovation-contractors/            →  /websites-for-renovation-contractors/
+├── websites-for-hair-salons/         →  /websites-for-hair-salons/
 ├── websites-for-business-consultants/ → /websites-for-business-consultants/
 ├── brochure-website/                 →  /brochure-website/
 ├── sales-website/                    →  /sales-website/
