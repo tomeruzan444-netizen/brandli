@@ -45,6 +45,10 @@ const BANNED = [
   'לסיכום', 'מהווה', 'מגוון רחב', 'פתרון מקיף', 'מקצה לקצה', 'חוויית משתמש',
   'באופן משמעותי', 'ללא ספק', 'אין ספק ש', 'המפתח להצלחה', 'ברמה הגבוהה ביותר',
   'מותאם אישית', 'בצורה מקצועית', 'הלכה למעשה', 'פורץ דרך', 'מהפכני',
+  /* נוספו 7.11.2026 מרשימת סימני ה-AI של תומר */
+  'משמעותית', 'קריטי', 'ראוי לציין', 'כדאי להדגיש', 'בימינו', 'כללי המשחק', 'נכנס לתמונה',
+  'בהקשר זה', 'בנקודה זו', 'למנף', 'ממנף', 'בסופו של דבר', 'בשורה התחתונה', 'יתר על כן',
+  'מעבר לכך', 'התאמה אישית', 'מותאמת אישית', 'פתרון מקיף', 'מעצים',
 ];
 
 /* ------------------------- עזרים ------------------------- */
@@ -98,6 +102,14 @@ for (const p of pages) {
   const reveal = count(text, REVEAL);
   const banned = BANNED.reduce((n, w) => n + text.split(w).length - 1, 0);
 
+  /* מקף רגיל עם רווחים באמצע משפט: אותה הפסקה דרמטית של המקף הארוך (נוסף 7.11.2026).
+     נבדק רק בטקסט רץ: פסקאות, פריטי רשימה, כותרות, תאי טבלה ותשובות */
+  const prose = [...body.matchAll(/<(p|li|h[1-3]|td)(?:\s[^>]*)?>([\s\S]*?)<\/\1>/g)]
+    .map(m => strip(m[2].replace(/<span class="sr-only">[^<]*<\/span>/g, ''))).join(' | ');
+  const dashPause = count(prose, /[\u05d0-\u05ea\w,"\u05f4)] - [\u05d0-\u05ea\w"(]/g);
+  /* מקף עברי: לא בשימוש באתר (נוסף 7.11.2026) */
+  const maqaf = count(main, /\u05be/g);
+
   /* 25 תווים ומעלה: משפט מסקנה. הדגשה קצרה של מונח או שם אינה מסקנה */
   const boldClosers = [...body.matchAll(/<p(?:\s[^>]*)?>([\s\S]*?)<\/p>/g)]
     .filter(m => /<strong>[^<]{25,}<\/strong>\s*\.?\s*$/.test(m[1].trim())).length;
@@ -139,21 +151,23 @@ for (const p of pages) {
   if (trope) flags.push(`${trope} "כולם מזניחים"`);
   if (reveal) flags.push(`${reveal} פתיחת נקודתיים`);
   if (banned) flags.push(`${banned} מילים אסורות`);
+  if (dashPause) flags.push(`${dashPause} מקפים כהפסקה`);
+  if (maqaf) flags.push(`${maqaf} מקף עברי`);
   if (boldClosers > MAX_BOLD_CLOSERS) flags.push(`${boldClosers} סיומים מודגשים`);
   if (numHeadings > MAX_NUM_HEADINGS) flags.push(`${numHeadings} כותרות ממוספרות`);
   if (yesNo > MAX_YESNO_SHARE) flags.push(`${Math.round(yesNo * 100)}% תשובות "כן,/לא,"`);
-  rows.push({ url: p.url, anti, honesty, trope, boldClosers, numHeadings, yesNo, flags });
+  rows.push({ url: p.url, anti, honesty, trope, boldClosers, numHeadings, yesNo, dashPause, banned, flags });
 }
 
 /* ---------------------------- דוח ---------------------------- */
 const pad = (s, n) => String(s) + ' '.repeat(Math.max(0, n - String(s).length));
-console.log(pad('עמוד', 36) + pad('ניגודים', 9) + pad('כנות', 6) + pad('מסקנה', 7) + pad('ממוספר', 8) + pad('כן/לא', 7) + 'סטטוס');
+console.log(pad('עמוד', 36) + pad('ניגודים', 9) + pad('כנות', 6) + pad('מסקנה', 7) + pad('ממוספר', 8) + pad('כן/לא', 7) + pad('מקף', 5) + pad('מילים', 6) + 'סטטוס');
 console.log('-'.repeat(84));
 let pageViolations = 0;
 for (const r of rows) {
   if (r.flags.length) pageViolations++;
   console.log(pad(r.url, 36) + pad(r.anti, 9) + pad(r.honesty, 6) + pad(r.boldClosers, 7) +
-    pad(r.numHeadings, 8) + pad(Math.round(r.yesNo * 100) + '%', 7) + (r.flags.length ? 'X' : 'V'));
+    pad(r.numHeadings, 8) + pad(Math.round(r.yesNo * 100) + '%', 7) + pad(r.dashPause, 5) + pad(r.banned, 6) + (r.flags.length ? 'X' : 'V'));
 }
 
 const over = (map, max) => [...map].filter(([, s]) => s.size > max).sort((a, b) => b[1].size - a[1].size);
