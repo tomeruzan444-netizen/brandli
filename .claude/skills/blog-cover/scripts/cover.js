@@ -273,6 +273,59 @@ const SCENES = {
     </div>`;
   },
 
+  /* טלפון עם המסך הראשון של עמוד, וקו מקווקו במקום שבו מתחילה הגלילה.
+     phones[{variant:'answer'|'banner', label, ok}] 1-2 טלפונים. variant answer: כותרת, משפט וכפתור.
+     banner: תמונה גדולה ולוגו, בלי כפתור. marks[] (עד 4 תוויות) מסמנות בטלפון יחיד מה יש במסך.
+     more: true ממשיך את העמוד מתחת לטלפון, בהיר ודהוי, כדי להראות כמה נשאר מתחת לקו */
+  phone(s, A) {
+    const phones = s.phones || [{ variant: 'answer' }];
+    if (phones.length < 1 || phones.length > 2) fail('phone צריך 1 או 2 phones');
+    const marks = s.marks || [];
+    if (marks.length > 4) fail('phone: עד 4 marks');
+    if (marks.length && phones.length > 1) fail('phone: marks רק עם טלפון אחד');
+    const W = 270, H = 460;
+    const dot = n => `<span style="flex:none;width:30px;height:30px;border-radius:50%;background:${A};color:#fff;font-size:17px;font-weight:900;display:grid;place-items:center;box-shadow:0 0 0 3px #fff">${n}</span>`;
+    const screen = (p) => {
+      const head = `<div style="height:44px;display:flex;align-items:center;justify-content:space-between;padding:0 14px;border-bottom:1px solid var(--line)">
+        <span style="width:26px;height:26px;border-radius:8px;background:#4F39F6"></span><span style="display:grid;gap:4px">${sk('20px', 'sk--dark', 'height:3px')}${sk('20px', 'sk--dark', 'height:3px')}${sk('20px', 'sk--dark', 'height:3px')}</span></div>`;
+      const call = `<span style="position:absolute;left:12px;bottom:12px;width:44px;height:44px;border-radius:50%;background:var(--ok);box-shadow:0 8px 18px -6px rgba(16,185,129,.7)"></span>`;
+      if (p.variant === 'banner') return `${head}
+        <div style="margin:12px;height:250px;border-radius:14px;background:linear-gradient(135deg,#DCDFF0,#EEF0F8);display:grid;place-items:center;color:#B4B8CF;position:relative">
+          ${svg('image', 'width="64" height="64" stroke-width="1.5"')}
+          <span style="position:absolute;bottom:12px;display:flex;gap:6px">${[1, 0, 0, 0].map(o => `<i style="width:8px;height:8px;border-radius:50%;background:${o ? '#8288A1' : '#fff'}"></i>`).join('')}</span></div>
+        <div style="padding:6px 18px">${sk('70%', 'sk--dark', 'height:16px')}<div style="height:12px"></div>${sk('92%')}<div style="height:8px"></div>${sk('84%')}<div style="height:8px"></div>${sk('60%')}</div>`;
+      const m = n => marks[n] ? `data-m="${n}"` : '';
+      const pin = n => marks[n] ? `<span style="position:absolute;left:-14px;top:50%;transform:translateY(-50%);z-index:2">${dot(n + 1)}</span>` : '';
+      return `${head}
+        <div style="padding:22px 18px 0;display:grid;gap:0">
+          <div ${m(0)} style="position:relative">${pin(0)}${sk('38%', '', `height:9px;background:${A};opacity:.7`)}<div style="height:16px"></div>
+            ${sk('92%', '', 'height:22px;background:var(--ink)')}<div style="height:10px"></div>${sk('70%', '', `height:22px;background:${A}`)}</div>
+          <div style="height:20px"></div>
+          <div ${m(1)} style="position:relative">${pin(1)}${sk('96%')}<div style="height:9px"></div>${sk('88%')}<div style="height:9px"></div>${sk('64%')}</div>
+          <div style="height:22px"></div>
+          <div ${m(2)} style="position:relative;height:46px;border-radius:12px;background:${A};display:grid;place-items:center">${pin(2)}${sk('40%', '', 'background:rgba(255,255,255,.7)')}</div>
+          <div style="height:18px"></div>
+          <div ${m(3)} style="position:relative;display:flex;gap:6px;align-items:center;justify-content:center;color:#FBBF24">${[0, 1, 2, 3, 4].map(() => svg('star', 'width="15" height="15" fill="currentColor" stroke-width="0"')).join('')}${sk('70px', '', 'margin-right:8px')}${pin(3)}</div>
+        </div>${call}`;
+    };
+    const fold = s.foldLabel ? `<span class="pill" style="position:absolute;left:50%;transform:translateX(-50%);top:18px;background:#fff;color:${A};border:2px dashed ${A};white-space:nowrap;z-index:3">${esc(s.foldLabel)}</span>` : '';
+    const one = (p, x) => `<div style="position:absolute;top:${s.more ? 0 : 40}px;${x};width:${W + 24}px">
+        ${p.label ? `<div style="text-align:center;margin-bottom:14px"><span class="pill" style="background:${p.ok === false ? 'rgba(244,63,94,.12)' : p.ok ? 'rgba(16,185,129,.14)' : 'var(--sk-2)'};color:${p.ok === false ? '#E11D48' : p.ok ? '#059669' : 'var(--ink)'};font-size:20px">${esc(p.label)}</span></div>` : ''}
+        <div style="position:relative;padding:12px;border-radius:40px;background:#1B1840;box-shadow:0 50px 90px -40px rgba(10,8,40,.75)">
+          <div style="position:relative;width:${W}px;height:${H}px;border-radius:28px;overflow:hidden;background:#fff;color:var(--ink)">${screen(p)}</div>
+          <span style="position:absolute;left:-30px;right:-30px;bottom:12px;border-top:3px dashed ${A}"></span>
+        </div>
+        ${s.more ? `<div style="margin:0 12px;height:400px;background:linear-gradient(#fff 0%,rgba(255,255,255,0) 100%);opacity:.5;padding:22px 18px;display:grid;gap:12px;align-content:start">
+          ${['90%', '76%', '84%', '40%', '92%', '70%', '88%', '60%'].map(w => sk(w, 'sk--dark')).join('')}</div>` : ''}
+      </div>`;
+    const html = phones.length === 2
+      ? one(phones[0], 'right:150px') + one(phones[1], 'left:150px')
+      : one(phones[0], marks.length ? 'right:120px' : `left:calc(50% - ${(W + 24) / 2}px)`);
+    /* תוויות לטלפון יחיד: עמודה משמאל, כל אחת עם מספר שמופיע גם על הטלפון */
+    const labels = marks.map((t, n) => `<div style="position:absolute;left:60px;top:${40 + 12 + 70 + n * 92}px;display:flex;align-items:center;gap:14px;font-size:26px;font-weight:700;background:#fff;padding:10px 20px 10px 16px;border-radius:16px;box-shadow:0 10px 24px -14px rgba(27,24,64,.35)">${dot(n + 1)}${esc(t)}</div>`).join('');
+    return `${html}${labels}${phones.length === 1 && s.foldLabel ? `<div style="position:absolute;top:${(s.more ? 0 : 40) + 12 + H}px;${marks.length ? 'right:120px' : `left:calc(50% - ${(W + 24) / 2}px)`};width:${W + 24}px;height:0">${fold}</div>` : ''}`;
+  },
+
   /* איור מוכן מקובץ (למשל איור AI מ-Canva, בלי טקסט), על כל הרוחב. שכבת המותג מעליו */
   art(s) {
     if (!s.src) fail('art צריך src: נתיב לקובץ התמונה, יחסי לשורש הריפו');

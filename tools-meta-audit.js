@@ -26,6 +26,7 @@ const PAGES = [
   { f: 'websites-for-renovation-contractors/index.html', url: '/websites-for-renovation-contractors/', kw: 'בניית אתרים לקבלני שיפוצים' },
   { f: 'websites-for-hair-salons/index.html', url: '/websites-for-hair-salons/', kw: 'בניית אתרים למספרות' },
   { f: 'blog/index.html', url: '/blog/', kw: 'בלוג בניית אתרים' },
+  { f: 'blog/first-screen-mobile/index.html', url: '/blog/first-screen-mobile/', kw: 'המסך הראשון באתר' },
   { f: 'blog/hebrew-tokens/index.html', url: '/blog/hebrew-tokens/', kw: 'טוקנים בעברית' },
   { f: 'blog/web-page-weight/index.html', url: '/blog/web-page-weight/', kw: 'משקל עמוד' },
   { f: 'blog/ai-crawlers-robots-txt/index.html', url: '/blog/ai-crawlers-robots-txt/', kw: 'סורקי AI' },

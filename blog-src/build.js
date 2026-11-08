@@ -17,6 +17,25 @@ const he = d => { const [y, m, day] = d.split('-').map(Number);
 /* חדש ראשון */
 const POSTS = [
   {
+    slug: 'first-screen-mobile', main: 'posts/first-screen-mobile.html', date: '2026-11-08',
+    title: 'המסך הראשון באתר: מה הלקוח צריך להבין בטלפון לפני שהוא גולל',
+    metaTitle: 'המסך הראשון באתר | מה הלקוח רואה בטלפון לפני שהוא גולל',
+    desc: 'המסך הראשון באתר בטלפון: מדדנו 38 עמודים שלנו, ורק כ-6% מהמילים נכנסו בו. על אילו 4 שאלות הוא חייב לענות, מה כדאי להוציא ממנו, ובדיקה של 5 דקות לאתר שלכם.',
+    og: 'מדדנו 38 עמודים באתר שלנו בטלפון: רק כ-6% מהמילים נכנסות למסך הראשון. על מה הוא חייב לענות, ואיך בודקים אותו אצלכם עם צילום מסך אחד.',
+    card: 'מדדנו כמה מכל עמוד באתר שלנו נכנס למסך הראשון בטלפון, מצאנו מה חסר בו, ובנינו רשימה של 4 שאלות לבדיקה עם צילום מסך.',
+    about: ['Above the fold', 'Mobile web design', 'Landing page', 'Conversion'],
+    cover: { tag: 'המסך הראשון', accent: 'amber', scene: { type: 'phone', more: true },
+      badge: { value: '5.9%', label: 'מהמילים בעמוד נכנסות למסך הראשון' } },
+    figures: [
+      { name: 'first-screen-share', accent: 'amber', scene: { type: 'bars', title: 'כמה מהמילים בעמוד נכנסות למסך הראשון', max: 10,
+        items: [{ label: 'בניית אתרים', value: '3.2%' }, { label: 'אינסטלטורים', value: '4.1%' },
+          { label: 'עמוד הבית', value: '6.1%' }, { label: 'צרו קשר', value: '8.4%' },
+          { label: 'החציון ב-38 עמודים', value: '5.9%', key: true }] } },
+      { name: 'four-questions', accent: 'amber', scene: { type: 'phone',
+        marks: ['מה אתם עושים', 'למי ואיפה', 'איך פונים', 'למה לסמוך'], foldLabel: 'כאן מתחילה הגלילה' } },
+    ],
+  },
+  {
     slug: 'hebrew-tokens', main: 'posts/hebrew-tokens.html', date: '2026-11-05',
     title: 'האם טוקנים בעברית באמת עולים פי 3 מאנגלית?',
     metaTitle: 'טוקנים בעברית | ספרנו כמה יותר הם עולים מאנגלית ב-GPT-5',
