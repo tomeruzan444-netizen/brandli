@@ -25,6 +25,7 @@ const PAGES = [
   { f: 'websites-for-plumbers/index.html', url: '/websites-for-plumbers/', kw: 'בניית אתרים לאינסטלטורים' },
   { f: 'websites-for-renovation-contractors/index.html', url: '/websites-for-renovation-contractors/', kw: 'בניית אתרים לקבלני שיפוצים' },
   { f: 'websites-for-hair-salons/index.html', url: '/websites-for-hair-salons/', kw: 'בניית אתרים למספרות' },
+  { f: 'websites-for-ac-technicians/index.html', url: '/websites-for-ac-technicians/', kw: 'בניית אתרים לטכנאי מזגנים' },
   { f: 'blog/index.html', url: '/blog/', kw: 'בלוג בניית אתרים' },
   { f: 'blog/first-screen-mobile/index.html', url: '/blog/first-screen-mobile/', kw: 'המסך הראשון באתר' },
   { f: 'blog/hebrew-tokens/index.html', url: '/blog/hebrew-tokens/', kw: 'טוקנים בעברית' },
