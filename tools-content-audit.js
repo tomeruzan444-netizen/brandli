@@ -32,6 +32,7 @@ const PAGES = [
   { f: 'websites-for-renovation-contractors/index.html', url: '/websites-for-renovation-contractors/', kw: 'בניית אתרים לקבלני שיפוצים', minLinks: 3 },
   { f: 'websites-for-hair-salons/index.html', url: '/websites-for-hair-salons/', kw: 'בניית אתרים למספרות', minLinks: 3 },
   { f: 'websites-for-ac-technicians/index.html', url: '/websites-for-ac-technicians/', kw: 'בניית אתרים לטכנאי מזגנים', minLinks: 3 },
+  { f: 'websites-for-metalworkers/index.html', url: '/websites-for-metalworkers/', kw: 'בניית אתרים למסגרים', minLinks: 3 },
   { f: 'ecommerce-websites/index.html', url: '/ecommerce-websites/', kw: 'בניית אתרי מסחר', minLinks: 3 },
   { f: 'business-automation/index.html', url: '/business-automation/', kw: 'אוטומציות לעסקים', minLinks: 3 },
   { f: 'crm-system/index.html', url: '/crm-system/', kw: 'בניית מערכת CRM לעסק', minLinks: 3 },
