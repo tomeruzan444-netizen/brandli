@@ -34,6 +34,8 @@ const PAGES = [
   { f: 'websites-for-ac-technicians/index.html', url: '/websites-for-ac-technicians/', kw: 'בניית אתרים לטכנאי מזגנים', minLinks: 3 },
   { f: 'websites-for-metalworkers/index.html', url: '/websites-for-metalworkers/', kw: 'בניית אתרים למסגרים', minLinks: 3 },
   { f: 'websites-for-dietitians/index.html', url: '/websites-for-dietitians/', kw: 'בניית אתרים לדיאטנים', minLinks: 3 },
+  { f: 'websites-for-physiotherapists/index.html', url: '/websites-for-physiotherapists/', kw: 'בניית אתרים לפיזיותרפיסטים', minLinks: 3 },
+  { f: 'websites-for-zimmers/index.html', url: '/websites-for-zimmers/', kw: 'בניית אתרים לצימרים', minLinks: 3 },
   { f: 'ecommerce-websites/index.html', url: '/ecommerce-websites/', kw: 'בניית אתרי מסחר', minLinks: 3 },
   { f: 'business-automation/index.html', url: '/business-automation/', kw: 'אוטומציות לעסקים', minLinks: 3 },
   { f: 'crm-system/index.html', url: '/crm-system/', kw: 'בניית מערכת CRM לעסק', minLinks: 3 },

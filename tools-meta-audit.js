@@ -28,6 +28,8 @@ const PAGES = [
   { f: 'websites-for-ac-technicians/index.html', url: '/websites-for-ac-technicians/', kw: 'בניית אתרים לטכנאי מזגנים' },
   { f: 'websites-for-metalworkers/index.html', url: '/websites-for-metalworkers/', kw: 'בניית אתרים למסגרים' },
   { f: 'websites-for-dietitians/index.html', url: '/websites-for-dietitians/', kw: 'בניית אתרים לדיאטנים' },
+  { f: 'websites-for-physiotherapists/index.html', url: '/websites-for-physiotherapists/', kw: 'בניית אתרים לפיזיותרפיסטים' },
+  { f: 'websites-for-zimmers/index.html', url: '/websites-for-zimmers/', kw: 'בניית אתרים לצימרים' },
   { f: 'blog/index.html', url: '/blog/', kw: 'בלוג בניית אתרים' },
   { f: 'blog/first-screen-mobile/index.html', url: '/blog/first-screen-mobile/', kw: 'המסך הראשון באתר' },
   { f: 'blog/hebrew-tokens/index.html', url: '/blog/hebrew-tokens/', kw: 'טוקנים בעברית' },
