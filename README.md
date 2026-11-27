@@ -116,6 +116,7 @@ brandli/
 ├── websites-for-dietitians/          →  /websites-for-dietitians/
 ├── websites-for-physiotherapists/    →  /websites-for-physiotherapists/
 ├── websites-for-zimmers/             →  /websites-for-zimmers/
+├── websites-for-hotels/              →  /websites-for-hotels/
 ├── websites-for-business-consultants/ → /websites-for-business-consultants/
 ├── brochure-website/                 →  /brochure-website/
 ├── sales-website/                    →  /sales-website/
